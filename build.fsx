@@ -103,7 +103,9 @@ Target "CleanDocs" (fun _ ->
 
 Target "Build" (fun _ ->
     let fsProjs, fsTestProjs =  
-        if Fake.AppVeyor.AppVeyorEnvironment.BuildId = null then
+        // On Travis and appveyor only do 3.1
+        if Fake.AppVeyor.AppVeyorEnvironment.BuildId = null &&
+           System.Environment.GetEnvironmentVariable("TRAVIS_PULL_REQUEST") = null then
             !! "src/**/*.fsproj", !! "tests/**/*.fsproj"
         else
             !! "src/FSharp.Core.Fluent-3.1/FSharp.Core.Fluent-3.1.fsproj", 
