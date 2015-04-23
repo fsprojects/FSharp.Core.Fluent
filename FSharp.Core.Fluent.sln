@@ -33,7 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{8E6D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{ED8079DD-2B06-4030-9F0F-DC548F98E1C4}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp.Core.Fluent-3.1.Tests", "tests\FSharp.Core.Fluent.Tests\FSharp.Core.Fluent-3.1.Tests.fsproj", "{ADBD32DB-B7AC-4E81-9507-28F329AF23E7}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp.Core.Fluent-3.1.Tests", "tests\FSharp.Core.Fluent-3.1.Tests\FSharp.Core.Fluent-3.1.Tests.fsproj", "{ADBD32DB-B7AC-4E81-9507-28F329AF23E7}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279787}") = "FSharp.Core.Fluent-4.0.Tests", "tests\FSharp.Core.Fluent-4.0.Tests\FSharp.Core.Fluent-4.0.Tests.fsproj", "{ADBD32DB-B7AC-4E81-9507-28F329AF23E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library", "library", "{B4BB88FA-DB8C-4651-9869-A8FEA79F044E}"
 	ProjectSection(SolutionItems) = preProject

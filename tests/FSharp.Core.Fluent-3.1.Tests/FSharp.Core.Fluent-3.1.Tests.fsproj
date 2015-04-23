@@ -8,13 +8,13 @@
     <ProjectGuid>adbd32db-b7ac-4e81-9507-28f329af23e7</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>FSharp.Core.Fluent.Tests</RootNamespace>
-    <AssemblyName>FSharp.Core.Fluent-4.0.Tests</AssemblyName>
+    <AssemblyName>FSharp.Core.Fluent-3.1.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
-    <Name>FSharp.Core.Fluent.Tests</Name>
+    <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Name>FSharp.Core.Fluent-3.1.Tests</Name>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <DefineConstants>FSHARP_CORE_AT_LEAST_4_0</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,8 +22,9 @@
     <Optimize>false</Optimize>
     <Tailcalls>false</Tailcalls>
     <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Debug\FSharp.Core.Fluent-4.0.Tests.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\FSharp.Core.Fluent-3.1.Tests.XML</DocumentationFile>
     <StartAction>Project</StartAction>
     <StartProgram>
     </StartProgram>
@@ -35,8 +36,9 @@
     <Optimize>true</Optimize>
     <Tailcalls>true</Tailcalls>
     <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Release\FSharp.Core.Fluent-4.0.Tests.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\FSharp.Core.Fluent-3.1.Tests.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
@@ -56,7 +58,8 @@
   <Import Project="$(FSharpTargetsPath)" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <ItemGroup>
-    <Compile Include="FluentTests.fs" />
+    <Compile Include="..\FluentTests.fs" />
+    <None Include="App.config" />
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
@@ -69,8 +72,8 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FSharp.Core.Fluent-4.0\FSharp.Core.Fluent-4.0.fsproj">
-      <Name>FSharp.Core.Fluent-4.0</Name>
+    <ProjectReference Include="..\..\src\FSharp.Core.Fluent-3.1\FSharp.Core.Fluent-3.1.fsproj">
+      <Name>FSharp.Core.Fluent-3.1</Name>
       <Project>{2d4f3d0e-0e18-48d7-9c27-98864039393d}</Project>
       <Private>True</Private>
     </ProjectReference>

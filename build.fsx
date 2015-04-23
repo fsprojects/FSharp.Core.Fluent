@@ -107,7 +107,7 @@ Target "Build" (fun _ ->
             !! "src/**/*.fsproj", !! "tests/**/*.fsproj"
         else
             !! "src/FSharp.Core.Fluent-3.1/FSharp.Core.Fluent-3.1.fsproj", 
-            !! "tests/FSharp.Core.Fluent.Tests/FSharp.Core.Fluent-3.1.Tests.fsproj"
+            !! "tests/FSharp.Core.Fluent-3.1.Tests/FSharp.Core.Fluent-3.1.Tests.fsproj"
             
     fsProjs
     |> MSBuildRelease "" "Rebuild"

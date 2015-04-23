@@ -4,7 +4,8 @@
 // --------------------------------------------------------------------------------------
 
 // Binaries that have XML documentation (in a corresponding generated XML file)
-let referenceBinaries = [ "FSharp.Core.Fluent.dll" ]
+let referenceBinaries31 = [ "FSharp.Core.Fluent-3.1.dll" ]
+let referenceBinaries40 = [ "FSharp.Core.Fluent-4.0.dll"  ]
 // Web site location for the generated documentation
 let website = "/FSharp.Core.Fluent"
 
@@ -40,7 +41,8 @@ let root = "file://" + (__SOURCE_DIRECTORY__ @@ "../output")
 #endif
 
 // Paths with template/source/output locations
-let bin        = __SOURCE_DIRECTORY__ @@ "../../bin"
+let bin31        = __SOURCE_DIRECTORY__ @@ "../../bin/3.1"
+let bin40        = __SOURCE_DIRECTORY__ @@ "../../bin/4.0"
 let content    = __SOURCE_DIRECTORY__ @@ "../content"
 let output     = __SOURCE_DIRECTORY__ @@ "../output"
 let files      = __SOURCE_DIRECTORY__ @@ "../files"
@@ -89,14 +91,16 @@ let references =
 let buildReference () =
   CleanDir (output @@ "reference")
   let binaries =
-    referenceBinaries
-    |> List.map (fun lib-> bin @@ lib)
+    [ for lib in referenceBinaries31 -> bin31 @@ lib
+      //for lib in referenceBinaries40 -> bin40 @@ lib 
+    ]
   MetadataFormat.Generate
     ( binaries, output @@ "reference", layoutRootsAll.["en"],
       parameters = ("root", root)::info,
       sourceRepo = githubLink @@ "tree/master",
       sourceFolder = __SOURCE_DIRECTORY__ @@ ".." @@ "..",
-      publicOnly = true, libDirs = [bin],
+      publicOnly = true, 
+      libDirs = [bin31; bin40],
       ?assemblyReferences = references )
 
 // Build documentation from `fsx` and `md` files in `docs/content`
