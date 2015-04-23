@@ -91,7 +91,7 @@ Target "AssemblyInfo" (fun _ ->
 // Clean build results
 
 Target "Clean" (fun _ ->
-    () // CleanDirs ["bin"; "temp"]
+    CleanDirs ["bin"; "temp"]
 )
 
 Target "CleanDocs" (fun _ ->
@@ -105,11 +105,11 @@ Target "Build" (fun _ ->
     let fsProjs =  !! "src/**/*.fsproj"
     let fsTestProjs =  !! "tests/**/*.fsproj"
     fsProjs
-    |> MSBuildRelease "" "Build"
+    |> MSBuildRelease "" "Rebuild"
     |> ignore
 
     fsTestProjs
-    |> MSBuildRelease "" "Build"
+    |> MSBuildRelease "" "Rebuild"
     |> ignore)
 
 // --------------------------------------------------------------------------------------
