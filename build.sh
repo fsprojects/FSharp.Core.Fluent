@@ -1,4 +1,22 @@
 #!/bin/bash
+
+echo "---- /usr"
+ls /usr
+echo "---- /usr/lib"
+ls /usr/lib/
+echo "---- /usr/lib/mono"
+ls /usr/lib/mono
+echo "---- /usr/lib/xbuild"
+ls /usr/lib/xbuild
+echo "---- /usr/lib/xbuild/Reference\ Assemblies"
+ls /usr/lib/xbuild/Reference\ Assemblies
+echo "---- /usr/lib/xbuild/Reference\ Assemblies/Microsoft"
+ls /usr/lib/xbuild/Reference\ Assemblies/Microsoft
+echo "---- /usr/lib/xbuild/Reference\ Assemblies/Microsoft/FSharp"
+ls /usr/lib/xbuild/Reference\ Assemblies/Microsoft/FSharp
+echo "---- /usr/lib/xbuild/Reference\ Assemblies/Microsoft/FSharp/.NETCore"
+ls /usr/lib/xbuild/Reference\ Assemblies/Microsoft/FSharp/.NETCore
+
 if test "$OS" = "Windows_NT"
 then
   # use .Net
