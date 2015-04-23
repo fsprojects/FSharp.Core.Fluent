@@ -5,7 +5,7 @@
 
 # FSharp.Core.Fluent [![NuGet Status](http://img.shields.io/nuget/v/FSharp.Core.Fluent.svg?style=flat)](https://www.nuget.org/packages/FSharp.Core.Fluent/)
 
-**FSharp.Core.Fluent** is 
+**FSharp.Core.Fluent** provides fluent members for F# 3.1 FSharp.Core functions
 
 See [the home page](http://fsprojects.github.io/FSharp.Core.Fluent/) for details. The home page can be [edited, forked or cloned](https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/docs/content)
 Please contribute to this project. Don't ask for permission, just fork the repository and send pull requests.
