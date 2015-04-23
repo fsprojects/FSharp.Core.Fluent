@@ -102,8 +102,12 @@ Target "CleanDocs" (fun _ ->
 // Build library & test project
 
 Target "Build" (fun _ ->
-    let fsProjs =  !! "src/**/*.fsproj"
-    let fsTestProjs =  !! "tests/**/*.fsproj"
+    let fsProjs, fsTestProjs =  
+        if Fake.AppVeyor.AppVeyorEnvironment.BuildId = null then
+            !! "src/**/*.fsproj", !! "tests/**/*.fsproj"
+        else
+            !! "src/FSharp.Core.Fluent-3.1/FSharp.Core.Fluent-3.1.fsproj", !! "tests/FSharp.Core.Fluent.Tests/FSharp.Core.Fluent.Tests-3.1.fsproj"
+            
     fsProjs
     |> MSBuildRelease "" "Rebuild"
     |> ignore
