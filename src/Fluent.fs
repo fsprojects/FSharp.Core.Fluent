@@ -2344,7 +2344,7 @@ module EventExtensions =
 
 
 
-/// <summary>Fluent extension operations on events.</summary>
+/// <summary>Fluent extension operations on native pointers.</summary>
 module NativePtrExtensions = 
     open Microsoft.FSharp.NativeInterop
     type nativeptr<'T when 'T : unmanaged> with 
