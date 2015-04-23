@@ -1,4 +1,4 @@
-type file
+type project
 id
     FSharp.Core.Fluent-4.0
 owners
@@ -21,7 +21,3 @@ summary
     Fluent members for F# 4.0 FSharp.Core functions
 description
     Fluent members for Seq, List, Array and all F# 4.0 FSharp.Core functions
-files
-    ..\..\bin\4.0\FSharp.Core.Fluent-4.0.dll ==> lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1
-    ..\..\bin\4.0\FSharp.Core.Fluent-4.0.pdb ==> lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1
-    ..\..\bin\4.0\FSharp.Core.Fluent-4.0.xml ==> lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1
