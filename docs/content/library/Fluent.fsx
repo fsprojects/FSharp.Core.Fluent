@@ -8,7 +8,8 @@ available for Array, these are not shown here.
 
 *)
 
-#r "../../../bin/3.1.0.0/FSharp.Core.Fluent.dll"
+#r @"../../../bin/3.1/FSharp.Core.Fluent-3.1.dll"
+#r "System.Runtime" // in scripts you must also reference this DLL because you are using a portable component
 
 let seq1 = seq { 1 .. 10 }
 let seq2 = seq { 11 .. 20 }
