@@ -106,7 +106,8 @@ Target "Build" (fun _ ->
         if Fake.AppVeyor.AppVeyorEnvironment.BuildId = null then
             !! "src/**/*.fsproj", !! "tests/**/*.fsproj"
         else
-            !! "src/FSharp.Core.Fluent-3.1/FSharp.Core.Fluent-3.1.fsproj", !! "tests/FSharp.Core.Fluent.Tests/FSharp.Core.Fluent.Tests-3.1.fsproj"
+            !! "src/FSharp.Core.Fluent-3.1/FSharp.Core.Fluent-3.1.fsproj", 
+            !! "tests/FSharp.Core.Fluent.Tests/FSharp.Core.Fluent-3.1.Tests.fsproj"
             
     fsProjs
     |> MSBuildRelease "" "Rebuild"
