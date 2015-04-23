@@ -22,7 +22,7 @@ open System.Runtime.CompilerServices
 #if FSHARP_CORE_AT_LEAST_4_0
 [<assembly: AutoOpenAttribute("FSharp.Core.Fluent.NullableExtensions")>]
 #endif
-[<assembly: Extension>]
+//[<assembly: Extension>]
 do()
 
 

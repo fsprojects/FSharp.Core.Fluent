@@ -24,7 +24,8 @@ This library adds ``.map``, ``.filter`` and many other methods for lists, arrays
 
 *)
 
-#r "../../bin/3.1.0.0/FSharp.Core.Fluent.dll"
+#r "../../bin/3.1/FSharp.Core.Fluent-3.1.dll"
+#r "System.Runtime" // in scripts you must also reference this DLL because you are using a portable component
 
 let xs = [ 1 .. 10 ]
 
