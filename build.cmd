@@ -1,8 +1,6 @@
 @echo off
 cls
 
-dir "C:\Program Files (x86)\MSBuild\..\Reference Assemblies\Microsoft\FSharp\.NETCore"
-
 .paket\paket.bootstrapper.exe
 if errorlevel 1 (
   exit /b %errorlevel%

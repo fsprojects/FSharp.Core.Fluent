@@ -10,10 +10,9 @@
     <RootNamespace>FSharp.Core.Fluent</RootNamespace>
     <AssemblyName>FSharp.Core.Fluent-3.1</AssemblyName>
     <Name>FSharp.Core.Fluent-3.1</Name>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
-    <TargetProfile>netcore</TargetProfile>
-    <TargetFSharpCoreVersion>3.259.3.1</TargetFSharpCoreVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile47</TargetFrameworkProfile>
+    <TargetFSharpCoreVersion>2.3.5.1</TargetFSharpCoreVersion>
     <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,9 +32,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+    <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.Portable.FSharp.Targets</FSharpTargetsPath>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.Portable.FSharp.Targets" />
   <Import Project="..\..\.paket\paket.targets" />
+  <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="..\Fluent.fs" />
@@ -46,8 +46,7 @@
     <Reference Include="FSharp.Core">
       <Name>FSharp.Core</Name>
       <AssemblyName>FSharp.Core.dll</AssemblyName>
-      <HintPath>$(MSBuildExtensionsPath32)\..\Reference Assemblies\Microsoft\FSharp\.NETCore\$(TargetFSharpCoreVersion)\FSharp.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>$(MSBuildExtensionsPath32)\..\Reference Assemblies\Microsoft\FSharp\.NETPortable\$(TargetFSharpCoreVersion)\FSharp.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

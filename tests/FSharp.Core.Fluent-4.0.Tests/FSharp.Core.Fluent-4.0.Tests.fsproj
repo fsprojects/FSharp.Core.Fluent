@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>adbd32db-b7ac-4e81-9507-28f329af23e7</ProjectGuid>
+    <ProjectGuid>{adbd32db-b7ac-4e81-9507-28f329af23e8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>FSharp.Core.Fluent.Tests</RootNamespace>
     <AssemblyName>FSharp.Core.Fluent-4.0.Tests</AssemblyName>
@@ -57,7 +57,9 @@
   <Import Project="$(FSharpTargetsPath)" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <ItemGroup>
-    <Compile Include="..\FluentTests.fs" />
+    <Compile Include="..\FluentTests.fs">
+      <Link>FluentTests.fs</Link>
+    </Compile>
     <None Include="App.config" />
     <None Include="paket.references" />
   </ItemGroup>
