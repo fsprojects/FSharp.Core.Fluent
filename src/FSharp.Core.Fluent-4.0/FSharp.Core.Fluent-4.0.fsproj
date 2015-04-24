@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>2d4f3d0e-0e18-48d7-9c27-98864039393d</ProjectGuid>
+    <ProjectGuid>{0b5fe784-5787-4820-b3e7-c1ffd3ea96a5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>FSharp.Core.Fluent</RootNamespace>
     <AssemblyName>FSharp.Core.Fluent-4.0</AssemblyName>
@@ -39,7 +39,9 @@
   <Import Project="..\..\.paket\paket.targets" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="..\Fluent.fs" />
+    <Compile Include="..\Fluent.fs">
+      <Link>Fluent.fs</Link>
+    </Compile>
     <None Include="paket.template" />
     <None Include="paket.references" />
   </ItemGroup>

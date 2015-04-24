@@ -177,10 +177,8 @@ Target "GenerateReferenceDocs" (fun _ ->
       failwith "generating reference documentation failed"
 )
 
-let generateHelp' fail debug =
-    let args =
-        if debug then ["--define:HELP"]
-        else ["--define:RELEASE"; "--define:HELP"]
+let generateHelp fail =
+    let args =["--define:RELEASE"; "--define:HELP"]
     if executeFSIWithArgs "docs/tools" "generate.fsx" args [] then
         traceImportant "Help generated"
     else
@@ -188,9 +186,6 @@ let generateHelp' fail debug =
             failwith "generating help documentation failed"
         else
             traceImportant "generating help documentation failed"
-
-let generateHelp fail =
-    generateHelp' fail false
 
 Target "GenerateHelp" (fun _ ->
     DeleteFile "docs/content/release-notes.md"
@@ -234,12 +229,6 @@ Target "Release" (fun _ ->
     Branches.tag "" release.NugetVersion
     Branches.pushTag "" "origin" release.NugetVersion
     
-    // release on github
-    createClient (getBuildParamOrDefault "github-user" "") (getBuildParamOrDefault "github-pw" "")
-    |> createDraft gitOwner gitName release.NugetVersion (release.SemVer.PreRelease <> None) release.Notes 
-    // TODO: |> uploadFile "PATH_TO_FILE"    
-    |> releaseDraft
-    |> Async.RunSynchronously
 )
 
 Target "BuildPackage" DoNothing

@@ -5,11 +5,11 @@ to all FSharp.Core functions for List, Array, Array2D, Array3D, Seq, Event and O
 
 <div class="row">
   <div class="span1"></div>
-  <div class="span6">
+  <div class="span8">
     <div class="well well-small" id="nuget">
       The FSharp.Core.Fluent library can be installed from NuGet:
       <pre>PM> Install-Package FSharp.Core.Fluent-3.1 (F# 3.1)
-PM> Install-Package FSharp.Core.Fluent-4.0 (F# 4.0)</pre>
+PM> Install-Package FSharp.Core.Fluent-4.0 (coming at F# 4.0 RTM!)</pre>
     </div>
   </div>
   <div class="span1"></div>
