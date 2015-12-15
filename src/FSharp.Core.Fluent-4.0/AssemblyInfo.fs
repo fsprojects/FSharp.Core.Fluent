@@ -4,9 +4,9 @@ open System.Reflection
 [<assembly: AssemblyTitleAttribute("FSharp.Core.Fluent-4.0")>]
 [<assembly: AssemblyProductAttribute("FSharp.Core.Fluent")>]
 [<assembly: AssemblyDescriptionAttribute("Fluent extensions for FSharp.Core")>]
-[<assembly: AssemblyVersionAttribute("1.0.0.1")>]
-[<assembly: AssemblyFileVersionAttribute("1.0.0.1")>]
+[<assembly: AssemblyVersionAttribute("1.0.0.5")>]
+[<assembly: AssemblyFileVersionAttribute("1.0.0.5")>]
 do ()
 
 module internal AssemblyVersionInformation =
-    let [<Literal>] Version = "1.0.0.1"
+    let [<Literal>] Version = "1.0.0.5"

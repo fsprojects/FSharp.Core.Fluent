@@ -17,7 +17,8 @@ let info =
     "project-author", "Don Syme, Tomas Petricek"
     "project-summary", "Fluent methods for F# Seq, List, Array collections"
     "project-github", githubLink
-    "project-nuget", "http://nuget.org/packages/FSharp.Core.Fluent" ]
+    "project-nuget31", "http://nuget.org/packages/FSharp.Core.Fluent-3.1" 
+    "project-nuget40", "http://nuget.org/packages/FSharp.Core.Fluent-4.0" ]
 
 // --------------------------------------------------------------------------------------
 // For typical project, no changes are needed below

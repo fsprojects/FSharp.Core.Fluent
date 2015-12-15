@@ -1,3 +1,5 @@
+(*** hide ***)
+#I "../../../bin/3.1/"
 (**
 
 # Usage examples for all functions
@@ -8,8 +10,10 @@ available for Array, these are not shown here.
 
 *)
 
-#r @"../../../bin/3.1/FSharp.Core.Fluent-3.1.dll"
-#r "System.Runtime" // in scripts you must also reference this DLL because you are using a portable component
+#r "FSharp.Core.Fluent-3.1.dll"
+#r "System.Runtime" // you must also reference this 
+
+open FSharp.Core.Fluent
 
 let seq1 = seq { 1 .. 10 }
 let seq2 = seq { 11 .. 20 }
@@ -68,8 +72,10 @@ seq1.where(fun x -> x > 1)
 seq1.windowed(3) 
 seq1.zip(seq2) 
 seq1.zip3(seq1,seq2) 
-
-#if FSHARP_CORE_AT_LEAST_4_4_0_0
+(**
+Additional methods are also available when using the 4.0 package:
+*)
+#if FSHARP_CORE_AT_LEAST_4_0
 seq1.contains(3) 
 seq1.exceptseq2) 
 seq1.permute(fun x -> x) 

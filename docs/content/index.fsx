@@ -1,3 +1,5 @@
+(*** hide ***)
+#I "../../bin/3.1/"
 (**
 
 FSharp.Core.Fluent is a collection of inlined methods allowing fluent access
@@ -9,7 +11,7 @@ to all FSharp.Core functions for List, Array, Array2D, Array3D, Seq, Event and O
     <div class="well well-small" id="nuget">
       The FSharp.Core.Fluent library can be installed from NuGet:
       <pre>PM> Install-Package FSharp.Core.Fluent-3.1 (F# 3.1)
-PM> Install-Package FSharp.Core.Fluent-4.0 (coming at F# 4.0 RTM!)</pre>
+PM> Install-Package FSharp.Core.Fluent-4.0 (F# 4.0)</pre>
     </div>
   </div>
   <div class="span1"></div>
@@ -24,8 +26,10 @@ This library adds ``.map``, ``.filter`` and many other methods for lists, arrays
 
 *)
 
-#r "../../bin/3.1/FSharp.Core.Fluent-3.1.dll"
-#r "System.Runtime" // in scripts you must also reference this DLL because you are using a portable component
+#r "FSharp.Core.Fluent-3.1.dll"
+#r "System.Runtime" // you must also reference this 
+
+open FSharp.Core.Fluent
 
 let xs = [ 1 .. 10 ]
 
@@ -37,11 +41,14 @@ xs.map(fun x -> x + 1)
 
 (**
 
-Simply reference the appropriate `FSharp.Core.Fluent`, Members are added for functionality in 
-the corresponding FSharp.Core modules. All members are inlined so there is no runtime dependency on FSharp.Core.Fluent, 
-and statically resolved using extension members, so IDE tools 
-can report strong intellisense and tooltips. No performance loss
-occurs.
+Reference the appropriate package: [FSharp.Core.Fluent-3.1](http://www.nuget.org/packages/FSharp.Core.Fluent-3.1) when
+assuming F# 3.1+, and [FSharp.Core.Fluent-4.0](http://www.nuget.org/packages/FSharp.Core.Fluent-4.0) when 
+assuming F# 4.0+.  The 4.0 package gives access to additional functions defined in FSharp.Core for F# 4.0.
+
+Members are added for functionality in FSharp.Core modules. All members are inlined so there 
+is no runtime dependency on FSharp.Core.Fluent. All members are extension members and are
+resolved at compile-time. This means IDE tools can report strong intellisense and tooltips and
+no performance loss occurs.
 
 
 ## Comparison with non-Fluent style
@@ -93,9 +100,9 @@ xs
   .filter(fun x -> x > 4)  // ERROR: The field or constructor "filter" is not defined
 ```
 
-NOTE: However, in the 
-the case of `xs.append(ys)`, the result is "`xs` then `ys`" - as expected, but 
-different to the pitfall ``xs |> List.append ys``, which is `ys` then `xs` due to the way pipelining and currying works.
+As an aside, it is worth noting that in the the case of `xs.append(ys)`, the result is "`xs` then `ys`" - as expected.
+However this is different to the pitfall ``xs |> List.append ys``, which is actually `ys` then `xs` due to the way 
+pipelining and currying works.
   
 
 *)
