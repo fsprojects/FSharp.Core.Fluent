@@ -1,274 +1,181 @@
-// --------------------------------------------------------------------------------------
-// FAKE build script
-// --------------------------------------------------------------------------------------
-
-#r @"packages/FAKE/tools/FakeLib.dll"
-
+#r @"packages/build/FAKE/tools/FakeLib.dll"
 open Fake
 open Fake.Git
 open Fake.AssemblyInfoFile
 open Fake.ReleaseNotesHelper
+open Fake.UserInputHelper
 open System
-open System.IO
-#if MONO
-#else
-#load "packages/SourceLink.Fake/tools/Fake.fsx"
-open SourceLink
-#endif
 
-// --------------------------------------------------------------------------------------
-// START TODO: Provide project-specific details below
-// --------------------------------------------------------------------------------------
-
-// Information about the project are used
-//  - for version and project name in generated AssemblyInfo file
-//  - by the generated NuGet package
-//  - to run tests and to publish documentation on GitHub gh-pages
-//  - for documentation, you also need to edit info in "docs/tools/generate.fsx"
-
-// The name of the project
-// (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
-let project = "FSharp.Core.Fluent"
-
-// Short summary of the project
-// (used as description in AssemblyInfo and as a short summary for NuGet package)
-let summary = "Fluent extensions for FSharp.Core"
-
-// Longer description of the project
-// (used as a description for NuGet package; line breaks are automatically cleaned up)
-let description = "Fluent extensions for FSharp.Core"
-
-// List of author names (for NuGet package)
-let authors = [ "Don Syme"; "Gian Ntzik"; ]
-
-// Tags for your project (for NuGet package)
-let tags = "F#, fluent, FSharp.Core"
-
-// File system information 
-let solutionFile  = "FSharp.Core.Fluent.sln"
-
-// Pattern specifying assemblies to be tested using NUnit
-let testAssemblies = "tests/**/bin/Release/*Tests*.dll"
-
-// Git configuration (used for publishing documentation in gh-pages branch)
-// The profile where the project is posted
-let gitOwner = "fsprojects" 
-let gitHome = "https://github.com/" + gitOwner
-
-// The name of the project on GitHub
-let gitName = "FSharp.Core.Fluent"
-
-// The url for the raw files hosted
-let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/fsprojects"
-
-// --------------------------------------------------------------------------------------
-// END TODO: The rest of the file includes standard build steps
-// --------------------------------------------------------------------------------------
-
-// Read additional information from the release notes document
-let release = LoadReleaseNotes (__SOURCE_DIRECTORY__  + "/RELEASE_NOTES.md")
-
-let genFSAssemblyInfo (projectPath) =
-    let projectName = System.IO.Path.GetFileNameWithoutExtension(projectPath)
-    let folderName = System.IO.Path.GetDirectoryName(projectPath)
-    let basePath = "src" @@ folderName
-    let fileName = basePath @@ "AssemblyInfo.fs"
-    CreateFSharpAssemblyInfo fileName
-      [ Attribute.Title projectName
-        Attribute.Product project
-        Attribute.Description summary
-        Attribute.Version release.AssemblyVersion
-        Attribute.FileVersion release.AssemblyVersion ]
-
-// Generate assembly info files with the right version & up-to-date information
-Target "AssemblyInfo" (fun _ ->
-  let fsProjs =  !! "src/**/*.fsproj"
-  for proj in fsProjs do 
-     genFSAssemblyInfo proj
-)
-
-// --------------------------------------------------------------------------------------
-// Clean build results
+let release = LoadReleaseNotes "RELEASE_NOTES.md"
+let srcGlob = "src/**/*.fsproj"
+let testsGlob = "tests/**/*.fsproj"
 
 Target "Clean" (fun _ ->
-    CleanDirs ["bin"; "temp"]
+    ["bin"; "temp" ;"dist"]
+    |> CleanDirs
+
+    !! srcGlob
+    ++ testsGlob
+    |> Seq.collect(fun p ->
+        ["bin";"obj"]
+        |> Seq.map(fun sp ->
+             IO.Path.GetDirectoryName p @@ sp)
+        )
+    |> CleanDirs
+
+    )
+
+Target "DotnetRestore" (fun _ ->
+    !! srcGlob
+    ++ testsGlob
+    |> Seq.iter (fun proj ->
+        DotNetCli.Restore (fun c ->
+            { c with
+                Project = proj
+                //This makes sure that Proj2 references the correct version of Proj1
+                AdditionalArgs = [sprintf "/p:PackageVersion=%s" release.NugetVersion]
+            })
+))
+
+Target "DotnetBuild" (fun _ ->
+    !! srcGlob
+    |> Seq.iter (fun proj ->
+        DotNetCli.Build (fun c ->
+            { c with
+                Project = proj
+                //This makes sure that Proj2 references the correct version of Proj1
+                AdditionalArgs = [sprintf "/p:PackageVersion=%s" release.NugetVersion]
+            })
+))
+
+let invoke f = f ()
+let invokeAsync f = async { f () }
+
+type TargetFramework =
+| Full of string
+| Core of string
+
+let (|StartsWith|_|) prefix (s: string) =
+    if s.StartsWith prefix then Some () else None
+
+let getTargetFramework tf =
+    match tf with
+    | StartsWith "net4" -> Full tf
+    | StartsWith "netcoreapp" -> Core tf
+    | _ -> failwithf "Unknown TargetFramework %s" tf
+
+let getTargetFrameworksFromProjectFile (projFile : string)=
+    let doc = Xml.XmlDocument()
+    doc.Load(projFile)
+    doc.GetElementsByTagName("TargetFrameworks").[0].InnerText.Split(';')
+    |> Seq.map getTargetFramework
+    |> Seq.toList
+
+let selectRunnerForFramework tf =
+    let runMono = sprintf "mono -f %s -c Release"
+    let runCore = sprintf "run -f %s -c Release"
+    match tf with
+    | Full t when isMono-> runMono t
+    | Full t -> runCore t
+    | Core t -> runCore t
+
+
+let runTests modifyArgs =
+    !! testsGlob
+    |> Seq.map(fun proj -> proj, getTargetFrameworksFromProjectFile proj)
+    |> Seq.collect(fun (proj, targetFrameworks) ->
+        targetFrameworks
+        |> Seq.map selectRunnerForFramework
+        |> Seq.map(fun args -> fun () ->
+            DotNetCli.RunCommand (fun c ->
+            { c with
+                WorkingDir = IO.Path.GetDirectoryName proj
+            }) (modifyArgs args))
+    )
+
+
+Target "DotnetTest" (fun _ ->
+    runTests id
+    |> Seq.iter (invoke)
+)
+let execProcAndReturnMessages filename args =
+    let args' = args |> String.concat " "
+    ProcessHelper.ExecProcessAndReturnMessages
+                (fun psi ->
+                    psi.FileName <- filename
+                    psi.Arguments <-args'
+                ) (TimeSpan.FromMinutes(1.))
+
+let pkill args =
+    execProcAndReturnMessages "pkill" args
+
+let killParentsAndChildren processId=
+    pkill [sprintf "-P %d" processId]
+
+
+Target "WatchTests" (fun _ ->
+    runTests (sprintf "watch %s")
+    |> Seq.iter (invokeAsync >> Async.Catch >> Async.Ignore >> Async.Start)
+
+    printfn "Press enter to stop..."
+    Console.ReadLine() |> ignore
+
+    if isWindows |> not then
+        startedProcesses
+        |> Seq.iter(fst >> killParentsAndChildren >> ignore )
+    else
+        //Hope windows handles this right?
+        ()
 )
 
-Target "CleanDocs" (fun _ ->
-    CleanDirs ["docs/output"]
-)
-
-// --------------------------------------------------------------------------------------
-// Build library & test project
-
-Target "Build" (fun _ ->
-    let fsProjs, fsTestProjs =  
-        // On Travis and appveyor only do 3.1
-        if Fake.AppVeyor.AppVeyorEnvironment.BuildId = null &&
-           System.Environment.GetEnvironmentVariable("TRAVIS_PULL_REQUEST") = null then
-            !! "src/**/*.fsproj", !! "tests/**/*.fsproj"
-        else
-            !! "src/FSharp.Core.Fluent-3.1/FSharp.Core.Fluent-3.1.fsproj", 
-            !! "tests/FSharp.Core.Fluent-3.1.Tests/FSharp.Core.Fluent-3.1.Tests.fsproj"
-            
-    fsProjs
-    |> MSBuildRelease "" "Rebuild"
-    |> ignore
-
-    fsTestProjs
-    |> MSBuildRelease "" "Rebuild"
-    |> ignore)
-
-// --------------------------------------------------------------------------------------
-// Run the unit tests using test runner
-
-Target "RunTests" (fun _ ->
-    !! testAssemblies
-    |> NUnit (fun p ->
-        { p with
-            DisableShadowCopy = true
-            TimeOut = TimeSpan.FromMinutes 20.
-            OutputFile = "TestResults.xml" })
-)
-
-#if MONO
-#else
-// --------------------------------------------------------------------------------------
-// SourceLink allows Source Indexing on the PDB generated by the compiler, this allows
-// the ability to step through the source code of external libraries https://github.com/ctaggart/SourceLink
-
-Target "SourceLink" (fun _ ->
-    let baseUrl = sprintf "%s/%s/{0}/%%var2%%" gitRaw (project.ToLower())
-    use repo = new GitRepo(__SOURCE_DIRECTORY__)
-    !! "src/**/*.fsproj"
-    |> Seq.iter (fun f ->
-        let proj = VsProj.LoadRelease f
-        logfn "source linking %s" proj.OutputFilePdb
-        let files = proj.Compiles -- "**/AssemblyInfo.fs"
-        repo.VerifyChecksums files
-        proj.VerifyPdbChecksums files
-        proj.CreateSrcSrv baseUrl repo.Commit (repo.Paths files)
-        Pdbstr.exec proj.OutputFilePdb proj.OutputFilePdbSrcSrv
+Target "DotnetPack" (fun _ ->
+    !! srcGlob
+    |> Seq.iter (fun proj ->
+        DotNetCli.Pack (fun c ->
+            { c with
+                Project = proj
+                Configuration = "Release"
+                OutputPath = IO.Directory.GetCurrentDirectory() @@ "dist"
+                AdditionalArgs =
+                    [
+                        sprintf "/p:PackageVersion=%s" release.NugetVersion
+                        sprintf "/p:PackageReleaseNotes=\"%s\"" (String.Join("\n",release.Notes))
+                        "/p:SourceLinkCreate=true"
+                    ]
+            })
     )
 )
-#endif
 
-// --------------------------------------------------------------------------------------
-// Build a NuGet package
-
-Target "NuGet" (fun _ ->
-      Paket.Pack(fun p -> 
-         { p with
-            Version = release.NugetVersion
-            ReleaseNotes = toLines release.Notes})
+Target "Publish" (fun _ ->
+    Paket.Push(fun c ->
+            { c with
+                PublishUrl = "https://www.nuget.org"
+                WorkingDir = "dist"
+            }
+        )
 )
-
-Target "PublishNuget" (fun _ ->
-    Paket.Push(fun p -> 
-        { p with
-            WorkingDir = "./temp"  })
-)
-
-// --------------------------------------------------------------------------------------
-// Generate the documentation
-
-Target "GenerateReferenceDocs" (fun _ ->
-    if not <| executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] [] then
-      failwith "generating reference documentation failed"
-)
-
-let generateHelp fail =
-    let args =["--define:RELEASE"; "--define:HELP"]
-    if executeFSIWithArgs "docs/tools" "generate.fsx" args [] then
-        traceImportant "Help generated"
-    else
-        if fail then
-            failwith "generating help documentation failed"
-        else
-            traceImportant "generating help documentation failed"
-
-Target "GenerateHelp" (fun _ ->
-    DeleteFile "docs/content/release-notes.md"
-    CopyFile "docs/content/" "RELEASE_NOTES.md"
-    Rename "docs/content/release-notes.md" "docs/content/RELEASE_NOTES.md"
-
-    DeleteFile "docs/content/license.md"
-    CopyFile "docs/content/" "LICENSE.txt"
-    Rename "docs/content/license.md" "docs/content/LICENSE.txt"
-
-    generateHelp true
-)
-
-
-
-Target "GenerateDocs" DoNothing
-
-
-// --------------------------------------------------------------------------------------
-// Release Scripts
-
-Target "ReleaseDocs" (fun _ ->
-    let tempDocsDir = "temp/gh-pages"
-    CleanDir tempDocsDir
-    Repository.cloneSingleBranch "" (gitHome + "/" + gitName + ".git") "gh-pages" tempDocsDir
-
-    CopyRecursive "docs/output" tempDocsDir true |> tracefn "%A"
-    StageAll tempDocsDir
-    Git.Commit.Commit tempDocsDir (sprintf "Update generated documentation for version %s" release.NugetVersion)
-    Branches.push tempDocsDir
-)
-
-#load "paket-files/fsharp/FAKE/modules/Octokit/Octokit.fsx"
-open Octokit
 
 Target "Release" (fun _ ->
+
+    if Git.Information.getBranchName "" <> "master" then failwith "Not on master"
+
     StageAll ""
     Git.Commit.Commit "" (sprintf "Bump version to %s" release.NugetVersion)
     Branches.push ""
 
     Branches.tag "" release.NugetVersion
     Branches.pushTag "" "origin" release.NugetVersion
-    
 )
 
-Target "BuildPackage" DoNothing
-
-// --------------------------------------------------------------------------------------
-// Run all targets by default. Invoke 'build <Target>' to override
-
-Target "All" DoNothing
-
 "Clean"
-  ==> "AssemblyInfo"
-  ==> "Build"
-  ==> "RunTests"
-  =?> ("GenerateReferenceDocs",isLocalBuild)
-  =?> ("GenerateDocs",isLocalBuild)
-  ==> "All"
-  =?> ("ReleaseDocs",isLocalBuild)
-
-"Build" 
-//#if MONO
-//#else
-//  =?> ("SourceLink", Pdbstr.tryFind().IsSome )
-//#endif
-  ==> "NuGet"
-  ==> "BuildPackage"
-
-"CleanDocs"
-  ==> "GenerateHelp"
-  ==> "GenerateReferenceDocs"
-  ==> "GenerateDocs"
-
-"CleanDocs"
-
-"GenerateHelp"
-    
-"ReleaseDocs"
+  ==> "DotnetRestore"
+  ==> "DotnetBuild"
+  ==> "DotnetTest"
+  ==> "DotnetPack"
+  ==> "Publish"
   ==> "Release"
 
-"BuildPackage"
-  ==> "PublishNuget"
-  ==> "Release"
+"DotnetRestore"
+ ==> "WatchTests"
 
-RunTargetOrDefault "All"
+RunTargetOrDefault "DotnetPack"

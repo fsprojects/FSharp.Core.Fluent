@@ -3,9 +3,9 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/22wknie0x5c2jfuo/branch/master?svg=true)](https://ci.appveyor.com/project/SteffenForkmann/fsharp-control-Fluent/branch/master)
 [![Build status](https://travis-ci.org/fsprojects/FSharp.Core.Fluent.svg?branch=master)](https://travis-ci.org/fsprojects/FSharp.Core.Fluent)
 
-# FSharp.Core.Fluent [![NuGet Status 3.1](http://img.shields.io/nuget/v/FSharp.Core.Fluent-3.1.svg?style=flat)](https://www.nuget.org/packages/FSharp.Core.Fluent-3.1/)  [![NuGet Status 4.0](http://img.shields.io/nuget/v/FSharp.Core.Fluent-4.0.svg?style=flat)](https://www.nuget.org/packages/FSharp.Core.Fluent-4.0/)
+# FSharp.Core.Fluent [![NuGet Status 4.0](http://img.shields.io/nuget/v/FSharp.Core.Fluent.svg?style=flat)](https://www.nuget.org/packages/FSharp.Core.Fluent/)
 
-**FSharp.Core.Fluent** provides fluent members for F# 3.1 FSharp.Core functions
+**FSharp.Core.Fluent** provides fluent members for FSharp.Core functions
 
 See [the home page](http://fsprojects.github.io/FSharp.Core.Fluent/) for details. The home page can be [edited, forked or cloned](https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/docs/content)
 Please contribute to this project. Don't ask for permission, just fork the repository and send pull requests.

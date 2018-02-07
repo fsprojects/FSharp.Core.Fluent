@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp2.0;netcoreapp1.1;net461</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Tests.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Expecto" Version="5.0.*" />
+    <PackageReference Include="FSharp.Core" Version="4.2.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+   <ProjectReference Include="../../src/FSharp.Core.Fluent/FSharp.Core.Fluent.fsproj" />
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
+    <DotNetCliToolReference Include="dotnet-mono" Version="[0.3.4]" />
+  </ItemGroup>
+</Project>
