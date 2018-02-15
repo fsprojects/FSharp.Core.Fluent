@@ -65,8 +65,8 @@ let tests =
             (arr1.fold(3, fun z x -> x + z) :  int ) |> ignore
             (arr1.foldBack((fun x z -> x + z), 3) : int  ) |> ignore
             (arr1.forall(fun x -> x > 1) :  bool) |> ignore
-            (arr1.iter(printfn "%d") : unit ) |> ignore
-            (arr1.iteri(fun i x ->  printfn "%d" x) :  unit) |> ignore
+            (arr1.iter(fun x -> sprintf "%d" x |> ignore) : unit ) |> ignore
+            (arr1.iteri(fun i x -> sprintf "%d" x |> ignore) :  unit) |> ignore
             (arr1.map(fun x -> x + 1) : int[]  ) |> ignore
             (arr1.length : int  ) |> ignore
             (arr1.mapi(fun i x -> x + 1) : int[]   ) |> ignore
@@ -181,8 +181,8 @@ let tests =
             (list1.foldBack((fun x z -> x + z), 3) : int  ) |> ignore
             (list1.forall(fun x -> x > 1) :  bool) |> ignore
             (list1.head() : int ) |> ignore
-            (list1.iter(printfn "%d") : unit ) |> ignore
-            (list1.iteri(fun i x ->  printfn "%d" x) :  unit) |> ignore
+            (list1.iter(fun x -> sprintf "%d" x |> ignore) : unit ) |> ignore
+            (list1.iteri(fun i x -> sprintf "%d" x |> ignore) :  unit) |> ignore
             (list1.last() :  int) |> ignore
             (list1.length : int  ) |> ignore
             (list1.map(fun x -> x + 1) : int list  ) |> ignore
@@ -262,8 +262,8 @@ let tests =
             (seq1.forall(fun x -> x > 1) :  bool) |> ignore
             (seq1.groupBy(id) : seq<int * seq<int>> ) |> ignore
             (seq1.head() : int ) |> ignore
-            (seq1.iter(printfn "%d") : unit ) |> ignore
-            (seq1.iteri(fun i x ->  printfn "%d" x) :  unit) |> ignore
+            (seq1.iter(fun x -> sprintf "%d" x |> ignore) : unit ) |> ignore
+            (seq1.iteri(fun i x -> sprintf "%d" x |> ignore) :  unit) |> ignore
             (seq1.last() :  int) |> ignore
             (seq1.length : int  ) |> ignore
             (seq1.map(fun x -> x + 1) : seq<int>  ) |> ignore
