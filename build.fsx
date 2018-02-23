@@ -10,8 +10,16 @@ let release = LoadReleaseNotes "RELEASE_NOTES.md"
 let srcGlob = "src/**/*.fsproj"
 let testsGlob = "tests/**/*.fsproj"
 
+// Git configuration (used for publishing documentation in gh-pages branch)
+// The profile where the project is posted
+let gitOwner = "fsprojects" 
+let gitHome = "https://github.com/" + gitOwner
+
+// The name of the project on GitHub
+let gitName = "FSharp.Core.Fluent"
+
 Target "Clean" (fun _ ->
-    ["bin"; "temp" ;"dist"]
+    ["bin"; "temp" ;"dist"; ""]
     |> CleanDirs
 
     !! srcGlob
@@ -24,6 +32,10 @@ Target "Clean" (fun _ ->
     |> CleanDirs
 
     )
+
+Target "CleanDocs" (fun _ ->
+    CleanDirs ["docs/output"]
+)
 
 Target "DotnetRestore" (fun _ ->
     !! srcGlob
@@ -146,6 +158,34 @@ Target "DotnetPack" (fun _ ->
     )
 )
 
+Target "GenerateReferenceDocs" (fun _ ->
+    if not <| executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] [] then
+      failwith "generating reference documentation failed"
+)
+
+let generateHelp fail =
+    let args =["--define:RELEASE"; "--define:HELP"]
+    if executeFSIWithArgs "docs/tools" "generate.fsx" args [] then
+        traceImportant "Help generated"
+    else
+        if fail then
+            failwith "generating help documentation failed"
+        else
+            traceImportant "generating help documentation failed"
+
+Target "GenerateHelp" (fun _ ->
+    DeleteFile "docs/content/release-notes.md"
+    CopyFile "docs/content/" "RELEASE_NOTES.md"
+    Rename "docs/content/release-notes.md" "docs/content/RELEASE_NOTES.md"
+
+    DeleteFile "docs/content/license.md"
+    CopyFile "docs/content/" "LICENSE.md"
+
+    generateHelp true
+)
+
+Target "GenerateDocs" DoNothing
+
 Target "Publish" (fun _ ->
     Paket.Push(fun c ->
             { c with
@@ -153,6 +193,17 @@ Target "Publish" (fun _ ->
                 WorkingDir = "dist"
             }
         )
+)
+
+Target "ReleaseDocs" (fun _ ->
+    let tempDocsDir = "temp/gh-pages"
+    CleanDir tempDocsDir
+    Repository.cloneSingleBranch "" (gitHome + "/" + gitName + ".git") "gh-pages" tempDocsDir
+
+    CopyRecursive "docs/output" tempDocsDir true |> tracefn "%A"
+    StageAll tempDocsDir
+    Git.Commit.Commit tempDocsDir (sprintf "Update generated documentation for version %s" release.NugetVersion)
+    Branches.push tempDocsDir
 )
 
 Target "Release" (fun _ ->
