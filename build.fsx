@@ -19,7 +19,7 @@ let gitHome = "https://github.com/" + gitOwner
 let gitName = "FSharp.Core.Fluent"
 
 Target "Clean" (fun _ ->
-    ["bin"; "temp" ;"dist"; ""]
+    ["bin"; "temp" ;"dist"]
     |> CleanDirs
 
     !! srcGlob
