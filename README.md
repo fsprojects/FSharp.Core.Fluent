@@ -3,7 +3,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/22wknie0x5c2jfuo/branch/master?svg=true)](https://ci.appveyor.com/project/SteffenForkmann/fsharp-control-Fluent/branch/master)
 [![Build status](https://travis-ci.org/fsprojects/FSharp.Core.Fluent.svg?branch=master)](https://travis-ci.org/fsprojects/FSharp.Core.Fluent)
 
-# FSharp.Core.Fluent [![NuGet Status 4.0](http://img.shields.io/nuget/v/FSharp.Core.Fluent.svg?style=flat)](https://www.nuget.org/packages/FSharp.Core.Fluent/)
+# FSharp.Core.Fluent [![NuGet Badge](https://buildstats.info/nuget/FSharp.Core.Fluent-4.0)](https://www.nuget.org/packages/FSharp.Core.Fluent-4.0)
 
 **FSharp.Core.Fluent** provides fluent members for FSharp.Core functions
 
