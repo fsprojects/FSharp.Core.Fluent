@@ -1,3 +1,7 @@
+### 1.0.0.6 - 14.03.2018
+* Added support of `netstandard2.0` and `netstandard1.6` 
+* Dropped support of F# 3.1
+
 ### 1.0.0.5 - 24.04.2015
 * Make return types consistent for 3.1 and 4.0 
 
