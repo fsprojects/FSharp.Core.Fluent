@@ -16,6 +16,5 @@ Please also join the [F# Open Source Group](http://fsharp.github.io)
 
 - [@dsyme](https://github.com/dsyme)
 - [@tpetricek](https://github.com/tpetricek)
-- [@gsomix](https://github.com/gsomix)
 
 The default maintainer account for projects under "fsprojects" is [@fsprojectsgit](https://github.com/fsprojectsgit) - F# Community Project Incubation Space (repo management)
