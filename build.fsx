@@ -51,7 +51,7 @@ let isEmptyChange = function
         String.isNullOrWhiteSpace s.CleanedText
 
 let nugetVersion = latestEntry.NuGetVersion
-let packageReleaseNotes = sprintf "%s/blob/v%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
+let packageReleaseNotes = sprintf "%s/blob/%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
 let releaseNotes =
     latestEntry.Changes
     |> List.filter (isEmptyChange >> not)
@@ -204,6 +204,7 @@ Target.create "Release" DoNothing
 "Clean"
  ==> "BuildRelease"
  ==> "GenerateDocs"
+ ==> "ReleaseDocs"
 
 "Default"
   ==> "Pack"
