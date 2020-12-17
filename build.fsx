@@ -18,7 +18,7 @@ open Fake.Api
 // --------------------------------------------------------------------------------------
 
 let summary = "Fluent extensions for FSharp.Core"
-let authors = "Don Syme, Gian Ntzik"
+let authors = "Don Syme, Gian Ntzik, fsprojects contributors"
 let tags = "f#, fsharp"
 let license = "Apache-2.0"
 
@@ -112,13 +112,13 @@ Target.create "BuildRelease" (fun _ ->
 
 Target.create "Pack" (fun _ ->
     let properties = [
-        ("Version", nugetVersion);
+        ("Version", nugetVersion)
         ("Authors", authors)
         ("PackageProjectUrl", gitUrl)
         ("PackageTags", tags)
         ("RepositoryType", "git")
         ("RepositoryUrl", gitUrl)
-        ("PackageLicense", license)
+        ("PackageLicenseExpression", license)
         ("PackageReleaseNotes", packageReleaseNotes)
         ("PackageDescription", summary)
         ("EnableSourceLink", "true")
@@ -162,15 +162,13 @@ Target.create "ReleaseGitHub" (fun _ ->
         GitHub.createClient user pw
     let files = !! (nugetDir </> "*.nupkg")
 
-
-
     // release on github
     let cl =
         client
         |> GitHub.draftNewRelease gitOwner gitName nugetVersion (latestEntry.SemVer.PreRelease <> None) [releaseNotes]
     (cl,files)
     ||> Seq.fold (fun acc e -> acc |> GitHub.uploadFile e)
-    |> GitHub.publishDraft//releaseDraft
+    |> GitHub.publishDraft
     |> Async.RunSynchronously
 )
 
@@ -179,7 +177,8 @@ Target.create "Push" (fun _ ->
         match getBuildParam "nuget-key" with
         | s when not (isNullOrWhiteSpace s) -> s
         | _ -> UserInput.getUserPassword "NuGet Key: "
-    Paket.push (fun p -> { p with WorkingDir = nugetDir; ApiKey = key; ToolType = ToolType.CreateLocalTool() }))
+    Paket.push (fun p -> { p with WorkingDir = nugetDir; ApiKey = key; ToolType = ToolType.CreateLocalTool() })
+)
 
 Target.create "ReleaseDocs" (fun _ ->
     Git.Repository.clone "" gitUrl "temp/gh-pages"

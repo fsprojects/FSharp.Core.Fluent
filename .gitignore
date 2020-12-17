@@ -263,3 +263,4 @@ output/
 .fake/
 .fsdocs/
 build/
+out/
