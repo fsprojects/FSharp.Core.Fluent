@@ -264,3 +264,4 @@ output/
 .fsdocs/
 build/
 out/
+temp/
