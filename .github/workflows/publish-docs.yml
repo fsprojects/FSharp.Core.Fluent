@@ -26,7 +26,7 @@ jobs:
     - name: Restore packages
       run: dotnet paket restore
     - name: Build and test
-      run: dotnet fake build -t GenerateDocs
+      run: dotnet fake build -t ReleaseDocs
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
