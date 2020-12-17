@@ -1,8 +1,9 @@
 # Release Notes
 
-## 2.0.0-beta1 - 17.12.2020
+## 2.0.0 - 17.12.2020
 
 * Move to .NET Standard 2.0
+* Deprecate old packages
 
 ## 1.0.0.6 - 14.03.2018
 
