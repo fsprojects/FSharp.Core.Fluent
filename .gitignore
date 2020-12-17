@@ -261,3 +261,5 @@ tmp/
 output/
 .paket/
 .fake/
+.fsdocs/
+build/
