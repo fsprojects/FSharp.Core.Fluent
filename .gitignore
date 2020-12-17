@@ -259,3 +259,5 @@ dist/
 .ionide/
 tmp/
 output/
+.paket/
+.fake/

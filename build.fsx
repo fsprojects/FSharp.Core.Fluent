@@ -35,7 +35,7 @@ let buildDir  = "./build/"
 let nugetDir  = "./out/"
 
 System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
-let changelogFilename = "CHANGELOG.md"
+let changelogFilename = "RELEASE_NOTES.md"
 let changelog = Changelog.load changelogFilename
 let latestEntry = changelog.LatestEntry
 
@@ -51,7 +51,7 @@ let isEmptyChange = function
         String.isNullOrWhiteSpace s.CleanedText
 
 let nugetVersion = latestEntry.NuGetVersion
-let packageReleaseNotes = sprintf "%s/blob/v%s/CHANGELOG.md" gitUrl latestEntry.NuGetVersion
+let packageReleaseNotes = sprintf "%s/blob/v%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
 let releaseNotes =
     latestEntry.Changes
     |> List.filter (isEmptyChange >> not)
@@ -182,11 +182,11 @@ Target.create "Push" (fun _ ->
     Paket.push (fun p -> { p with WorkingDir = nugetDir; ApiKey = key; ToolType = ToolType.CreateLocalTool() }))
 
 Target.create "ReleaseDocs" (fun _ ->
-    Git.Repository.clone "" projectRepo "temp/gh-pages"
+    Git.Repository.clone "" gitUrl "temp/gh-pages"
     Git.Branches.checkoutBranch "temp/gh-pages" "gh-pages"
     Shell.copyRecursive "output" "temp/gh-pages" true |> printfn "%A"
     Git.CommandHelper.runSimpleGitCommand "temp/gh-pages" "add ." |> printfn "%s"
-    let cmd = sprintf """commit -a -m "Update generated documentation for version %s""" release.NugetVersion
+    let cmd = sprintf """commit -a -m "Update generated documentation for version %s""" nugetVersion
     Git.CommandHelper.runSimpleGitCommand "temp/gh-pages" cmd |> printfn "%s"
     Git.Branches.push "temp/gh-pages"
 )
