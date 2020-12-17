@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp2.0;netcoreapp1.1;net461</TargetFrameworks>
+    <TargetFrameworks>net5.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,13 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Expecto" Version="5.0.*" />
-    <PackageReference Include="FSharp.Core" Version="4.2.*" />
+    <PackageReference Include="Expecto" Version="9.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-   <ProjectReference Include="../../src/FSharp.Core.Fluent/FSharp.Core.Fluent-4.0.fsproj" />
-    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
-    <DotNetCliToolReference Include="dotnet-mono" Version="[0.3.4]" />
+   <ProjectReference Include="../../src/FSharp.Core.Fluent/FSharp.Core.Fluent.fsproj" />
   </ItemGroup>
 </Project>
