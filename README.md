@@ -1,20 +1,36 @@
-[![Issue Stats](http://issuestats.com/github/fsprojects/FSharp.Core.Fluent/badge/issue)](http://issuestats.com/github/fsprojects/FSharp.Core.Fluent)
-[![Issue Stats](http://issuestats.com/github/fsprojects/FSharp.Core.Fluent/badge/pr)](http://issuestats.com/github/fsprojects/FSharp.Core.Fluent)
-[![Build status](https://ci.appveyor.com/api/projects/status/22wknie0x5c2jfuo/branch/master?svg=true)](https://ci.appveyor.com/project/SteffenForkmann/fsharp-control-Fluent/branch/master)
-[![Build status](https://travis-ci.org/fsprojects/FSharp.Core.Fluent.svg?branch=master)](https://travis-ci.org/fsprojects/FSharp.Core.Fluent)
+# FSharp.Core.Fluent [![NuGet Badge](https://buildstats.info/nuget/FSharp.Core.Fluent)](https://www.nuget.org/packages/FSharp.Core.Fluent)
 
-# FSharp.Core.Fluent [![NuGet Badge](https://buildstats.info/nuget/FSharp.Core.Fluent-4.0)](https://www.nuget.org/packages/FSharp.Core.Fluent-4.0)
+Provides fluent members for FSharp.Core functions like so:
 
-**FSharp.Core.Fluent** provides fluent members for FSharp.Core functions
+```fsharp
+open FSharp.Core.Fluent
 
-See [the home page](http://fsprojects.github.io/FSharp.Core.Fluent/) for details. The home page can be [edited, forked or cloned](https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/docs/content)
-Please contribute to this project. Don't ask for permission, just fork the repository and send pull requests.
+let xs = [ 1 .. 10 ]
 
-Please also join the [F# Open Source Group](http://fsharp.github.io)
+xs.map(fun x -> x + 1).filter(fun x -> x > 4).sort()
 
-# Maintainer(s)
+xs.map(fun x -> x + 1)
+  .filter(fun x -> x > 4)
+  .sort()
+```
+
+## Contributing
+
+This is how you build the repo after cloning:
+
+```console
+dotnet tool restore
+dotnet paket restore
+dotnet fake build
+```
+
+Docs are generated and deployed to [the docs site](http://fsprojects.github.io/FSharp.Core.Fluent/) after every successful push to this repo.
+
+We accept pull requests!
+
+## Current maintainers
 
 - [@dsyme](https://github.com/dsyme)
-- [@tpetricek](https://github.com/tpetricek)
+- [@cartermp](https://github.com/cartermp)
 
 The default maintainer account for projects under "fsprojects" is [@fsprojectsgit](https://github.com/fsprojectsgit) - F# Community Project Incubation Space (repo management)
