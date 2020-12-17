@@ -23,10 +23,8 @@ jobs:
         dotnet-version: ${{ matrix.dotnet }}
     - name: Restore .NET local tools
       run: dotnet tool restore
-    - name: Restore packages
-      run: dotnet paket restore
-    - name: Build and test
-      run: dotnet fake build -t ReleaseDocs
+    - name: Build docs
+      run: dotnet fsdocs build --clean
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
