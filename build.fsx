@@ -1,232 +1,215 @@
-#r @"packages/build/FAKE/tools/FakeLib.dll"
-open Fake
-open Fake.Git
-open Fake.AssemblyInfoFile
-open Fake.ReleaseNotesHelper
-open Fake.UserInputHelper
-open System
+// --------------------------------------------------------------------------------------
+// FAKE build script
+// --------------------------------------------------------------------------------------
+#r "paket: groupref build //"
+#load ".fake/build.fsx/intellisense.fsx"
 
-let release = LoadReleaseNotes "RELEASE_NOTES.md"
-let srcGlob = "src/**/*.fsproj"
-let testsGlob = "tests/**/*.fsproj"
+open Fake.Core
+open Fake.DotNet
+open Fake.Tools
+open Fake.IO
+open Fake.IO.FileSystemOperators
+open Fake.IO.Globbing.Operators
+open Fake.Core.TargetOperators
+open Fake.Api
 
-// Git configuration (used for publishing documentation in gh-pages branch)
-// The profile where the project is posted
-let gitOwner = "fsprojects" 
-let gitHome = "https://github.com/" + gitOwner
+// --------------------------------------------------------------------------------------
+// Information about the project to be used at NuGet and in AssemblyInfo files
+// --------------------------------------------------------------------------------------
 
-// The name of the project on GitHub
+let summary = "Fluent extensions for FSharp.Core"
+let authors = "Don Syme, Gian Ntzik"
+let tags = "f#, fsharp"
+let license = "Apache-2.0"
+
+let gitOwner = "fsprojects"
 let gitName = "FSharp.Core.Fluent"
+let gitHome = "https://github.com/" + gitOwner
+let gitUrl = gitHome + "/" + gitName
 
-Target "Clean" (fun _ ->
-    ["bin"; "temp" ;"dist"]
-    |> CleanDirs
+// --------------------------------------------------------------------------------------
+// Build variables
+// --------------------------------------------------------------------------------------
 
-    !! srcGlob
-    ++ testsGlob
-    |> Seq.collect(fun p ->
-        ["bin";"obj"]
-        |> Seq.map(fun sp ->
-             IO.Path.GetDirectoryName p @@ sp)
-        )
-    |> CleanDirs
+let buildDir  = "./build/"
+let nugetDir  = "./out/"
 
-    )
+System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
+let changelogFilename = "RELEASE_NOTES.md"
+let changelog = Changelog.load changelogFilename
+let latestEntry = changelog.LatestEntry
 
-Target "CleanDocs" (fun _ ->
-    CleanDirs ["docs/output"]
+// Helper function to remove blank lines
+let isEmptyChange = function
+    | Changelog.Change.Added s
+    | Changelog.Change.Changed s
+    | Changelog.Change.Deprecated s
+    | Changelog.Change.Fixed s
+    | Changelog.Change.Removed s
+    | Changelog.Change.Security s
+    | Changelog.Change.Custom (_, s) ->
+        String.isNullOrWhiteSpace s.CleanedText
+
+let nugetVersion = latestEntry.NuGetVersion
+let packageReleaseNotes = sprintf "%s/blob/v%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
+let releaseNotes =
+    latestEntry.Changes
+    |> List.filter (isEmptyChange >> not)
+    |> List.map (fun c -> " * " + c.ToString())
+    |> String.concat "\n"
+
+// --------------------------------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------------------------------
+let isNullOrWhiteSpace = System.String.IsNullOrWhiteSpace
+
+let exec cmd args dir =
+    let proc =
+        CreateProcess.fromRawCommandLine cmd args
+        |> CreateProcess.ensureExitCodeWithMessage (sprintf "Error while running '%s' with args: %s" cmd args)
+    (if isNullOrWhiteSpace dir then proc
+    else proc |> CreateProcess.withWorkingDirectory dir)
+    |> Proc.run
+    |> ignore
+
+let getBuildParam = Environment.environVar
+let DoNothing = ignore
+// --------------------------------------------------------------------------------------
+// Build Targets
+// --------------------------------------------------------------------------------------
+
+Target.create "Clean" (fun _ ->
+    Shell.cleanDirs [buildDir; nugetDir]
 )
 
-Target "DotnetRestore" (fun _ ->
-    !! srcGlob
-    ++ testsGlob
-    |> Seq.iter (fun proj ->
-        DotNetCli.Restore (fun c ->
-            { c with
-                Project = proj
-                //This makes sure that Proj2 references the correct version of Proj1
-                AdditionalArgs = [sprintf "/p:PackageVersion=%s" release.NugetVersion]
-            })
-))
-
-Target "DotnetBuild" (fun _ ->
-    !! srcGlob
-    |> Seq.iter (fun proj ->
-        DotNetCli.Build (fun c ->
-            { c with
-                Project = proj
-                //This makes sure that Proj2 references the correct version of Proj1
-                AdditionalArgs = [sprintf "/p:PackageVersion=%s" release.NugetVersion]
-            })
-))
-
-let invoke f = f ()
-let invokeAsync f = async { f () }
-
-type TargetFramework =
-| Full of string
-| Core of string
-
-let (|StartsWith|_|) prefix (s: string) =
-    if s.StartsWith prefix then Some () else None
-
-let getTargetFramework tf =
-    match tf with
-    | StartsWith "net4" -> Full tf
-    | StartsWith "netcoreapp" -> Core tf
-    | _ -> failwithf "Unknown TargetFramework %s" tf
-
-let getTargetFrameworksFromProjectFile (projFile : string)=
-    let doc = Xml.XmlDocument()
-    doc.Load(projFile)
-    doc.GetElementsByTagName("TargetFrameworks").[0].InnerText.Split(';')
-    |> Seq.map getTargetFramework
-    |> Seq.toList
-
-let selectRunnerForFramework tf =
-    let runMono = sprintf "mono -f %s -c Release"
-    let runCore = sprintf "run -f %s -c Release"
-    match tf with
-    | Full t when isMono-> runMono t
-    | Full t -> runCore t
-    | Core t -> runCore t
-
-
-let runTests modifyArgs =
-    !! testsGlob
-    |> Seq.map(fun proj -> proj, getTargetFrameworksFromProjectFile proj)
-    |> Seq.collect(fun (proj, targetFrameworks) ->
-        targetFrameworks
-        |> Seq.map selectRunnerForFramework
-        |> Seq.map(fun args -> fun () ->
-            DotNetCli.RunCommand (fun c ->
-            { c with
-                WorkingDir = IO.Path.GetDirectoryName proj
-            }) (modifyArgs args))
-    )
-
-
-Target "DotnetTest" (fun _ ->
-    runTests id
-    |> Seq.iter (invoke)
-)
-let execProcAndReturnMessages filename args =
-    let args' = args |> String.concat " "
-    ProcessHelper.ExecProcessAndReturnMessages
-                (fun psi ->
-                    psi.FileName <- filename
-                    psi.Arguments <-args'
-                ) (TimeSpan.FromMinutes(1.))
-
-let pkill args =
-    execProcAndReturnMessages "pkill" args
-
-let killParentsAndChildren processId=
-    pkill [sprintf "-P %d" processId]
-
-
-Target "WatchTests" (fun _ ->
-    runTests (sprintf "watch %s")
-    |> Seq.iter (invokeAsync >> Async.Catch >> Async.Ignore >> Async.Start)
-
-    printfn "Press enter to stop..."
-    Console.ReadLine() |> ignore
-
-    if isWindows |> not then
-        startedProcesses
-        |> Seq.iter(fst >> killParentsAndChildren >> ignore )
-    else
-        //Hope windows handles this right?
-        ()
+Target.create "Build" (fun _ ->
+    DotNet.build id ""
 )
 
-Target "DotnetPack" (fun _ ->
-    !! srcGlob
-    |> Seq.iter (fun proj ->
-        DotNetCli.Pack (fun c ->
-            { c with
-                Project = proj
-                Configuration = "Release"
-                OutputPath = IO.Directory.GetCurrentDirectory() @@ "dist"
-                AdditionalArgs =
-                    [
-                        sprintf "/p:PackageVersion=%s" release.NugetVersion
-                        sprintf "/p:PackageReleaseNotes=\"%s\"" (String.Join("\n",release.Notes))
-                        "/p:SourceLinkCreate=true"
-                    ]
-            })
-    )
+Target.create "Test" (fun _ ->
+    exec "dotnet" @"run --project .\tests\FSharp.Core.Fluent.Tests\FSharp.Core.Fluent.Tests.fsproj" "."
 )
 
-Target "GenerateReferenceDocs" (fun _ ->
-    if not <| executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] [] then
-      failwith "generating reference documentation failed"
+
+Target.create "GenerateDocs" (fun _ ->
+   Shell.cleanDir ".fsdocs"
+   DotNet.exec id "fsdocs" "build --clean" |> ignore
 )
 
-let generateHelp fail =
-    let args =["--define:RELEASE"; "--define:HELP"]
-    if executeFSIWithArgs "docs/tools" "generate.fsx" args [] then
-        traceImportant "Help generated"
-    else
-        if fail then
-            failwith "generating help documentation failed"
-        else
-            traceImportant "generating help documentation failed"
-
-Target "GenerateHelp" (fun _ ->
-    DeleteFile "docs/content/release-notes.md"
-    CopyFile "docs/content/" "RELEASE_NOTES.md"
-    Rename "docs/content/release-notes.md" "docs/content/RELEASE_NOTES.md"
-
-    DeleteFile "docs/content/license.md"
-    CopyFile "docs/content/" "LICENSE.md"
-
-    generateHelp true
+// --------------------------------------------------------------------------------------
+// Release Targets
+// --------------------------------------------------------------------------------------
+Target.create "BuildRelease" (fun _ ->
+    DotNet.build (fun p ->
+        { p with
+            Configuration = DotNet.BuildConfiguration.Release
+            OutputPath = Some buildDir
+            MSBuildParams = { p.MSBuildParams with Properties = [("Version", nugetVersion); ("PackageReleaseNotes", packageReleaseNotes)]}
+        }
+    ) "FSharp.Core.Fluent.sln"
 )
 
-Target "GenerateDocs" DoNothing
 
-Target "Publish" (fun _ ->
-    Paket.Push(fun c ->
-            { c with
-                PublishUrl = "https://www.nuget.org"
-                WorkingDir = "dist"
-            }
-        )
+Target.create "Pack" (fun _ ->
+    let properties = [
+        ("Version", nugetVersion);
+        ("Authors", authors)
+        ("PackageProjectUrl", gitUrl)
+        ("PackageTags", tags)
+        ("RepositoryType", "git")
+        ("RepositoryUrl", gitUrl)
+        ("PackageLicense", license)
+        ("PackageReleaseNotes", packageReleaseNotes)
+        ("PackageDescription", summary)
+        ("EnableSourceLink", "true")
+    ]
+
+    DotNet.pack (fun p ->
+        { p with
+            Configuration = DotNet.BuildConfiguration.Release
+            OutputPath = Some nugetDir
+            MSBuildParams = { p.MSBuildParams with Properties = properties}
+        }
+    ) "FSharp.Core.Fluent.sln"
 )
 
-Target "ReleaseDocs" (fun _ ->
-    let tempDocsDir = "temp/gh-pages"
-    CleanDir tempDocsDir
-    Repository.cloneSingleBranch "" (gitHome + "/" + gitName + ".git") "gh-pages" tempDocsDir
+Target.create "ReleaseGitHub" (fun _ ->
+    let remote =
+        Git.CommandHelper.getGitResult "" "remote -v"
+        |> Seq.filter (fun (s: string) -> s.EndsWith("(push)"))
+        |> Seq.tryFind (fun (s: string) -> s.Contains(gitOwner + "/" + gitName))
+        |> function None -> gitHome + "/" + gitName | Some (s: string) -> s.Split().[0]
 
-    CopyRecursive "docs/output" tempDocsDir true |> tracefn "%A"
-    StageAll tempDocsDir
-    Git.Commit.Commit tempDocsDir (sprintf "Update generated documentation for version %s" release.NugetVersion)
-    Branches.push tempDocsDir
+    Git.Staging.stageAll ""
+    Git.Commit.exec "" (sprintf "Bump version to %s" nugetVersion)
+    Git.Branches.pushBranch "" remote (Git.Information.getBranchName "")
+
+
+    Git.Branches.tag "" nugetVersion
+    Git.Branches.pushTag "" remote nugetVersion
+
+    let client =
+        let user =
+            match getBuildParam "github-user" with
+            | s when not (isNullOrWhiteSpace s) -> s
+            | _ -> UserInput.getUserInput "Username: "
+        let pw =
+            match getBuildParam "github-pw" with
+            | s when not (isNullOrWhiteSpace s) -> s
+            | _ -> UserInput.getUserPassword "Password: "
+
+        // Git.createClient user pw
+        GitHub.createClient user pw
+    let files = !! (nugetDir </> "*.nupkg")
+
+
+
+    // release on github
+    let cl =
+        client
+        |> GitHub.draftNewRelease gitOwner gitName nugetVersion (latestEntry.SemVer.PreRelease <> None) [releaseNotes]
+    (cl,files)
+    ||> Seq.fold (fun acc e -> acc |> GitHub.uploadFile e)
+    |> GitHub.publishDraft//releaseDraft
+    |> Async.RunSynchronously
 )
 
-Target "Release" (fun _ ->
+Target.create "Push" (fun _ ->
+    let key =
+        match getBuildParam "nuget-key" with
+        | s when not (isNullOrWhiteSpace s) -> s
+        | _ -> UserInput.getUserPassword "NuGet Key: "
+    Paket.push (fun p -> { p with WorkingDir = nugetDir; ApiKey = key; ToolType = ToolType.CreateLocalTool() }))
 
-    if Git.Information.getBranchName "" <> "master" then failwith "Not on master"
-
-    StageAll ""
-    Git.Commit.Commit "" (sprintf "Bump version to %s" release.NugetVersion)
-    Branches.push ""
-
-    Branches.tag "" release.NugetVersion
-    Branches.pushTag "" "origin" release.NugetVersion
+Target.create "ReleaseDocs" (fun _ ->
+    Git.Repository.clone "" gitUrl "temp/gh-pages"
+    Git.Branches.checkoutBranch "temp/gh-pages" "gh-pages"
+    Shell.copyRecursive "output" "temp/gh-pages" true |> printfn "%A"
+    Git.CommandHelper.runSimpleGitCommand "temp/gh-pages" "add ." |> printfn "%s"
+    let cmd = sprintf """commit -a -m "Update generated documentation for version %s""" nugetVersion
+    Git.CommandHelper.runSimpleGitCommand "temp/gh-pages" cmd |> printfn "%s"
+    Git.Branches.push "temp/gh-pages"
 )
+
+// --------------------------------------------------------------------------------------
+// Build order
+// --------------------------------------------------------------------------------------
+Target.create "Default" DoNothing
+Target.create "Release" DoNothing
 
 "Clean"
-  ==> "DotnetRestore"
-  ==> "DotnetBuild"
-  ==> "DotnetTest"
-  ==> "DotnetPack"
-  ==> "Publish"
+  ==> "Build"
+  ==> "Test"
+  ==> "Default"
+
+"Clean"
+ ==> "BuildRelease"
+ ==> "GenerateDocs"
+
+"Default"
+  ==> "Pack"
+  ==> "ReleaseGitHub"
+  ==> "Push"
   ==> "Release"
 
-"DotnetRestore"
- ==> "WatchTests"
-
-RunTargetOrDefault "DotnetPack"
+Target.runOrDefault "Default"

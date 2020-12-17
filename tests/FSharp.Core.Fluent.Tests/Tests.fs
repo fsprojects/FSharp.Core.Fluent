@@ -15,7 +15,7 @@ let tests =
             let _ = arr1.pick(fun n -> if n % 2 = 0 then Some n else None)
             let _ = arr1.pick(fun n -> if n % 2 = 0 then Some n else None)
             let _ : int[] = arr1.map (fun n -> n.CompareTo(3) + 1)
-            
+
             let arr2,arr3 = arr1.zip(arr1).unzip()
             let arr2b,arr3b,arr4b = arr1.zip3(arr1, arr2).unzip3()
 
@@ -125,7 +125,7 @@ let tests =
 
             list1
                .map(fun x -> x + 1)
-               .filter(fun x -> x > 4) 
+               .filter(fun x -> x > 4)
                .toArray |> ignore
 
             (list1.countBy(id) : list<int * int>) |> ignore
@@ -149,7 +149,7 @@ let tests =
             let _ = list1.pick(fun n -> if n % 2 = 0 then Some n else None)
             let _ : int list = list1.map (fun n -> n.CompareTo(3) + 1) // use CompareTo to check members
             let _ : int list = list1.collect (fun n -> [ n; n + 1 ])
-            
+
             let list2,list3 = list1.zip(list1).unzip()
             let list2b,list3b,list4b = list1.zip3(list1, list2).unzip3()
 
@@ -225,7 +225,7 @@ let tests =
             let _ = seq1.pick(fun n -> if n % 2 = 0 then Some n else None)
             let _ : seq<int> = seq1.map (fun n -> n.CompareTo(3) + 1) // use CompareTo to check members
             let _ : seq<int> = seq1.collect (fun n -> [ n; n + 1 ])
-            
+
             let seq2 : seq<int * int> = seq1.zip(seq1)
             let seq2b : seq<int * int * (int * int)> = seq1.zip3(seq1, seq2)
 
@@ -318,7 +318,7 @@ let tests =
             (seq1.except(seq1) : seq<int>  ) |> ignore
             (seq1.chunkBySize(3) : seq<int[]>  ) |> ignore
             (seq1.splitInto(3) : seq<int[]>  ) |> ignore
-           
+
         testCase "Array2D smoke test" <| fun _ ->
             let arr1 = array2D [ [ 1..10]; [1..10] ]
 
@@ -327,12 +327,12 @@ let tests =
             (arr1.length1 : int) |> ignore
             (arr1.copy() : int[,]) |> ignore
             (arr1.iter(fun i -> (i : int) |> ignore)) |> ignore
-            (arr1.iteri(fun i j k -> (i : int) |> ignore; 
-                                     (j : int) |> ignore; 
+            (arr1.iteri(fun i j k -> (i : int) |> ignore;
+                                     (j : int) |> ignore;
                                      (k : int) |> ignore)) |> ignore
             (arr1.map(fun k -> (k : int))) |> ignore
-            (arr1.mapi(fun i j k -> (i : int) |> ignore; 
-                                    (j : int) |> ignore; 
+            (arr1.mapi(fun i j k -> (i : int) |> ignore;
+                                    (j : int) |> ignore;
                                     (k : int))) |> ignore
             (arr1.rebase() : int[,]) |> ignore
 
@@ -343,15 +343,15 @@ let tests =
             (arr1.length2 : int) |> ignore
             (arr1.length3 : int) |> ignore
             (arr1.iter(fun i -> (i : int) |> ignore)) |> ignore
-            (arr1.iteri(fun i1 i2 i3 k -> 
-                          (i1 : int) |> ignore; 
-                          (i2 : int) |> ignore; 
-                          (i3 : int) |> ignore; 
+            (arr1.iteri(fun i1 i2 i3 k ->
+                          (i1 : int) |> ignore;
+                          (i2 : int) |> ignore;
+                          (i3 : int) |> ignore;
                           (k : int) |> ignore)) |> ignore
             (arr1.map(fun k -> (k : int))) |> ignore
-            (arr1.mapi(fun i1 i2 i3 k -> 
-                         (i1 : int) |> ignore; 
-                         (i2 : int) |> ignore; 
+            (arr1.mapi(fun i1 i2 i3 k ->
+                         (i1 : int) |> ignore;
+                         (i2 : int) |> ignore;
                          (i3 : int) |> ignore;
                          k)) |> ignore
 
@@ -368,17 +368,17 @@ let tests =
             let opt1 = Some 3
 
             let _ : int = opt0.count
-            let _ : int option = opt0.bind(fun x -> None) 
-            let _ : int option = opt0.filter(fun x -> true) 
-            let _ : bool = opt0.exists(fun x -> true) 
-            let _ : int = opt0.fold(1, fun z x -> 2) 
-            let _ : int = opt0.foldBack((fun x z -> z), 1) 
-            let _ : bool = opt0.forall(fun x -> true) 
-            let _ : unit = opt0.iter(fun x -> ()) 
-            let _ : bool option = opt0.map(fun x -> true) 
-            let _ : int[] = opt0.toArray() 
-            let _ : int list = opt0.toList() 
-            let _ : System.Nullable<int> = opt0.toNullable() 
+            let _ : int option = opt0.bind(fun x -> None)
+            let _ : int option = opt0.filter(fun x -> true)
+            let _ : bool = opt0.exists(fun x -> true)
+            let _ : int = opt0.fold(1, fun z x -> 2)
+            let _ : int = opt0.foldBack((fun x z -> z), 1)
+            let _ : bool = opt0.forall(fun x -> true)
+            let _ : unit = opt0.iter(fun x -> ())
+            let _ : bool option = opt0.map(fun x -> true)
+            let _ : int[] = opt0.toArray()
+            let _ : int list = opt0.toList()
+            let _ : System.Nullable<int> = opt0.toNullable()
             let _ : int = opt1.count
 
             ()
@@ -388,14 +388,14 @@ let tests =
             let str1 = "abc"
 
             let _ = str0.length
-            let _ : bool = str0.exists(fun x -> true) 
-            let _ : int = str0.fold(1, fun z x -> 2) 
-            let _ : int = str0.foldBack((fun x z -> z), 1) 
-            let _ : bool = str0.forall(fun x -> true) 
-            let _ : unit = str0.iter(fun x -> ()) 
-            let _ : string = str0.map(fun x -> 'c') 
-            let _ : char[] = str0.toArray() 
-            let _ : char list = str0.toList() 
+            let _ : bool = str0.exists(fun x -> true)
+            let _ : int = str0.fold(1, fun z x -> 2)
+            let _ : int = str0.foldBack((fun x z -> z), 1)
+            let _ : bool = str0.forall(fun x -> true)
+            let _ : unit = str0.iter(fun x -> ())
+            let _ : string = str0.map(fun x -> 'c')
+            let _ : char[] = str0.toArray()
+            let _ : char list = str0.toList()
 
             ()
   ]

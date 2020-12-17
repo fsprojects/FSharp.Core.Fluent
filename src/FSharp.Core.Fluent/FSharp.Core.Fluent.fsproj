@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>FSharp.Core.Fluent</PackageId>
+    <Title>FSharp.Core.Fluent</Title>
+    <PackageProjectUrl>https://github.com/fsprojects/FSharp.Core.Fluent</PackageProjectUrl>
+    <PackageLicense>Apache-2.0</PackageLicense>
+    <RepositoryType>git</RepositoryType>
+    <Authors>Don Syme, Gian Ntzik</Authors>
+    <RepositoryUrl>https://github.com/fsprojects/FSharp.Core.Fluent</RepositoryUrl>
+    <!-- owners is not supported in MSBuild -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Fluent.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="4.5.2" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+</Project>

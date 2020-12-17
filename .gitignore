@@ -255,3 +255,11 @@ paket-files/
 TestResults.xml
 
 dist/
+
+.ionide/
+tmp/
+output/
+.paket/
+.fake/
+.fsdocs/
+build/
