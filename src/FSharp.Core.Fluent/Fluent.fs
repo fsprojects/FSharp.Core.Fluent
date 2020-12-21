@@ -33,14 +33,14 @@ do()
 
 /// <summary>Fluent extension operations on sequences.</summary>
 [<AutoOpen>]
-module SeqExtensions = 
+module SeqExtensions =
 
-    type System.Collections.Generic.IEnumerable<'T> with 
-        
+    type System.Collections.Generic.IEnumerable<'T> with
+
         /// <summary>Wraps the two given enumerations as a single concatenated
         /// enumeration.</summary>
         ///
-        /// <remarks>The returned sequence may be passed between threads safely. However, 
+        /// <remarks>The returned sequence may be passed between threads safely. However,
         /// individual IEnumerator values generated from the returned sequence should not be accessed
         /// concurrently.</remarks>
         ///
@@ -55,23 +55,23 @@ module SeqExtensions =
 
 
         /// <summary>Returns a sequence that corresponds to a cached version of the input sequence.
-        /// This result sequence will have the same elements as the input sequence. The result 
-        /// can be enumerated multiple times. The input sequence will be enumerated at most 
+        /// This result sequence will have the same elements as the input sequence. The result
+        /// can be enumerated multiple times. The input sequence will be enumerated at most
         /// once and only as far as is necessary.  Caching a sequence is typically useful when repeatedly
         /// evaluating items in the original sequence is computationally expensive or if
         /// iterating the sequence causes side-effects that the user does not want to be
         /// repeated multiple times.
         ///
         /// Enumeration of the result sequence is thread safe in the sense that multiple independent IEnumerator
-        /// values may be used simultaneously from different threads (accesses to 
+        /// values may be used simultaneously from different threads (accesses to
         /// the internal lookaside table are thread safe). Each individual IEnumerator
         /// is not typically thread safe and should not be accessed concurrently.</summary>
         ///
         /// <remarks>Once enumeration of the input sequence has started,
         /// it's enumerator will be kept live by this object until the enumeration has completed.
-        /// At that point, the enumerator will be disposed. 
+        /// At that point, the enumerator will be disposed.
         ///
-        /// The enumerator may be disposed and underlying cache storage released by 
+        /// The enumerator may be disposed and underlying cache storage released by
         /// converting the returned sequence object to type IDisposable, and calling the Dispose method
         /// on this object. The sequence object may then be re-enumerated and a fresh enumerator will
         /// be used.</remarks>
@@ -81,14 +81,14 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.cache() = Seq.cache source 
+        member inline source.cache() = Seq.cache source
 
 
         /// <summary>Applies the given function to each element of the list. Return
         /// the list comprised of the results "x" for each element where
         /// the function returns Some(x).</summary>
         ///
-        /// <remarks>The returned sequence may be passed between threads safely. However, 
+        /// <remarks>The returned sequence may be passed between threads safely. However,
         /// individual IEnumerator values generated from the returned sequence should not
         /// be accessed concurrently.</remarks>
         ///
@@ -96,7 +96,7 @@ module SeqExtensions =
         /// <param name="source">The input sequence of type T.</param>
         ///
         /// <returns>The result sequence.</returns>
-        /// 
+        ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         member inline source.choose (chooser:('T -> 'U option)) = Seq.choose chooser source
 
@@ -140,10 +140,10 @@ module SeqExtensions =
 
         /// <summary>Applies a key-generating function to each element of a sequence and returns a sequence yielding unique
         /// keys and their number of occurrences in the original sequence.</summary>
-        /// 
-        /// <remarks>Note that this function returns a sequence that digests the whole initial sequence as soon as 
-        /// that sequence is iterated. As a result this function should not be used with 
-        /// large or infinite sequences. The function makes no assumption on the ordering of the original 
+        ///
+        /// <remarks>Note that this function returns a sequence that digests the whole initial sequence as soon as
+        /// that sequence is iterated. As a result this function should not be used with
+        /// large or infinite sequences. The function makes no assumption on the ordering of the original
         /// sequence.</remarks>
         ///
         /// <param name="projection">A function transforming each item of the input sequence into a key to be
@@ -155,7 +155,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         member inline source.countBy(projection:('T -> 'Key)) = Seq.countBy projection source
 
-        /// <summary>Returns a sequence that contains no duplicate entries according to the 
+        /// <summary>Returns a sequence that contains no duplicate entries according to the
         /// generic hash and equality comparisons on the keys returned by the given key-generating function.
         /// If an element occurs multiple times in the sequence then the later occurrences are discarded.</summary>
         ///
@@ -179,8 +179,8 @@ module SeqExtensions =
 
         /// <summary>Tests if any element of the sequence satisfies the given predicate.</summary>
         ///
-        /// <remarks>The predicate is applied to the elements of the input sequence. If any application 
-        /// returns true then the overall result is true and no further elements are tested. 
+        /// <remarks>The predicate is applied to the elements of the input sequence. If any application
+        /// returns true then the overall result is true and no further elements are tested.
         /// Otherwise, false is returned.</remarks>
         ///
         /// <param name="predicate">A function to test each item of the input sequence.</param>
@@ -195,7 +195,7 @@ module SeqExtensions =
         /// <summary>Returns a new collection containing only the elements of the collection
         /// for which the given predicate returns "true". This is a synonym for Seq.where.</summary>
         ///
-        /// <remarks>The returned sequence may be passed between threads safely. However, 
+        /// <remarks>The returned sequence may be passed between threads safely. However,
         /// individual IEnumerator values generated from the returned sequence should not be accessed concurrently.
         ///
         /// Remember sequence is lazy, effects are delayed until it is enumerated.</remarks>
@@ -205,17 +205,17 @@ module SeqExtensions =
         ///
         /// <returns>The result sequence.</returns>
         ///
-        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>    
+        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         member inline source.filter (predicate:('T -> bool)) = Seq.filter predicate source
 
         /// <summary>Returns a new collection containing only the elements of the collection
         /// for which the given predicate returns "true".</summary>
         ///
-        /// <remarks>The returned sequence may be passed between threads safely. However, 
+        /// <remarks>The returned sequence may be passed between threads safely. However,
         /// individual IEnumerator values generated from the returned sequence should not be accessed concurrently.
         ///
         /// Remember sequence is lazy, effects are delayed until it is enumerated.
-        /// 
+        ///
         /// A synonym for Seq.filter.</remarks>
         ///
         /// <param name="predicate">A function to test whether each item in the input sequence should be included in the output.</param>
@@ -223,7 +223,7 @@ module SeqExtensions =
         ///
         /// <returns>The result sequence.</returns>
         ///
-        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>    
+        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         member inline source.where (predicate:('T -> bool)) = Seq.where predicate source
 
         /// <summary>Returns the first element for which the given function returns <c>true</c>.</summary>
@@ -273,7 +273,7 @@ module SeqExtensions =
         member inline source.findIndexBack (predicate:('T -> bool)) = Seq.findIndexBack predicate source
 
         /// <summary>Applies a function to each element of the collection, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c>
         /// then computes <c>f (... (f s i0)...) iN</c></summary>
         ///
         /// <param name="folder">A function that updates the state with each element from the sequence.</param>
@@ -297,8 +297,8 @@ module SeqExtensions =
 
         /// <summary>Tests if all elements of the sequence satisfy the given predicate.</summary>
         ///
-        /// <remarks>The predicate is applied to the elements of the input sequence. If any application 
-        /// returns false then the overall result is false and no further elements are tested. 
+        /// <remarks>The predicate is applied to the elements of the input sequence. If any application
+        /// returns false then the overall result is false and no further elements are tested.
         /// Otherwise, true is returned.</remarks>
         ///
         /// <param name="predicate">A function to test an element of the input sequence.</param>
@@ -309,13 +309,13 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         member inline source.forall (predicate:('T -> bool)) = Seq.forall predicate source
 
-        /// <summary>Applies a key-generating function to each element of a sequence and yields a sequence of 
-        /// unique keys. Each unique key contains a sequence of all elements that match 
+        /// <summary>Applies a key-generating function to each element of a sequence and yields a sequence of
+        /// unique keys. Each unique key contains a sequence of all elements that match
         /// to this key.</summary>
-        /// 
-        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as 
-        /// that sequence is iterated. As a result this function should not be used with 
-        /// large or infinite sequences. The function makes no assumption on the ordering of the original 
+        ///
+        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as
+        /// that sequence is iterated. As a result this function should not be used with
+        /// large or infinite sequences. The function makes no assumption on the ordering of the original
         /// sequence.</remarks>
         ///
         /// <param name="projection">A function that transforms an element of the sequence into a comparable key.</param>
@@ -426,7 +426,7 @@ module SeqExtensions =
         /// as elements are demanded using the <c>MoveNext</c> method on enumerators retrieved from the
         /// object.</summary>
         ///
-        /// <remarks>The returned sequence may be passed between threads safely. However, 
+        /// <remarks>The returned sequence may be passed between threads safely. However,
         /// individual IEnumerator values generated from the returned sequence should not be accessed concurrently.</remarks>
         ///
         /// <param name="mapping">A function to transform items from the input sequence.</param>
@@ -511,8 +511,8 @@ module SeqExtensions =
         /// evaluates to <c>None</c> when the given function is applied.</exception>
         member inline source.pick (chooser:('T -> 'U option)) = Seq.pick chooser source
 
-        /// <summary>Builds a new sequence object that delegates to the given sequence object. This ensures 
-        /// the original sequence cannot be rediscovered and mutated by a type cast. For example, 
+        /// <summary>Builds a new sequence object that delegates to the given sequence object. This ensures
+        /// the original sequence cannot be rediscovered and mutated by a type cast. For example,
         /// if given an array the returned sequence will return the elements of the array, but
         /// you cannot cast the returned sequence object to an array.</summary>
         ///
@@ -525,7 +525,7 @@ module SeqExtensions =
 
         /// <summary>Applies a function to each element of the sequence, threading an accumulator argument
         /// through the computation. Begin by applying the function to the first two elements.
-        /// Then feed this result into the function along with the third element and so on.  
+        /// Then feed this result into the function along with the third element and so on.
         /// Return the final result.</summary>
         ///
         /// <param name="reduction">A function that takes in the current accumulated result and the next
@@ -539,7 +539,7 @@ module SeqExtensions =
         member inline source.reduce (reduction:('T -> 'T -> 'T)) = Seq.reduce reduction source
 
         /// <summary>Applies a function to each element of the sequence, starting from the end, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c>
         /// then computes <c>f i0 (...(f iN-1 iN))</c>.</summary>
         /// <param name="reduction">A function that takes in the next-to-last element of the sequence and the
         /// current accumulated result to produce the next accumulated result.</param>
@@ -590,7 +590,7 @@ module SeqExtensions =
         /// in the sequence.</exception>
         member inline source.skip (count:int) = Seq.skip count source
 
-        /// <summary>Returns a sequence that, when iterated, skips elements of the underlying sequence while the 
+        /// <summary>Returns a sequence that, when iterated, skips elements of the underlying sequence while the
         /// given predicate returns <c>true</c>, and then yields the remaining elements of the sequence.</summary>
         ///
         /// <param name="predicate">A function that evaluates an element of the sequence to a boolean value.</param>
@@ -614,11 +614,11 @@ module SeqExtensions =
         member inline source.sortWith (comparer:('T -> 'T -> int)) = Seq.sortWith comparer source
 
         /// <summary>Applies a key-generating function to each element of a sequence and yield a sequence ordered
-        /// by keys.  The keys are compared using generic comparison as implemented by <c>Operators.compare</c>.</summary> 
-        /// 
-        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as 
-        /// that sequence is iterated. As a result this function should not be used with 
-        /// large or infinite sequences. The function makes no assumption on the ordering of the original 
+        /// by keys.  The keys are compared using generic comparison as implemented by <c>Operators.compare</c>.</summary>
+        ///
+        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as
+        /// that sequence is iterated. As a result this function should not be used with
+        /// large or infinite sequences. The function makes no assumption on the ordering of the original
         /// sequence.
         ///
         /// This is a stable sort, that is the original order of equal elements is preserved.</remarks>
@@ -632,11 +632,11 @@ module SeqExtensions =
         member inline source.sortBy  (projection:('T -> 'Key)) = Seq.sortBy projection source
 
         /// <summary>Applies a key-generating function to each element of a sequence and yield a sequence ordered
-        /// descending by keys.  The keys are compared using generic comparison as implemented by <c>Operators.compare</c>.</summary> 
-        /// 
-        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as 
-        /// that sequence is iterated. As a result this function should not be used with 
-        /// large or infinite sequences. The function makes no assumption on the ordering of the original 
+        /// descending by keys.  The keys are compared using generic comparison as implemented by <c>Operators.compare</c>.</summary>
+        ///
+        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as
+        /// that sequence is iterated. As a result this function should not be used with
+        /// large or infinite sequences. The function makes no assumption on the ordering of the original
         /// sequence.
         ///
         /// This is a stable sort, that is the original order of equal elements is preserved.</remarks>
@@ -676,7 +676,7 @@ module SeqExtensions =
         /// in the sequence.</exception>
         member inline source.take (count:int) = Seq.take count source
 
-        /// <summary>Returns a sequence that, when iterated, yields elements of the underlying sequence while the 
+        /// <summary>Returns a sequence that, when iterated, yields elements of the underlying sequence while the
         /// given predicate returns <c>true</c>, and then returns no further elements.</summary>
         ///
         /// <param name="predicate">A function that evaluates to false when no more items should be returned.</param>
@@ -726,7 +726,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         member inline source.tryFindBack (predicate:('T -> bool)) = Seq.tryFindBack predicate source
 
-        /// <summary>Returns the index of the first element in the sequence 
+        /// <summary>Returns the index of the first element in the sequence
         /// that satisfies the given predicate. Return <c>None</c> if no such element exists.</summary>
         ///
         /// <param name="predicate">A function that evaluates to a Boolean when given an item in the sequence.</param>
@@ -743,7 +743,7 @@ module SeqExtensions =
         /// <param name="source">The input sequence.</param>
         /// <returns>The nth element of the sequence or <c>None</c>.</returns>
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.tryItem (index:int) = Seq.tryItem index source  
+        member inline source.tryItem (index:int) = Seq.tryItem index source
 
         /// <summary>Returns the index of the last element in the sequence
         /// that satisfies the given predicate. Return <c>None</c> if no such element exists.</summary>
@@ -810,13 +810,27 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when any of the input sequences is null.</exception>
         member inline source.zip3 (source2:seq<'T2>, source3:seq<'T3>) = Seq.zip3 source source2 source3
 
-    [<Extension>] 
+        /// <summary>Returns the transpose of the given sequence of sequences.</summary>
+        ///
+        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as
+        /// that sequence is iterated. As a result this function should not be used with
+        /// large or infinite sequences.</remarks>
+        ///
+        /// <param name="source">The input sequence.</param>
+        ///
+        /// <returns>The transposed sequence.</returns>
+        ///
+        /// <exception cref="T:System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+        [<Extension>]
+        static member inline transpose (source: seq<#seq<'T>>) = Seq.transpose source
+
+    [<Extension>]
     /// <summary>Fluent extension operations on sequences which require constrained types.</summary>
     type SeqExtensionsConstrained =
 
         /// <summary>Returns the average of the elements in the sequence.</summary>
         ///
-        /// <remarks>The elements are averaged using the <c>+</c> operator, <c>DivideByInt</c> method and <c>Zero</c> property 
+        /// <remarks>The elements are averaged using the <c>+</c> operator, <c>DivideByInt</c> method and <c>Zero</c> property
         /// associated with the element type.</remarks>
         ///
         /// <param name="source">The input sequence.</param>
@@ -825,13 +839,13 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence has zero elements.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline average(source: seq<'T>) = Seq.average source
 
-        /// <summary>Returns the average of the results generated by applying the function to each element 
+        /// <summary>Returns the average of the results generated by applying the function to each element
         /// of the sequence.</summary>
         ///
-        /// <remarks>The elements are averaged using the <c>+</c> operator, <c>DivideByInt</c> method and <c>Zero</c> property 
+        /// <remarks>The elements are averaged using the <c>+</c> operator, <c>DivideByInt</c> method and <c>Zero</c> property
         /// associated with the generated type.</remarks>
         ///
         /// <param name="projection">A function applied to transform each element of the sequence.</param>
@@ -841,7 +855,7 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence has zero elements.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline averageBy(source: seq<'T>, projection:('T -> 'U)) = Seq.averageBy projection source
 
         /// <summary>Tests if the sequence contains the specified element.</summary>
@@ -849,7 +863,7 @@ module SeqExtensions =
         /// <param name="source">The input sequence.</param>
         /// <returns>True if the input sequence contains the specified element; false otherwise.</returns>
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline contains(source: seq<'T>, value:'T) = Seq.contains value source
 
         /// <summary>Returns a sequence that contains no duplicate entries according to generic hash and
@@ -861,7 +875,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline distinct(source:seq<'T>) = Seq.distinct source
 
         /// <summary>Returns a new sequence with the distinct elements of the second sequence which do not apear in the first sequence,
@@ -879,7 +893,7 @@ module SeqExtensions =
         /// <returns>A sequence that contains the set difference of the elements of two sequences.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when either of the two input sequences is null.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline except(source: seq<'T>, itemsToExclude:seq<'T>) = Seq.except itemsToExclude source
 
         /// <summary>Returns the greatest of all elements of the sequence, compared via Operators.max</summary>
@@ -890,7 +904,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
         ///
         /// <returns>The largest element of the sequence.</returns>
-        [<Extension>] 
+        [<Extension>]
         static member inline max     (source: seq<'T>) = Seq.max source
 
         /// <summary>Returns the greatest of all elements of the sequence, compared via Operators.max on the function result.</summary>
@@ -902,7 +916,7 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline maxBy  (source: seq<'T>, projection:('T -> 'U)) = Seq.maxBy projection source
 
         /// <summary>Returns the lowest of all elements of the sequence, compared via <c>Operators.min</c>.</summary>
@@ -913,7 +927,7 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline min     (source: seq<'T>) = Seq.min source
 
         /// <summary>Returns the lowest of all elements of the sequence, compared via Operators.min on the function result.</summary>
@@ -925,15 +939,15 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline minBy  (source: seq<'T>, projection:('T -> 'U)) = Seq.minBy projection source
 
 
         /// <summary>Yields a sequence ordered by keys.</summary>
-        /// 
-        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as 
-        /// that sequence is iterated. As a result this function should not be used with 
-        /// large or infinite sequences. The function makes no assumption on the ordering of the original 
+        ///
+        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as
+        /// that sequence is iterated. As a result this function should not be used with
+        /// large or infinite sequences. The function makes no assumption on the ordering of the original
         /// sequence.
         ///
         /// This is a stable sort, that is the original order of equal elements is preserved.</remarks>
@@ -943,14 +957,14 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline sort (source: seq<'T>) = Seq.sort source
 
         /// <summary>Yields a sequence ordered descending by keys.</summary>
-        /// 
-        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as 
-        /// that sequence is iterated. As a result this function should not be used with 
-        /// large or infinite sequences. The function makes no assumption on the ordering of the original 
+        ///
+        /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as
+        /// that sequence is iterated. As a result this function should not be used with
+        /// large or infinite sequences. The function makes no assumption on the ordering of the original
         /// sequence.
         ///
         /// This is a stable sort, that is the original order of equal elements is preserved.</remarks>
@@ -960,7 +974,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        [<Extension>] 
+        [<Extension>]
         static member inline sortDescending (source: seq<'T>) = Seq.sortDescending  source
 
         /// <summary>Returns the sum of the elements in the sequence.</summary>
@@ -970,7 +984,7 @@ module SeqExtensions =
         /// <param name="source">The input sequence.</param>
         ///
         /// <returns>The computed sum.</returns>
-        [<Extension>] 
+        [<Extension>]
         static member inline sum   (source: seq<'T>) = Seq.sum source
 
         /// <summary>Returns the sum of the results generated by applying the function to each element of the sequence.</summary>
@@ -980,15 +994,15 @@ module SeqExtensions =
         /// <param name="source">The input sequence.</param>
         ///
         /// <returns>The computed sum.</returns>
-        [<Extension>] 
+        [<Extension>]
         static member inline sumBy   (source: seq<'T>, projection:('T -> 'U)) = Seq.sumBy projection  source
 
 
 /// <summary>Fluent extension operations on arrays.</summary>
 [<AutoOpen>]
-module ArrayExtensions = 
+module ArrayExtensions =
 
-                                    
+
     type ``[]``<'T> with
         /// <summary>Builds a new array that contains the elements of the first array followed by the elements of the second array.</summary>
         /// <param name="array2">The second input array.</param>
@@ -1006,14 +1020,14 @@ module ArrayExtensions =
         member inline arr.copy() = Array.copy arr
 
         /// <summary>Applies the given function to successive elements, returning the first
-        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function 
+        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function
         /// never returns <c>Some(x)</c> then <c>None</c> is returned.</summary>
         /// <param name="chooser">The function to transform the array elements into options.</param>
         /// <returns>The first transformed element that is <c>Some(x)</c>.</returns>
         member inline arr.tryPick chooser = Array.tryPick chooser arr
 
         /// <summary>Applies the given function to successive elements, returning the first
-        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function 
+        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function
         /// never returns <c>Some(x)</c> then <c>KeyNotFoundException</c> is raised.</summary>
         /// <param name="chooser">The function to generate options from the elements.</param>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException">Thrown if every result from
@@ -1040,7 +1054,7 @@ module ArrayExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
         member inline arr.countBy(projection:('T -> 'Key)) = Array.countBy projection arr
 
-        /// <summary>Returns an array that contains no duplicate entries according to the 
+        /// <summary>Returns an array that contains no duplicate entries according to the
         /// generic hash and equality comparisons on the keys returned by the given key-generating function.
         /// If an element occurs multiple times in the array then the later occurrences are discarded.</summary>
         ///
@@ -1051,8 +1065,8 @@ module ArrayExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
         member inline arr.distinctBy(projection:('T -> 'Key)) = Array.distinctBy projection arr
 
-        /// <summary>Applies a key-generating function to each element of an array and yields an array of 
-        /// unique keys. Each unique key contains an array of all elements that match 
+        /// <summary>Applies a key-generating function to each element of an array and yields an array of
+        /// unique keys. Each unique key contains an array of all elements that match
         /// to this key.</summary>
         ///
         /// <param name="projection">A function that transforms an element of the array into a comparable key.</param>
@@ -1074,7 +1088,7 @@ module ArrayExtensions =
         /// <param name="count">The number of elements to skip.</param>
         /// <returns>A copy of the input array, after removing the first N elements.</returns>
         /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
-        /// <exception cref="System.ArgumentExcepion">Thrown when count is negative or exceeds the number of 
+        /// <exception cref="System.ArgumentExcepion">Thrown when count is negative or exceeds the number of
         /// elements in the array.</exception>
         member inline arr.skip(count:int) = Array.skip count arr
 
@@ -1101,7 +1115,7 @@ module ArrayExtensions =
         /// in the list.</exception>
         member inline arr.take(count:int) = Array.take count arr
 
-        /// <summary>Returns an array that contains all elements of the original array while the 
+        /// <summary>Returns an array that contains all elements of the original array while the
         /// given predicate returns <c>true</c>, and then returns no further elements.</summary>
         ///
         /// <param name="predicate">A function that evaluates to false when no more items should be returned.</param>
@@ -1142,8 +1156,8 @@ module ArrayExtensions =
 
         /// <summary>Tests if any element of the array satisfies the given predicate.</summary>
         ///
-        /// <remarks>The predicate is applied to the elements of the input array. If any application 
-        /// returns true then the overall result is true and no further elements are tested. 
+        /// <remarks>The predicate is applied to the elements of the input array. If any application
+        /// returns true then the overall result is true and no further elements are tested.
         /// Otherwise, false is returned.</remarks>
         /// <param name="predicate">The function to test the input elements.</param>
         /// <returns>True if any result from <c>predicate</c> is true.</returns>
@@ -1164,7 +1178,7 @@ module ArrayExtensions =
         member inline arr.find predicate = Array.find predicate arr
 
         /// <summary>Returns the index of the first element in the array
-        /// that satisfies the given predicate. Raise <c>KeyNotFoundException</c> if 
+        /// that satisfies the given predicate. Raise <c>KeyNotFoundException</c> if
         /// none of the elements satisy the predicate.</summary>
         /// <param name="predicate">The function to test the input elements.</param>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException">Thrown if <c>predicate</c>
@@ -1174,8 +1188,8 @@ module ArrayExtensions =
 
         /// <summary>Tests if all elements of the array satisfy the given predicate.</summary>
         ///
-        /// <remarks>The predicate is applied to the elements of the input collection. If any application 
-        /// returns false then the overall result is false and no further elements are tested. 
+        /// <remarks>The predicate is applied to the elements of the input collection. If any application
+        /// returns false then the overall result is false and no further elements are tested.
         /// Otherwise, true is returned.</remarks>
         /// <param name="predicate">The function to test the input elements.</param>
         /// <returns>True if all of the array elements satisfy the predicate.</returns>
@@ -1183,7 +1197,7 @@ module ArrayExtensions =
 
 
         /// <summary>Applies a function to each element of the collection, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes
         /// <c>f (... (f s i0)...) iN</c></summary>
         /// <param name="folder">The function to update the state given the input elements.</param>
         /// <param name="state">The initial state.</param>
@@ -1191,7 +1205,7 @@ module ArrayExtensions =
         member inline arr.fold(state:'State, folder:('State -> 'T -> 'State)) = Array.fold folder state arr
 
         /// <summary>Applies a function to each element of the array, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes
         /// <c>f i0 (...(f iN s))</c></summary>
         /// <param name="folder">The function to update the state given the input elements.</param>
         /// <param name="state">The initial state.</param>
@@ -1228,7 +1242,7 @@ module ArrayExtensions =
         /// <returns>The array of transformed elements.</returns>
         member inline arr.mapi mapping = Array.mapi mapping arr
 
-        /// <summary>Splits the collection into two collections, containing the 
+        /// <summary>Splits the collection into two collections, containing the
         /// elements for which the given predicate returns "true" and "false"
         /// respectively.</summary>
         /// <param name="predicate">The function to test the input elements.</param>
@@ -1245,7 +1259,7 @@ module ArrayExtensions =
         member inline arr.permute indexMap = Array.permute indexMap arr
 
         /// <summary>Applies a function to each element of the array, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c>
         /// then computes <c>f (... (f i0 i1)...) iN</c>.
         /// Raises ArgumentException if the array has size zero.</summary>
         /// <param name="reduction">The function to reduce a pair of elements to a single element.</param>
@@ -1254,7 +1268,7 @@ module ArrayExtensions =
         member inline arr.reduce reduction = Array.reduce reduction arr
 
         /// <summary>Applies a function to each element of the array, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c>
         /// then computes <c>f i0 (...(f iN-1 iN))</c>.
         /// Raises ArgumentException if the array has size zero.</summary>
         /// <param name="reduction">The function to reduce a pair of elements to a single element.</param>
@@ -1280,10 +1294,10 @@ module ArrayExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
         member inline arr.scanBack(folder:('T -> 'State -> 'State), state:'State) = Array.scanBack folder arr state
 
-        /// <summary>Sorts the elements of an array, using the given projection for the keys and returning a new array. 
+        /// <summary>Sorts the elements of an array, using the given projection for the keys and returning a new array.
         /// Elements are compared using Operators.compare.</summary>
         ///
-        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
         /// For a stable sort, consider using Seq.sort.</remarks>
         /// <param name="projection">The function to transform array elements into the type that is compared.</param>
         /// <returns>The sorted array.</returns>
@@ -1291,17 +1305,17 @@ module ArrayExtensions =
 
         /// <summary>Sorts the elements of an array, using the given comparison function as the order, returning a new array.</summary>
         ///
-        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
         /// For a stable sort, consider using Seq.sort.</remarks>
         /// <param name="comparer">The function to compare pairs of array elements.</param>
         /// <returns>The sorted array.</returns>
         /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
         member inline arr.sortWith(comparer) = Array.sortWith comparer arr
 
-        /// <summary>Sorts the elements of an array by mutating the array in-place, using the given projection for the keys. 
+        /// <summary>Sorts the elements of an array by mutating the array in-place, using the given projection for the keys.
         /// Elements are compared using Operators.compare.</summary>
         ///
-        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
         /// For a stable sort, consider using Seq.sort.</remarks>
         /// <param name="projection">The function to transform array elements into the type that is compared.</param>
         member inline arr.sortInPlaceBy(projection:('T -> 'Key)) = Array.sortInPlaceBy projection arr
@@ -1353,10 +1367,10 @@ module ArrayExtensions =
         /// <exception cref="System.ArgumentException">Thrown when the input does not have precisely one element.</exception>
         member inline arr.exactlyOne() = Array.exactlyOne arr
 
-        /// <summary>Sorts the elements of an array, in descending order, using the given projection for the keys and returning a new array. 
+        /// <summary>Sorts the elements of an array, in descending order, using the given projection for the keys and returning a new array.
         /// Elements are compared using Operators.compare.</summary>
         ///
-        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
         /// For a stable sort, consider using Seq.sort.</remarks>
         /// <param name="projection">The function to transform array elements into the type that is compared.</param>
         /// <returns>The sorted array.</returns>
@@ -1407,7 +1421,7 @@ module ArrayExtensions =
         /// <summary>Returns the last element of the array.
         /// Return <c>None</c> if no such element exists.</summary>
         /// <returns>The last element of the array or None.</returns>
-        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception> 
+        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         member inline arr.tryLast() = Array.tryLast arr
 
         /// <summary>Returns the first element of the array, or
@@ -1417,8 +1431,18 @@ module ArrayExtensions =
         /// <returns>The first element of the array or None.</returns>
         member inline arr.tryHead() = Array.tryHead arr
 
+        /// <summary>Returns the transpose of the given sequence of arrays.</summary>
+        ///
+        /// <param name="arrays">The input sequence of arrays.</param>
+        ///
+        /// <returns>The transposed array.</returns>
+        ///
+        /// <exception cref="T:System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+        /// <exception cref="T:System.ArgumentException">Thrown when the input arrays differ in length.</exception>
+        [<Extension>]
+        static member inline transpose (arrays: seq<'T[]>) = Array.transpose arrays
 
-[<Extension>] 
+[<Extension>]
 /// <summary>Fluent extension operations on arrays which require constrained types.</summary>
 type ArrayExtensionsConstrained =
 
@@ -1426,7 +1450,7 @@ type ArrayExtensionsConstrained =
     /// <param name="array">The input array.</param>
     /// <exception cref="System.ArgumentException">Thrown when <c>array</c> is empty.</exception>
     /// <returns>The average of the elements in the array.</returns>
-    [<Extension>] 
+    [<Extension>]
     static member inline average(array:'T[]) = Array.average array
 
     /// <summary>Returns the average of the elements generated by applying the function to each element of the array.</summary>
@@ -1434,7 +1458,7 @@ type ArrayExtensionsConstrained =
     /// <param name="array">The input array.</param>
     /// <exception cref="System.ArgumentException">Thrown when <c>array</c> is empty.</exception>
     /// <returns>The computed average.</returns>
-    [<Extension>] 
+    [<Extension>]
     static member inline averageBy(array:'T[], projection:('T -> 'U)) = Array.averageBy projection  array
 
     /// <summary>Tests if the array contains the specified element.</summary>
@@ -1454,16 +1478,16 @@ type ArrayExtensionsConstrained =
     /// <returns>The result array.</returns>
     ///
     /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
-    [<Extension>] 
+    [<Extension>]
     static member inline distinct(array:'T[]) = Array.distinct array
 
     /// <summary>Sorts the elements of an array, in descending order, returning a new array. Elements are compared using Operators.compare. </summary>
     ///
     /// <param name="array">The input array.</param>
-    /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+    /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
     /// For a stable sort, consider using Seq.sort.</remarks>
     /// <returns>The sorted array.</returns>
-    [<Extension>] 
+    [<Extension>]
     static member inline sortDescending(array:'T[]) = Array.sortDescending array
 
     /// <summary>Returns the greatest of all elements of the array, compared via Operators.max on the function result.</summary>
@@ -1506,14 +1530,14 @@ type ArrayExtensionsConstrained =
 
     /// <summary>Sorts the elements of an array, returning a new array. Elements are compared using Operators.compare. </summary>
     ///
-    /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+    /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
     /// For a stable sort, consider using Seq.sort.</remarks>
     /// <param name="array">The input array.</param>
     /// <returns>The sorted array.</returns>
     [<Extension>]
     static member inline sort(array:'T[]) = Array.sort array
 
-    /// <summary>Sorts the elements of an array by mutating the array in-place, using the given comparison function. 
+    /// <summary>Sorts the elements of an array by mutating the array in-place, using the given comparison function.
     /// Elements are compared using Operators.compare.</summary>
     /// <param name="array">The input array.</param>
     [<Extension>]
@@ -1546,9 +1570,9 @@ type ArrayExtensionsConstrained =
 
 /// <summary>Fluent extension operations on lists.</summary>
 [<AutoOpen>]
-module ListExtensions = 
+module ListExtensions =
 
-                                    
+
     type List<'T> with
         /// <summary>Builds a new list that contains the elements of the first list followed by the elements of the second list.</summary>
         /// <param name=" list1">The first input list.</param>
@@ -1568,7 +1592,7 @@ module ListExtensions =
         member inline list.concat( lists) = List.concat (Array.append [| list |]  lists)
 
         /// <summary>Applies the given function to successive elements, returning the first
-        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function 
+        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function
         /// never returns <c>Some(x)</c> then <c>None</c> is returned.</summary>
         /// <param name="chooser">The function to transform the list elements into options.</param>
         /// <param name="list">The input list.</param>
@@ -1576,7 +1600,7 @@ module ListExtensions =
         member inline list.tryPick chooser = List.tryPick chooser list
 
         /// <summary>Applies the given function to successive elements, returning the first
-        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function 
+        /// result where function returns <c>Some(x)</c> for some <c>x</c>. If the function
         /// never returns <c>Some(x)</c> then <c>KeyNotFoundException</c> is raised.</summary>
         /// <param name="chooser">The function to generate options from the elements.</param>
         /// <param name="list">The input list.</param>
@@ -1595,8 +1619,8 @@ module ListExtensions =
 
         /// <summary>Tests if any element of the list satisfies the given predicate.</summary>
         ///
-        /// <remarks>The predicate is applied to the elements of the input list. If any application 
-        /// returns true then the overall result is true and no further elements are tested. 
+        /// <remarks>The predicate is applied to the elements of the input list. If any application
+        /// returns true then the overall result is true and no further elements are tested.
         /// Otherwise, false is returned.</remarks>
         /// <param name="predicate">The function to test the input elements.</param>
         /// <param name="list">The input list.</param>
@@ -1620,7 +1644,7 @@ module ListExtensions =
         member inline list.find predicate = List.find predicate list
 
         /// <summary>Returns the index of the first element in the list
-        /// that satisfies the given predicate. Raise <c>KeyNotFoundException</c> if 
+        /// that satisfies the given predicate. Raise <c>KeyNotFoundException</c> if
         /// none of the elements satisy the predicate.</summary>
         /// <param name="predicate">The function to test the input elements.</param>
         /// <param name="list">The input list.</param>
@@ -1631,8 +1655,8 @@ module ListExtensions =
 
         /// <summary>Tests if all elements of the list satisfy the given predicate.</summary>
         ///
-        /// <remarks>The predicate is applied to the elements of the input collection. If any application 
-        /// returns false then the overall result is false and no further elements are tested. 
+        /// <remarks>The predicate is applied to the elements of the input collection. If any application
+        /// returns false then the overall result is false and no further elements are tested.
         /// Otherwise, true is returned.</remarks>
         /// <param name="predicate">The function to test the input elements.</param>
         /// <param name="list">The input list.</param>
@@ -1641,7 +1665,7 @@ module ListExtensions =
 
 
         /// <summary>Applies a function to each element of the collection, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes
         /// <c>f (... (f s i0)...) iN</c></summary>
         /// <param name="folder">The function to update the state given the input elements.</param>
         /// <param name="state">The initial state.</param>
@@ -1650,13 +1674,13 @@ module ListExtensions =
         member inline list.fold(state:'State, folder:('State -> 'T -> 'State)) = List.fold folder state list
 
         /// <summary>Applies a function to each element of the list, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> then computes
         /// <c>f i0 (...(f iN s))</c></summary>
         /// <param name="folder">The function to update the state given the input elements.</param>
         /// <param name="list">The input list.</param>
         /// <param name="state">The initial state.</param>
         /// <returns>The final state.</returns>
-        member inline list.foldBack(folder:('T -> 'State -> 'State), state: 'State) = List.foldBack folder list state 
+        member inline list.foldBack(folder:('T -> 'State -> 'State), state: 'State) = List.foldBack folder list state
 
         /// <summary>Applies the given function to each element of the list.</summary>
         /// <param name="action">The function to apply.</param>
@@ -1689,7 +1713,7 @@ module ListExtensions =
         /// <returns>The list of transformed elements.</returns>
         member inline list.mapi mapping = List.mapi mapping list
 
-        /// <summary>Splits the collection into two collections, containing the 
+        /// <summary>Splits the collection into two collections, containing the
         /// elements for which the given predicate returns "true" and "false"
         /// respectively.</summary>
         /// <param name="predicate">The function to test the input elements.</param>
@@ -1706,7 +1730,7 @@ module ListExtensions =
         member inline list.permute indexMap = List.permute indexMap list
 
         /// <summary>Applies a function to each element of the list, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c>
         /// then computes <c>f (... (f i0 i1)...) iN</c>.
         /// Raises ArgumentException if the list has size zero.</summary>
         /// <param name="reduction">The function to reduce a pair of elements to a single element.</param>
@@ -1716,7 +1740,7 @@ module ListExtensions =
         member inline list.reduce reduction = List.reduce reduction list
 
         /// <summary>Applies a function to each element of the list, threading an accumulator argument
-        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c> 
+        /// through the computation. If the input function is <c>f</c> and the elements are <c>i0...iN</c>
         /// then computes <c>f i0 (...(f iN-1 iN))</c>.
         /// Raises ArgumentException if the list has size zero.</summary>
         /// <param name="reduction">The function to reduce a pair of elements to a single element.</param>
@@ -1744,10 +1768,10 @@ module ListExtensions =
         /// <returns>The list of state values.</returns>
         member inline list.scanBack(folder:('T -> 'State -> 'State), state:'State) = List.scanBack folder list state
 
-        /// <summary>Sorts the elements of an list, using the given projection for the keys and returning a new list. 
+        /// <summary>Sorts the elements of an list, using the given projection for the keys and returning a new list.
         /// Elements are compared using Operators.compare.</summary>
         ///
-        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
         /// For a stable sort, consider using Seq.sort.</remarks>
         /// <param name="projection">The function to transform list elements into the type that is compared.</param>
         /// <param name="list">The input list.</param>
@@ -1757,7 +1781,7 @@ module ListExtensions =
 
         /// <summary>Sorts the elements of an list, using the given comparison function as the order, returning a new list.</summary>
         ///
-        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+        /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
         /// For a stable sort, consider using Seq.sort.</remarks>
         /// <param name="comparer">The function to compare pairs of list elements.</param>
         /// <param name="list">The input list.</param>
@@ -1809,7 +1833,7 @@ module ListExtensions =
         /// <returns>The result list.</returns>
         member inline list.countBy(projection:('T -> 'Key)) = List.countBy projection list
 
-        /// <summary>Returns a list that contains no duplicate entries according to the 
+        /// <summary>Returns a list that contains no duplicate entries according to the
         /// generic hash and equality comparisons on the keys returned by the given key-generating function.
         /// If an element occurs multiple times in the list then the later occurrences are discarded.</summary>
         ///
@@ -1818,8 +1842,8 @@ module ListExtensions =
         /// <returns>The result list.</returns>
         member inline list.distinctBy(projection:('T -> 'Key)) = List.distinctBy projection list
 
-        /// <summary>Applies a key-generating function to each element of a list and yields a list of 
-        /// unique keys. Each unique key contains a list of all elements that match 
+        /// <summary>Applies a key-generating function to each element of a list and yields a list of
+        /// unique keys. Each unique key contains a list of all elements that match
         /// to this key.</summary>
         ///
         /// <param name="projection">A function that transforms an element of the list into a comparable key.</param>
@@ -1836,7 +1860,7 @@ module ListExtensions =
         /// <summary>Returns the list after removing the first N elements.</summary>
         /// <param name="count">The number of elements to skip.</param>
         /// <returns>The list after removing the first N elements.</returns>
-        /// <exception cref="System.ArgumentException">Thrown when count is negative or exceeds the number of 
+        /// <exception cref="System.ArgumentException">Thrown when count is negative or exceeds the number of
         /// elements in the list.</exception>
         member inline list.skip(count:int) = List.skip count list
 
@@ -1860,7 +1884,7 @@ module ListExtensions =
         /// in the list.</exception>
         member inline list.take(count:int) = List.take count list
 
-        /// <summary>Returns a list that contains all elements of the original list while the 
+        /// <summary>Returns a list that contains all elements of the original list while the
         /// given predicate returns <c>true</c>, and then returns no further elements.</summary>
         ///
         /// <param name="predicate">A function that evaluates to false when no more items should be returned.</param>
@@ -1899,7 +1923,7 @@ module ListExtensions =
         /// <summary>Returns the only element of the list.</summary>
         ///
         /// <returns>The only element of the list.</returns>
-        ///        
+        ///
         /// <exception cref="System.ArgumentException">Thrown when the input does not have precisely one element.</exception>
         member inline list.exactlyOne() = List.exactlyOne list
 
@@ -1958,7 +1982,18 @@ module ListExtensions =
         /// <returns>The first element of the list or None.</returns>
         member inline list.tryHead() = List.tryHead list
 
-[<Extension>] 
+        /// <summary>Returns the transpose of the given sequence of lists.</summary>
+        ///
+        /// <param name="lists">The input sequence of lists.</param>
+        ///
+        /// <returns>The transposed list.</returns>
+        ///
+        /// <exception cref="T:System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+        /// <exception cref="T:System.ArgumentException">Thrown when the input lists differ in length.</exception>
+        [<Extension>]
+        static member inline transpose (lists: seq<'T list>) = List.transpose lists
+
+[<Extension>]
 /// <summary>Fluent extension operations on lists which require constrained types.</summary>
 type ListExtensionsConstrained =
 
@@ -1966,7 +2001,7 @@ type ListExtensionsConstrained =
     /// <param name="list">The input list.</param>
     /// <exception cref="System.ArgumentException">Thrown when <c>list</c> is empty.</exception>
     /// <returns>The average of the elements in the list.</returns>
-    [<Extension>] 
+    [<Extension>]
     static member inline average(list:'T list) = List.average list
 
     /// <summary>Returns the average of the elements generated by applying the function to each element of the list.</summary>
@@ -1974,7 +2009,7 @@ type ListExtensionsConstrained =
     /// <param name="list">The input list.</param>
     /// <exception cref="System.ArgumentException">Thrown when <c>list</c> is empty.</exception>
     /// <returns>The computed average.</returns>
-    [<Extension>] 
+    [<Extension>]
     static member inline averageBy(list:'T list, projection:('T -> 'U)) = List.averageBy projection list
 
     /// <summary>Returns a list that contains no duplicate entries according to generic hash and
@@ -2027,7 +2062,7 @@ type ListExtensionsConstrained =
 
     /// <summary>Sorts the elements of an list, returning a new list. Elements are compared using Operators.compare. </summary>
     ///
-    /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved. 
+    /// <remarks>This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
     /// For a stable sort, consider using Seq.sort.</remarks>
     /// <param name="list">The input list.</param>
     /// <returns>The sorted list.</returns>
@@ -2066,7 +2101,7 @@ type ListExtensionsConstrained =
 
 /// <summary>Fluent extension operations on 2D arrays.</summary>
 [<AutoOpen>]
-module Array2DExtensions = 
+module Array2DExtensions =
 
 
     type ``[,]``<'T> with
@@ -2083,16 +2118,16 @@ module Array2DExtensions =
 
         /// <summary>Returns the length of an array in the first dimension.</summary>
         ///
-        /// <returns>The length of the array in the first dimension.</returns>  
+        /// <returns>The length of the array in the first dimension.</returns>
         member inline arr.length1 = Array2D.length1 arr
 
         /// <summary>Returns the length of an array in the second dimension.</summary>
         ///
-        /// <returns>The length of the array in the second dimension.</returns>  
+        /// <returns>The length of the array in the second dimension.</returns>
         member inline arr.length2 = Array2D.length2 arr
 
         /// <summary>Builds a new array whose elements are the same as the input array but
-        /// where a non-zero-based input array generates a corresponding zero-based 
+        /// where a non-zero-based input array generates a corresponding zero-based
         /// output array.</summary>
         ///
         /// <returns>The zero-based output array.</returns>
@@ -2140,11 +2175,11 @@ module Array2DExtensions =
         ///
         /// <returns>A copy of the input array.</returns>
         member inline arr.copy() = Array2D.copy arr
-         
+
 
 /// <summary>Fluent extension operations on 3D arrays.</summary>
 [<AutoOpen>]
-module Array3DExtensions = 
+module Array3DExtensions =
 
 
     type ``[,,]``<'T> with
@@ -2194,7 +2229,7 @@ module Array3DExtensions =
 
 /// <summary>Fluent extension operations on 4D arrays.</summary>
 [<AutoOpen>]
-module Array4DExtensions = 
+module Array4DExtensions =
 
 
     type ``[,,,]``<'T> with
@@ -2220,9 +2255,9 @@ module Array4DExtensions =
 
 /// <summary>Fluent extension operations on strings.</summary>
 [<AutoOpen>]
-module StringExtensions = 
+module StringExtensions =
 
-    type System.String with 
+    type System.String with
 
         /// <summary>Applies the function <c>action</c> to each character in the string.</summary>
         /// <param name="action">The function to be applied to each character of the string.</param>
@@ -2276,9 +2311,9 @@ module StringExtensions =
 
 /// <summary>Fluent extension operations on options.</summary>
 [<AutoOpen>]
-module OptionExtensions = 
+module OptionExtensions =
 
-    type Option<'T> with 
+    type Option<'T> with
 
         /// <summary>Evaluates to <c>match inp with None -> 0 | Some _ -> 1</c>.</summary>
         /// <returns>A zero if the option is None, a one otherwise.</returns>
@@ -2340,25 +2375,25 @@ module OptionExtensions =
         /// <returns>The input if the predicate evaluates to true; otherwise, None.</returns>
         member inline opt.filter(predicate:('T -> bool)) = Option.filter predicate opt
 
-[<Extension>] 
+[<Extension>]
 /// <summary>Fluent extension operations on options which require constrained types.</summary>
 type OptionExtensionsConstrained =
 
     /// <summary>Convert the option to a Nullable value.</summary>
     /// <returns>The result value.</returns>
-    [<Extension>] 
+    [<Extension>]
     static member inline toNullable(opt: option<'T>) = Option.toNullable opt
 
     /// <summary>Convert an option to a potentially null value.</summary>
     /// <returns>The result value, which is null if the input was None.</returns>
-    [<Extension>] 
+    [<Extension>]
     static member inline toObj(opt: option<'T>) = Option.toObj opt
 
 /// <summary>Fluent extension operations on options.</summary>
 [<AutoOpen>]
-module NullableExtensions = 
+module NullableExtensions =
 
-    type Nullable<'T when 'T : (new :  unit -> 'T) and 'T : struct and 'T :> ValueType > with 
+    type Nullable<'T when 'T : (new :  unit -> 'T) and 'T : struct and 'T :> ValueType > with
 
         /// <summary>Convert a Nullable value to an option.</summary>
         /// <returns>The result option.</returns>
@@ -2368,7 +2403,7 @@ module NullableExtensions =
 (*
 /// <summary>Fluent extension operations on options.</summary>
 [<AutoOpen>]
-module ObjExtensions = 
+module ObjExtensions =
 
         /// <summary>Convert a potentially null value to an option.</summary>
         /// <returns>The result option.</returns>
@@ -2378,36 +2413,36 @@ module ObjExtensions =
 
 /// <summary>Fluent extension operations on observables.</summary>
 [<AutoOpen>]
-module ObservableExtensions = 
+module ObservableExtensions =
 
     /// <summary>Basic operations on first class event and other observable objects.</summary>
-    type IObservable<'T> with  
+    type IObservable<'T> with
 
-        /// <summary>Returns an observable for the merged observations from the sources. 
-        /// The returned object propagates success and error values arising 
+        /// <summary>Returns an observable for the merged observations from the sources.
+        /// The returned object propagates success and error values arising
         /// from either source and completes when both the sources have completed.</summary>
         ///
-        /// <remarks>For each observer, the registered intermediate observing object is not 
-        /// thread safe. That is, observations arising from the sources must not 
+        /// <remarks>For each observer, the registered intermediate observing object is not
+        /// thread safe. That is, observations arising from the sources must not
         /// be triggered concurrently on different threads.</remarks>
         /// <param name="obs">The first Observable.</param>
         /// <param name="obs2">The second Observable.</param>
         /// <returns>An Observable that propagates information from both sources.</returns>
         member inline obs.merge(obs2:IObservable<'T>) = Observable.merge obs obs2
 
-        /// <summary>Returns an observable which transforms the observations of the source by the 
-        /// given function. The transformation function is executed once for each 
-        /// subscribed observer. The returned object also propagates error observations 
+        /// <summary>Returns an observable which transforms the observations of the source by the
+        /// given function. The transformation function is executed once for each
+        /// subscribed observer. The returned object also propagates error observations
         /// arising from the source and completes when the source completes.</summary>
         /// <param name="mapping">The function applied to observations from the source.</param>
         /// <param name="source">The input Observable.</param>
-        /// <returns>An Observable of the type specified by <c>mapping</c>.</returns> 
+        /// <returns>An Observable of the type specified by <c>mapping</c>.</returns>
         member inline obs.map(mapping:('T -> 'U)) = Observable.map mapping obs
 
-        /// <summary>Returns an observable which filters the observations of the source 
+        /// <summary>Returns an observable which filters the observations of the source
         /// by the given function. The observable will see only those observations
-        /// for which the predicate returns true. The predicate is executed once for 
-        /// each subscribed observer. The returned object also propagates error 
+        /// for which the predicate returns true. The predicate is executed once for
+        /// each subscribed observer. The returned object also propagates error
         /// observations arising from the source and completes when the source completes.</summary>
         /// <param name="filter">The function to apply to observations to determine if it should
         /// be kept.</param>
@@ -2415,37 +2450,37 @@ module ObservableExtensions =
         /// <returns>An Observable that filters observations based on <c>filter</c>.</returns>
         member inline obs.filter(predicate:('T -> bool)) = Observable.filter predicate obs
 
-        /// <summary>Returns two observables which partition the observations of the source by 
-        /// the given function. The first will trigger observations for those values 
-        /// for which the predicate returns true. The second will trigger observations 
-        /// for those values where the predicate returns false. The predicate is 
-        /// executed once for each subscribed observer. Both also propagate all error 
-        /// observations arising from the source and each completes when the source 
+        /// <summary>Returns two observables which partition the observations of the source by
+        /// the given function. The first will trigger observations for those values
+        /// for which the predicate returns true. The second will trigger observations
+        /// for those values where the predicate returns false. The predicate is
+        /// executed once for each subscribed observer. Both also propagate all error
+        /// observations arising from the source and each completes when the source
         /// completes.</summary>
         /// <param name="predicate">The function to determine which output Observable will trigger
         /// a particular observation.</param>
         /// <param name="obs">The input Observable.</param>
         /// <returns>A tuple of Observables.  The first triggers when the predicate returns true, and
-        /// the second triggers when the predicate returns false.</returns> 
+        /// the second triggers when the predicate returns false.</returns>
         member inline obs.partition(predicate:('T -> bool)) = Observable.partition predicate obs
 
-        /// <summary>Returns two observables which split the observations of the source by the 
-        /// given function. The first will trigger observations <c>x</c> for which the 
-        /// splitter returns <c>Choice1Of2 x</c>. The second will trigger observations 
-        /// <c>y</c> for which the splitter returns <c>Choice2Of2 y</c> The splitter is 
-        /// executed once for each subscribed observer. Both also propagate error 
-        /// observations arising from the source and each completes when the source 
+        /// <summary>Returns two observables which split the observations of the source by the
+        /// given function. The first will trigger observations <c>x</c> for which the
+        /// splitter returns <c>Choice1Of2 x</c>. The second will trigger observations
+        /// <c>y</c> for which the splitter returns <c>Choice2Of2 y</c> The splitter is
+        /// executed once for each subscribed observer. Both also propagate error
+        /// observations arising from the source and each completes when the source
         /// completes.</summary>
         /// <param name="splitter">The function that takes an observation an transforms
         /// it into one of the two output Choice types.</param>
         /// <param name="obs">The input Observable.</param>
         /// <returns>A tuple of Observables.  The first triggers when <c>splitter</c> returns Choice1of2
-        /// and the second triggers when <c>splitter</c> returns Choice2of2.</returns> 
+        /// and the second triggers when <c>splitter</c> returns Choice2of2.</returns>
         member inline obs.split(splitter:('T -> Choice<'U1,'U2>)) = Observable.split splitter obs
 
-        /// <summary>Returns an observable which chooses a projection of observations from the source 
+        /// <summary>Returns an observable which chooses a projection of observations from the source
         /// using the given function. The returned object will trigger observations <c>x</c>
-        /// for which the splitter returns <c>Some x</c>. The returned object also propagates 
+        /// for which the splitter returns <c>Some x</c>. The returned object also propagates
         /// all errors arising from the source and completes when the source completes.</summary>
         /// <param name="chooser">The function that returns Some for observations to be propagated
         /// and None for observations to ignore.</param>
@@ -2455,12 +2490,12 @@ module ObservableExtensions =
 
         /// <summary>Returns an observable which, for each observer, allocates an item of state
         /// and applies the given accumulating function to successive values arising from
-        /// the input. The returned object will trigger observations for each computed 
-        /// state value, excluding the initial value. The returned object propagates 
+        /// the input. The returned object will trigger observations for each computed
+        /// state value, excluding the initial value. The returned object propagates
         /// all errors arising from the source and completes when the source completes.</summary>
         ///
         /// <remarks>For each observer, the registered intermediate observing object is not thread safe.
-        /// That is, observations arising from the source must not be triggered concurrently 
+        /// That is, observations arising from the source must not be triggered concurrently
         /// on different threads.</remarks>
         /// <param name="collector">The function to update the state with each observation.</param>
         /// <param name="state">The initial state.</param>
@@ -2483,11 +2518,11 @@ module ObservableExtensions =
 
         /// <summary>Returns a new observable that triggers on the second and subsequent triggerings of the input observable.
         /// The Nth triggering of the input observable passes the arguments from the N-1th and Nth triggering as
-        /// a pair. The argument passed to the N-1th triggering is held in hidden internal state until the 
+        /// a pair. The argument passed to the N-1th triggering is held in hidden internal state until the
         /// Nth triggering occurs.</summary>
         ///
         /// <remarks>For each observer, the registered intermediate observing object is not thread safe.
-        /// That is, observations arising from the source must not be triggered concurrently 
+        /// That is, observations arising from the source must not be triggered concurrently
         /// on different threads.</remarks>
         /// <param name="obs">The input Observable.</param>
         /// <returns>An Observable that triggers on successive pairs of observations from the input Observable.</returns>
@@ -2495,7 +2530,7 @@ module ObservableExtensions =
 
 /// <summary>Fluent extension operations on events.</summary>
 [<AutoOpen>]
-module EventExtensions = 
+module EventExtensions =
 
     type IEvent<'Del,'T when 'Del : delegate<'T,unit> and 'Del :> Delegate> with
 
@@ -2516,7 +2551,7 @@ module EventExtensions =
         /// <returns>An event that only passes values that pass the predicate.</returns>
         member inline evt.filter(predicate:('T -> bool)) = Event.filter predicate evt
 
-        /// <summary>Returns a new event that listens to the original event and triggers the 
+        /// <summary>Returns a new event that listens to the original event and triggers the
         /// first resulting event if the application of the predicate to the event arguments
         /// returned true, and the second event if it returned false.</summary>
         /// <param name="predicate">The function to determine which output event to trigger.</param>
@@ -2524,7 +2559,7 @@ module EventExtensions =
         /// and the second when the predicate evaluates to false.</returns>
         member inline evt.partition(predicate:('T -> bool)) = Event.partition predicate evt
 
-        /// <summary>Returns a new event that listens to the original event and triggers the 
+        /// <summary>Returns a new event that listens to the original event and triggers the
         /// first resulting event if the application of the function to the event arguments
         /// returned a Choice1Of2, and the second event if it returns a Choice2Of2.</summary>
         /// <param name="splitter">The function to transform event values into one of two types.</param>
@@ -2541,7 +2576,7 @@ module EventExtensions =
         /// <summary>Returns a new event consisting of the results of applying the given accumulating function
         /// to successive values triggered on the input event.  An item of internal state
         /// records the current value of the state parameter.  The internal state is not locked during the
-        /// execution of the accumulation function, so care should be taken that the 
+        /// execution of the accumulation function, so care should be taken that the
         /// input IEvent not triggered by multiple threads simultaneously.</summary>
         /// <param name="collector">The function to update the state with each event value.</param>
         /// <param name="state">The initial state.</param>
@@ -2555,7 +2590,7 @@ module EventExtensions =
 
         /// <summary>Returns a new event that triggers on the second and subsequent triggerings of the input event.
         /// The Nth triggering of the input event passes the arguments from the N-1th and Nth triggering as
-        /// a pair. The argument passed to the N-1th triggering is held in hidden internal state until the 
+        /// a pair. The argument passed to the N-1th triggering is held in hidden internal state until the
         /// Nth triggering occurs.</summary>
         /// <returns>An event that triggers on pairs of consecutive values passed from the source event.</returns>
         member inline evt.pairwise() = Event.pairwise evt
@@ -2564,8 +2599,8 @@ module EventExtensions =
 
 /// <summary>Fluent extension operations on native pointers.</summary>
 [<AutoOpen>]
-module NativePtrExtensions = 
-    type nativeptr<'T when 'T : unmanaged> with 
+module NativePtrExtensions =
+    type nativeptr<'T when 'T : unmanaged> with
 
         [<Unverifiable>]
         [<NoDynamicInvocation>]
@@ -2576,7 +2611,7 @@ module NativePtrExtensions =
 
         [<Unverifiable>]
         [<NoDynamicInvocation>]
-        /// <summary>Returns a typed native pointer by adding index * sizeof&lt;'T&gt; to the 
+        /// <summary>Returns a typed native pointer by adding index * sizeof&lt;'T&gt; to the
         /// given input pointer.</summary>
         /// <param name="ptr">The input pointer.</param>
         /// <param name="index">The index by which to offset the pointer.</param>
@@ -2599,11 +2634,17 @@ module NativePtrExtensions =
 
         [<Unverifiable>]
         [<NoDynamicInvocation>]
-        /// <summary>Gets or assigns the memory location referenced by the typed native 
+        /// <summary>Gets or assigns the memory location referenced by the typed native
         /// pointer computed by adding index * sizeof&lt;'T&gt; to the given input pointer.</summary>
         /// <param name="ptr">The input pointer.</param>
         /// <param name="index">The index by which to offset the pointer.</param>
-        member inline ptr.Item 
-            with get (index:int) = NativePtr.get ptr index 
+        member inline ptr.Item
+            with get (index:int) = NativePtr.get ptr index
             and set index v = NativePtr.set ptr index v
 
+        [<Unverifiable>]
+        [<NoDynamicInvocation>]
+        /// <summary>Converts a given typed native pointer to a managed pointer.</summary>
+        /// <param name="ptr">The input pointer.</param>
+        /// <returns>The managed pointer.</returns>
+        member inline ptr.toByRef() = NativePtr.toByRef ptr
