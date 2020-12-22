@@ -26,6 +26,7 @@ let gitOwner = "fsprojects"
 let gitName = "FSharp.Core.Fluent"
 let gitHome = "https://github.com/" + gitOwner
 let gitUrl = gitHome + "/" + gitName
+let siteUrl = "https://fsprojects.github.io/FSharp.Core.Fluent/"
 
 // --------------------------------------------------------------------------------------
 // Build variables
@@ -114,7 +115,7 @@ Target.create "Pack" (fun _ ->
     let properties = [
         ("Version", nugetVersion)
         ("Authors", authors)
-        ("PackageProjectUrl", gitUrl)
+        ("PackageProjectUrl", siteUrl)
         ("PackageTags", tags)
         ("RepositoryType", "git")
         ("RepositoryUrl", gitUrl)

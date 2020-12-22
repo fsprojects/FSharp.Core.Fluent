@@ -96,7 +96,6 @@ The library is available under Apache 2.0 license, which allows modification and
 redistribution for both commercial and non-commercial purposes. For more information see the
 [License file][license] in the GitHub repository.
 
-  [content]: https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/docs/content
   [gh]: https://github.com/fsprojects/FSharp.Core.Fluent
   [issues]: https://github.com/fsprojects/FSharp.Core.Fluent/issues
   [readme]: https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/README.md
