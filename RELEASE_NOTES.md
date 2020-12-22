@@ -1,5 +1,9 @@
 # Release Notes
 
+## 2.0.1 - 17.12.2020
+
+* Add support for `transpose` to array, list, and a sequence
+
 ## 2.0.0 - 17.12.2020
 
 * Move to .NET Standard 2.0
