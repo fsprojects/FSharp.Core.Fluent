@@ -1,6 +1,6 @@
 (**
 
-FSharp.Core.Fluent is a collection of inlined methods allowing fluent access
+[FSharp.Core.Fluent](https://www.nuget.org/packages/FSharp.Core.Fluent/) is a collection of inlined methods allowing fluent access
 to all FSharp.Core functions for List, Array, Array2D, Array3D, Seq, Event and Observable.
 
 *)
