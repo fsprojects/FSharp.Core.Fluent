@@ -1,0 +1,11 @@
+image: gitpod/workspace-dotnet
+
+tasks:
+  - init: >
+      dotnet rool restore
+      dotnet paket restore
+      dotnet fake build
+
+vscode:
+  extensions:
+    - Ionide.Ionide-fsharp
