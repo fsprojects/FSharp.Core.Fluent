@@ -1,0 +1,12 @@
+image: gitpod/workspace-dotnet
+
+vscode:
+  extensions:
+    - muhammad-sammy.csharp
+    - ionide.ionide-fsharp
+
+tasks:
+  - init: >
+      dotnet tool restore
+      dotnet paket restore
+      dotnet fake build

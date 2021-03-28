@@ -1,5 +1,7 @@
 # FSharp.Core.Fluent [![NuGet Badge](https://buildstats.info/nuget/FSharp.Core.Fluent)](https://www.nuget.org/packages/FSharp.Core.Fluent)
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/fsprojects/fsharp.core.fluent)
+
 Provides fluent members for FSharp.Core functions like so:
 
 ```fsharp
