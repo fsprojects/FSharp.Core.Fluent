@@ -533,7 +533,7 @@ module SeqExtensions =
         /// <returns>The resulting sequence of computed states.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.scan (state:'State, folder:('State -> 'T -> 'State)) = Seq.scan folder state source
+        member inline source.scan(state:'State, folder:('State -> 'T -> 'State)) = Seq.scan folder state source
 
         /// <summary>Like <c>foldBack</c>, but returns the sequence of intermediary and final results.</summary>
         ///
@@ -547,7 +547,7 @@ module SeqExtensions =
         /// <returns>The resulting sequence of computed states.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.scanBack (folder:('T -> 'State -> 'State), state:'State) = Seq.scanBack folder source state
+        member inline source.scanBack(folder:('T -> 'State -> 'State), state:'State) = Seq.scanBack folder source state
 
         /// <summary>Returns a sequence that skips N elements of the underlying sequence and then yields the
         /// remaining elements of the sequence.</summary>
@@ -559,7 +559,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.InvalidOperationException">Thrown when count exceeds the number of elements
         /// in the sequence.</exception>
-        member inline source.skip (count:int) = Seq.skip count source
+        member inline source.skip(count:int) = Seq.skip count source
 
         /// <summary>Returns a sequence that, when iterated, skips elements of the underlying sequence while the
         /// given predicate returns <c>true</c>, and then yields the remaining elements of the sequence.</summary>
@@ -569,7 +569,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.skipWhile (predicate:('T -> bool)) = Seq.skipWhile predicate source
+        member inline source.skipWhile(predicate:('T -> bool)) = Seq.skipWhile predicate source
 
         /// <summary>Yields a sequence ordered using the given comparison function.</summary>
         /// <remarks>This function returns a sequence that digests the whole initial sequence as soon as
@@ -580,7 +580,7 @@ module SeqExtensions =
         /// This is a stable sort, that is the original order of equal elements is preserved.</remarks>
         /// <param name="comparer">The function to compare the collection elements.</param>
         /// <returns>The result sequence.</returns>
-        member inline source.sortWith (comparer:('T -> 'T -> int)) = Seq.sortWith comparer source
+        member inline source.sortWith(comparer:('T -> 'T -> int)) = Seq.sortWith comparer source
 
         /// <summary>Applies a key-generating function to each element of a sequence and yield a sequence ordered
         /// by keys.  The keys are compared using generic comparison as implemented by <c>Operators.compare</c>.</summary>
@@ -597,7 +597,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.sortBy  (projection:('T -> 'Key)) = Seq.sortBy projection source
+        member inline source.sortBy(projection:('T -> 'Key)) = Seq.sortBy projection source
 
         /// <summary>Applies a key-generating function to each element of a sequence and yield a sequence ordered
         /// descending by keys.  The keys are compared using generic comparison as implemented by <c>Operators.compare</c>.</summary>
@@ -614,7 +614,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.sortByDescending (projection:('T -> 'Key)) = Seq.sortByDescending projection source
+        member inline source.sortByDescending(projection:('T -> 'Key)) = Seq.sortByDescending projection source
 
         /// <summary>Returns a sequence that skips 1 element of the underlying sequence and then yields the
         /// remaining elements of the sequence.</summary>
@@ -639,7 +639,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
         /// <exception cref="System.InvalidOperationException">Thrown when count exceeds the number of elements
         /// in the sequence.</exception>
-        member inline source.take (count:int) = Seq.take count source
+        member inline source.take(count:int) = Seq.take count source
 
         /// <summary>Returns a sequence that, when iterated, yields elements of the underlying sequence while the
         /// given predicate returns <c>true</c>, and then returns no further elements.</summary>
@@ -649,7 +649,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.takeWhile (predicate:('T -> bool)) = Seq.takeWhile predicate source
+        member inline source.takeWhile(predicate:('T -> bool)) = Seq.takeWhile predicate source
 
         /// <summary>Builds an array from the given collection.</summary>
         ///
@@ -657,7 +657,7 @@ module SeqExtensions =
         /// <returns>The result array.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.toArray () = Seq.toArray source
+        member inline source.toArray() = Seq.toArray source
 
         /// <summary>Builds a list from the given collection.</summary>
         ///
@@ -675,7 +675,7 @@ module SeqExtensions =
         /// <returns>The found element or <c>None</c>.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.tryFind (predicate:('T -> bool)) = Seq.tryFind predicate source
+        member inline source.tryFind(predicate:('T -> bool)) = Seq.tryFind predicate source
 
         /// <summary>Returns the last element for which the given function returns <c>true</c>.
         /// Return <c>None</c> if no such element exists.</summary>
@@ -688,7 +688,7 @@ module SeqExtensions =
         /// <returns>The found element or <c>None</c>.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.tryFindBack (predicate:('T -> bool)) = Seq.tryFindBack predicate source
+        member inline source.tryFindBack(predicate:('T -> bool)) = Seq.tryFindBack predicate source
 
         /// <summary>Returns the index of the first element in the sequence
         /// that satisfies the given predicate. Return <c>None</c> if no such element exists.</summary>
@@ -698,7 +698,7 @@ module SeqExtensions =
         /// <returns>The found index or <c>None</c>.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.tryFindIndex (predicate:('T -> bool)) = Seq.tryFindIndex predicate source
+        member inline source.tryFindIndex(predicate:('T -> bool)) = Seq.tryFindIndex predicate source
 
         /// <summary>Tries to find the nth element in the sequence.
         /// Returns <c>None</c> if index is negative or the input sequence does not contain enough elements.</summary>
@@ -708,7 +708,7 @@ module SeqExtensions =
         /// <returns>The nth element of the sequence or <c>None</c>.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.tryItem (index:int) = Seq.tryItem index source
+        member inline source.tryItem(index:int) = Seq.tryItem index source
 
         /// <summary>Returns the index of the last element in the sequence
         /// that satisfies the given predicate. Return <c>None</c> if no such element exists.</summary>
@@ -720,7 +720,7 @@ module SeqExtensions =
         /// <returns>The found index or <c>None</c>.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.tryFindIndexBack (predicate:('T -> bool)) = Seq.tryFindIndexBack predicate source
+        member inline source.tryFindIndexBack(predicate:('T -> bool)) = Seq.tryFindIndexBack predicate source
 
         /// <summary>Applies the given function to successive elements, returning the first
         /// result where the function returns "Some(x)".</summary>
@@ -730,7 +730,7 @@ module SeqExtensions =
         /// <returns>The chosen element or <c>None</c>.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.tryPick (chooser:('T -> 'U option)) = Seq.tryPick chooser source
+        member inline source.tryPick(chooser:('T -> 'U option)) = Seq.tryPick chooser source
 
         /// <summary>Returns a sequence that when enumerated returns at most N elements.</summary>
         ///
@@ -739,7 +739,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
-        member inline source.truncate (count:int) = Seq.truncate count source
+        member inline source.truncate(count:int) = Seq.truncate count source
 
         /// <summary>Returns a sequence that yields sliding windows containing elements drawn from the input
         /// sequence. Each window is returned as a fresh array.</summary>
@@ -750,7 +750,7 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when windowSize is not positive.</exception>
-        member inline source.windowed (windowSize:int) = Seq.windowed windowSize source
+        member inline source.windowed(windowSize:int) = Seq.windowed windowSize source
 
         /// <summary>Combines the two sequences into a list of pairs. The two sequences need not have equal lengths:
         /// when one sequence is exhausted any remaining elements in the other
@@ -761,7 +761,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when either of the input sequences is null.</exception>
-        member inline source.zip (source2:seq<'T2>) = Seq.zip source source2
+        member inline source.zip(source2:seq<'T2>) = Seq.zip source source2
 
         /// <summary>Combines the three sequences into a list of triples. The sequences need not have equal lengths:
         /// when one sequence is exhausted any remaining elements in the other
@@ -773,7 +773,7 @@ module SeqExtensions =
         /// <returns>The result sequence.</returns>
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when any of the input sequences is null.</exception>
-        member inline source.zip3 (source2:seq<'T2>, source3:seq<'T3>) = Seq.zip3 source source2 source3
+        member inline source.zip3(source2:seq<'T2>, source3:seq<'T3>) = Seq.zip3 source source2 source3
 
         /// <summary>Returns the transpose of the given sequence of sequences.</summary>
         ///
@@ -786,7 +786,7 @@ module SeqExtensions =
         ///
         /// <exception cref="T:System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         [<Extension>]
-        static member inline transpose (source: seq<#seq<'T>>) = Seq.transpose source
+        static member inline transpose(source: seq<#seq<'T>>) = Seq.transpose source
 
     [<Extension>]
     /// <summary>Fluent extension operations on sequences which require constrained types.</summary>
@@ -872,7 +872,7 @@ module SeqExtensions =
         ///
         /// <returns>The largest element of the sequence.</returns>
         [<Extension>]
-        static member inline max     (source: seq<'T>) = Seq.max source
+        static member inline max    (source: seq<'T>) = Seq.max source
 
         /// <summary>Returns the greatest of all elements of the sequence, compared via Operators.max on the function result.</summary>
         ///
@@ -884,7 +884,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
         [<Extension>]
-        static member inline maxBy  (source: seq<'T>, projection:('T -> 'U)) = Seq.maxBy projection source
+        static member inline maxBy (source: seq<'T>, projection:('T -> 'U)) = Seq.maxBy projection source
 
         /// <summary>Returns the lowest of all elements of the sequence, compared via <c>Operators.min</c>.</summary>
         ///
@@ -895,7 +895,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
         [<Extension>]
-        static member inline min     (source: seq<'T>) = Seq.min source
+        static member inline min    (source: seq<'T>) = Seq.min source
 
         /// <summary>Returns the lowest of all elements of the sequence, compared via Operators.min on the function result.</summary>
         ///
@@ -907,7 +907,7 @@ module SeqExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input sequence is empty.</exception>
         [<Extension>]
-        static member inline minBy  (source: seq<'T>, projection:('T -> 'U)) = Seq.minBy projection source
+        static member inline minBy (source: seq<'T>, projection:('T -> 'U)) = Seq.minBy projection source
 
 
         /// <summary>Yields a sequence ordered by keys.</summary>
@@ -925,7 +925,7 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         [<Extension>]
-        static member inline sort (source: seq<'T>) = Seq.sort source
+        static member inline sort(source: seq<'T>) = Seq.sort source
 
         /// <summary>Yields a sequence ordered descending by keys.</summary>
         ///
@@ -942,7 +942,7 @@ module SeqExtensions =
         ///
         /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         [<Extension>]
-        static member inline sortDescending (source: seq<'T>) = Seq.sortDescending  source
+        static member inline sortDescending(source: seq<'T>) = Seq.sortDescending  source
 
         /// <summary>Returns the sum of the elements in the sequence.</summary>
         ///
@@ -952,7 +952,7 @@ module SeqExtensions =
         ///
         /// <returns>The computed sum.</returns>
         [<Extension>]
-        static member inline sum   (source: seq<'T>) = Seq.sum source
+        static member inline sum  (source: seq<'T>) = Seq.sum source
 
         /// <summary>Returns the sum of the results generated by applying the function to each element of the sequence.</summary>
         /// <remarks>The generated elements are summed using the <c>+</c> operator and <c>Zero</c> property associated with the generated type.</remarks>
@@ -962,7 +962,7 @@ module SeqExtensions =
         ///
         /// <returns>The computed sum.</returns>
         [<Extension>]
-        static member inline sumBy   (source: seq<'T>, projection:('T -> 'U)) = Seq.sumBy projection  source
+        static member inline sumBy  (source: seq<'T>, projection:('T -> 'U)) = Seq.sumBy projection  source
 
 
 /// <summary>Fluent extension operations on arrays.</summary>
@@ -1490,7 +1490,7 @@ module ArrayExtensions =
         /// <exception cref="T:System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="T:System.ArgumentException">Thrown when the input arrays differ in length.</exception>
         [<Extension>]
-        static member inline transpose (arrays: seq<'T[]>) = Array.transpose arrays
+        static member inline transpose(arrays: seq<'T[]>) = Array.transpose arrays
 
 [<Extension>]
 /// <summary>Fluent extension operations on arrays which require constrained types.</summary>
@@ -1583,7 +1583,7 @@ type ArrayExtensionsConstrained =
     ///
     /// <returns>The minimum element.</returns>
     [<Extension>]
-    static member inline min (array:'T[]) = Array.min array
+    static member inline min(array:'T[]) = Array.min array
 
     /// <summary>Returns the lowest of all elements of the array, compared via Operators.min on the function result.</summary>
     ///
@@ -1923,7 +1923,7 @@ module ListExtensions =
         /// <exception cref="System.ArgumentException">Thrown when the input lists differ in length.</exception>
         ///
         /// <returns>The list of tupled elements.</returns>
-        member inline list.zip (list2: 'T2 list) = List.zip list list2
+        member inline list.zip(list2: 'T2 list) = List.zip list list2
 
         /// <summary>Combines three lists into an list of pairs. The three lists must have equal lengths, otherwise an <c>ArgumentException</c> is
         /// raised.</summary>
@@ -1985,7 +1985,7 @@ module ListExtensions =
         /// <param name="predicate">A function that evaluates an element of the list to a boolean value.</param>
         ///
         /// <returns>The result list.</returns>
-        member inline list.skipWhile (predicate:('T -> bool)) = List.skipWhile predicate list
+        member inline list.skipWhile(predicate:('T -> bool)) = List.skipWhile predicate list
 
         /// <summary>Returns the first N elements of the list.</summary>
         ///
@@ -2126,7 +2126,7 @@ module ListExtensions =
         /// <exception cref="T:System.ArgumentNullException">Thrown when the input sequence is null.</exception>
         /// <exception cref="T:System.ArgumentException">Thrown when the input lists differ in length.</exception>
         [<Extension>]
-        static member inline transpose (lists: seq<'T list>) = List.transpose lists
+        static member inline transpose(lists: seq<'T list>) = List.transpose lists
 
 [<Extension>]
 /// <summary>Fluent extension operations on lists which require constrained types.</summary>
@@ -2198,7 +2198,7 @@ type ListExtensionsConstrained =
     ///
     /// <returns>The minimum element.</returns>
     [<Extension>]
-    static member inline min (list:'T list) = List.min list
+    static member inline min(list:'T list) = List.min list
 
     /// <summary>Returns the lowest of all elements of the list, compared via Operators.min on the function result.</summary>
     ///
@@ -2315,7 +2315,7 @@ module Array2DExtensions =
         /// provide the index of the element.</param>
         ///
         /// <returns>An array whose elements have been transformed by the given mapping.</returns>
-        member inline array.mapi (mapping:(int -> int -> 'T -> 'U)) = Array2D.mapi mapping array
+        member inline array.mapi(mapping:(int -> int -> 'T -> 'U)) = Array2D.mapi mapping array
 
         /// <summary>Applies the given function to each element of the array.</summary>
         ///
@@ -2544,7 +2544,7 @@ module OptionExtensions =
         /// <param name="mapping">A function to apply to the option value.</param>
         ///
         /// <returns>An option of the input value after applying the mapping function, or None if the input is None.</returns>
-        member inline opt.map (mapping:('T -> 'U)) = Option.map mapping opt
+        member inline opt.map(mapping:('T -> 'U)) = Option.map mapping opt
 
         /// <summary><c>bind f inp</c> evaluates to <c>match inp with None -> None | Some x -> f x</c></summary>
         ///
@@ -2695,7 +2695,7 @@ module ObservableExtensions =
         /// <param name="state">The initial state.</param>
         ///
         /// <returns>An Observable that triggers on the updated state values.</returns>
-        member inline obs.scan(collector:('U -> 'T -> 'U), state:'U) = Observable.scan collector state obs
+        member inline obs.scan(state:'U, collector:('U -> 'T -> 'U)) = Observable.scan collector state obs
 
         /// <summary>Creates an observer which permanently subscribes to the given observable and which calls
         /// the given function for each observation.</summary>

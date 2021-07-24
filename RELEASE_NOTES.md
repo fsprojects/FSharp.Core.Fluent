@@ -1,5 +1,9 @@
 # Release Notes
 
+## 3.0.1 - 24.07.2021
+
+* Fix parameter order for Observable and Event scan
+
 ## 3.0.0 - 24.07.2021
 
 * Update to FSharp.Core 5.0.0 as base dependency
