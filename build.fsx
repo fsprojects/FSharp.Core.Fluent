@@ -35,7 +35,7 @@ let changelog = Changelog.load changelogFilename
 let latestEntry = changelog.LatestEntry
 
 let nugetVersion = latestEntry.NuGetVersion
-let NuGetageReleaseNotes = sprintf "%s/blob/%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
+let packageReleaseNotes = sprintf "%s/blob/%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
 
 Target.create "Clean" (fun _ ->
     Shell.cleanDirs [buildDir]
