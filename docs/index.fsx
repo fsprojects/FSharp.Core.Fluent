@@ -1,5 +1,6 @@
 (*** hide ***)
-#r "../build/FSharp.Core.Fluent.dll"
+#I "../src/FSharp.Core.Fluent/bin/Release/netstandard2.0"
+#r "FSharp.Core.Fluent.dll"
 (**
 
 [FSharp.Core.Fluent](https://www.nuget.org/packages/FSharp.Core.Fluent/) is a collection of inlined methods allowing fluent access

@@ -27,7 +27,7 @@ let siteUrl = "https://fsprojects.github.io/FSharp.Core.Fluent/"
 // Build variables
 // --------------------------------------------------------------------------------------
 
-let buildDir  = "./build/"
+let buildDir  = "./bin/"
 
 System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 let changelogFilename = "RELEASE_NOTES.md"
@@ -35,7 +35,7 @@ let changelog = Changelog.load changelogFilename
 let latestEntry = changelog.LatestEntry
 
 let nugetVersion = latestEntry.NuGetVersion
-let packageReleaseNotes = sprintf "%s/blob/%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
+let NuGetageReleaseNotes = sprintf "%s/blob/%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
 
 Target.create "Clean" (fun _ ->
     Shell.cleanDirs [buildDir]
@@ -62,10 +62,10 @@ Target.create "Test" (fun _ ->
 
 Target.create "GenerateDocs" (fun _ ->
    Shell.cleanDir ".fsdocs"
-   DotNet.exec id "fsdocs" "build --clean" |> ignore
+   DotNet.exec id "fsdocs" "build --clean --properties Configuration=Release --eval" |> ignore
 )
 
-Target.create "Pack" (fun _ ->
+Target.create "NuGet" (fun _ ->
     let properties = [
         ("Version", nugetVersion)
         ("Authors", authors)
@@ -91,12 +91,12 @@ Target.create "All" ignore
 "Clean"
   ==> "Build"
   ==> "Test"
-  ==> "Pack"
+  ==> "NuGet"
   ==> "All"
 
 "Clean"
   ==> "Build"
   ==> "GenerateDocs"
   ==> "All"
- 
+
 Target.runOrDefault "All"
