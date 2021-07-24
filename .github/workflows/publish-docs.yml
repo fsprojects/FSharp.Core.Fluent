@@ -1,34 +1,39 @@
-# name: Build and publish docs
+name: Build and Test and Publish (release)
 
-# on:
-#   push:
-#     branches:
-#     - master
+on:
+  push:
+    branches:
+    - master
 
-# jobs:
-#   build:
+jobs:
+  build:
 
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-latest]
-#         dotnet: [3.1.404]
-#     runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
 
-#     steps:
-#     - uses: actions/checkout@v1
-#     - name: Setup .NET Core
-#       uses: actions/setup-dotnet@v1
-#       with:
-#         dotnet-version: ${{ matrix.dotnet }}
-#     - name: Restore .NET local tools
-#       run: dotnet tool restore
-#     - name: Build docs
-#       run: dotnet fake build -t GenerateDocs
-#     - name: Deploy
-#       uses: peaceiris/actions-gh-pages@v3
-#       with:
-#         personal_token: ${{ secrets.GITHUB_TOKEN }}
-#         publish_dir: ./output
-#         publish_branch: gh-pages
-#         force_orphan: true
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.101
+    - name: Restore .NET local tools
+      run: dotnet tool restore
+    - name: Restore packages
+      run: dotnet paket restore
+    - name: Build and test
+      run: dotnet fake build -t All
+    - name: Deploy documentation from master
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./output
+        publish_branch: gh-pages
+        force_orphan: true
+    - name: Examine bin
+      run: ls -r bin
+    - name: Publish NuGets (if this version not published before)
+      run: dotnet nuget push bin\FSharp.Core.Fluent.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_ORG_TOKEN_2021 }} --skip-duplicate
+
+# NUGET_ORG_TOKEN_2021 is listed in "Repository secrets" in https://github.com/fsprojects/FSharp.Core.Fluent/settings/secrets/actions
+# note, the nuget org token expires around 24 July 2022
+

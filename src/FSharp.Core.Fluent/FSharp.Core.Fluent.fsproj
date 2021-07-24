@@ -16,6 +16,7 @@
     <PackageTags>F#;fluent;fsharp</PackageTags>
     <RepositoryUrl>https://github.com/fsprojects/FSharp.Core.Fluent</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <EnableSourceLink>true</EnableSourceLink>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,6 +25,10 @@
 
   <ItemGroup>
     <Compile Include="Fluent.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\img\logo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
