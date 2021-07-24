@@ -1,15 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{597333DF-BE03-4FB0-9855-B16EB6C87DAF}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp.Core.Fluent", "src\FSharp.Core.Fluent\FSharp.Core.Fluent.fsproj", "{ABFCB006-9149-4428-8A66-8F508681F9CF}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharp.Core.Fluent", "src\FSharp.Core.Fluent\FSharp.Core.Fluent.fsproj", "{ABFCB006-9149-4428-8A66-8F508681F9CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D0A3B8C5-8749-4709-80BF-AC2773C96C55}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp.Core.Fluent.Tests", "tests\FSharp.Core.Fluent.Tests\FSharp.Core.Fluent.Tests.fsproj", "{283141FC-DE1A-47EE-80F0-B65DD48B23FE}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharp.Core.Fluent.Tests", "tests\FSharp.Core.Fluent.Tests\FSharp.Core.Fluent.Tests.fsproj", "{283141FC-DE1A-47EE-80F0-B65DD48B23FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{40B74F8A-D123-43A1-98C8-4477912FAC7B}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Fluent.fsx = docs\Fluent.fsx
+		docs\index.fsx = docs\index.fsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15FA7D2E-A969-479A-BFA7-DFD4DA45ABEE}"
+	ProjectSection(SolutionItems) = preProject
+		build.fsx = build.fsx
+		global.json = global.json
+		LICENSE.md = LICENSE.md
+		paket.dependencies = paket.dependencies
+		README.md = README.md
+		RELEASE_NOTES.md = RELEASE_NOTES.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ABFCB006-9149-4428-8A66-8F508681F9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,8 +62,14 @@ Global
 		{283141FC-DE1A-47EE-80F0-B65DD48B23FE}.Release|x86.ActiveCfg = Release|Any CPU
 		{283141FC-DE1A-47EE-80F0-B65DD48B23FE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ABFCB006-9149-4428-8A66-8F508681F9CF} = {597333DF-BE03-4FB0-9855-B16EB6C87DAF}
 		{283141FC-DE1A-47EE-80F0-B65DD48B23FE} = {D0A3B8C5-8749-4709-80BF-AC2773C96C55}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AB04E4A-152E-4D83-898E-3E45065FA860}
 	EndGlobalSection
 EndGlobal
