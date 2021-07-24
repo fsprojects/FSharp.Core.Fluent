@@ -2789,7 +2789,7 @@ module EventExtensions =
         /// <param name="state">The initial state.</param>
         ///
         /// <returns>An event that fires on the updated state values.</returns>
-        member inline evt.scan(collector:('U -> 'T -> 'U), state:'U) = Event.scan collector state evt
+        member inline evt.scan(state:'U, collector:('U -> 'T -> 'U)) = Event.scan collector state evt
 
         /// <summary>Runs the given function each time the given event is triggered.</summary>
         ///

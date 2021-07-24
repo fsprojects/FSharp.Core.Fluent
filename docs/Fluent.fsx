@@ -3,7 +3,9 @@
 #r "FSharp.Core.Fluent.dll"
 (**
 
-# Usage examples for Seq functions
+# Usage examples
+
+## Seq functions
 
 The fluent-style members for all Seq.* operations are shown below. Some additional fluent functions are
 available for Array, these are not shown here.
@@ -86,9 +88,9 @@ module SeqExamples =
     seq1.tail()
 
 (**
-# Usage examples for Array functions
+# Array functions
 
-The fluent-style members for Array.* operations are shown below. 
+The fluent-style members for Array.* operations are shown below.
 
 *)
 
@@ -167,9 +169,9 @@ module ArrayExamples =
     array1.tail()
 
 (**
-# Usage examples for List functions
+# List functions
 
-The fluent-style members for Array.* operations are shown below. 
+The fluent-style members for Array.* operations are shown below.
 
 *)
 
@@ -248,9 +250,9 @@ module ListExamples =
     list1.tail()
 
 (**
-# Usage examples for Option functions
+# Option functions
 
-The fluent-style members for Option.* operations are shown below. 
+The fluent-style members for Option.* operations are shown below.
 
 *)
 
@@ -273,9 +275,9 @@ module OptionExamples =
     option2.toObj()
 
 (**
-# Usage examples for Observable functions
+# Observable functions
 
-The fluent-style members for Observable.* operations are shown below. 
+The fluent-style members for Observable.* operations are shown below.
 
 *)
 
@@ -298,9 +300,9 @@ module ObservableExamples =
 
 
 (**
-# Usage examples for Event functions
+# Event functions
 
-The fluent-style members for Event.* operations are shown below. 
+The fluent-style members for Event.* operations are shown below.
 
 *)
 
@@ -318,5 +320,23 @@ module EventExamples =
     ev1.merge(ev2)
     ev1.pairwise()
     ev1.partition(fun v -> v > 1)
-    ev1.scan((fun a b -> a + b), 0)
+    ev1.scan(0, (fun a b -> a + b))
     ev1.split(fun v -> if v > 1 then Choice1Of2 v else Choice2Of2 (-v))
+
+(**
+# String functions
+
+The fluent-style members for String.* operations are shown below.
+
+*)
+
+module StringExamples =
+    open System
+    let string1 = "a"
+
+    string1.map(fun x -> 'a')
+    string1.mapi(fun i x -> 'a')
+    string1.collect(fun x -> "aa")
+    string1.pairwise()
+    string1.replicate(3)
+    string1.length

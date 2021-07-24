@@ -26,7 +26,7 @@ dotnet paket restore
 dotnet fake build
 ```
 
-Docs are generated and deployed to [the docs site](http://fsprojects.github.io/FSharp.Core.Fluent/) after every successful push to this repo.
+Docs are generated and deployed to [the docs site](https://fsprojects.github.io/FSharp.Core.Fluent/) after every successful push to this repo.
 
 We accept pull requests!
 
