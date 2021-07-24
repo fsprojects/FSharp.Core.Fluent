@@ -1,7 +1,9 @@
+(*** hide ***)
+#r "../build/FSharp.Core.Fluent.dll"
 (**
 
 [FSharp.Core.Fluent](https://www.nuget.org/packages/FSharp.Core.Fluent/) is a collection of inlined methods allowing fluent access
-to all FSharp.Core functions for List, Array, Array2D, Array3D, Seq, Event and Observable.
+to all FSharp.Core functions for List, Array, Array2D, Array3D, Seq, Option, Event and Observable.
 
 *)
 
@@ -63,7 +65,7 @@ xs
 
 (**
 
-However you can't shift from pipelining back to fluent, and attempting to do so can give obscure errors:
+You can't mix pipelining followed by fluent, and attempting to do so can give obscure errors:
 
 ```
 xs
@@ -71,15 +73,12 @@ xs
   .filter(fun x -> x > 4)  // ERROR: The field or constructor "filter" is not defined
 ```
 
-As an aside, it is worth noting that in the the case of `xs.append(ys)`, the result is "`xs` then `ys`" - as expected.
-However this is different to the pitfall ``xs |> List.append ys``, which is actually `ys` then `xs` due to the way
+#### NOTE: `append` does the natural thing in fluent form
+
+In the the case of `xs.append(ys)`, the result is "`xs` then `ys`" - as expected.
+However this is different to ``xs |> List.append ys``, which is actually `ys` then `xs` due to the way
 pipelining and currying works.
 
-
-*)
-
-
-(**
 
 ## Usage examples
 
@@ -92,14 +91,13 @@ Contributing and copyright
 The project is hosted on [GitHub][gh] where you can [report issues][issues], fork
 the project and submit pull requests.
 
-The library is available under Apache 2.0 license, which allows modification and
-redistribution for both commercial and non-commercial purposes. For more information see the
+The library is available under MIT license. For more information see the
 [License file][license] in the GitHub repository.
 
   [gh]: https://github.com/fsprojects/FSharp.Core.Fluent
   [issues]: https://github.com/fsprojects/FSharp.Core.Fluent/issues
   [readme]: https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/README.md
-  [license]: https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.txt
+  [license]: https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.md
 
  *)
 

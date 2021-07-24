@@ -8,19 +8,16 @@ open Fake.Core
 open Fake.DotNet
 open Fake.Tools
 open Fake.IO
-open Fake.IO.FileSystemOperators
-open Fake.IO.Globbing.Operators
 open Fake.Core.TargetOperators
-open Fake.Api
 
 // --------------------------------------------------------------------------------------
 // Information about the project to be used at NuGet and in AssemblyInfo files
 // --------------------------------------------------------------------------------------
 
 let summary = "Fluent extensions for FSharp.Core"
-let authors = "Don Syme, Gian Ntzik, fsprojects contributors"
+let authors = "Don Syme, Phillip Carter"
 let tags = "f#, fsharp"
-let license = "Apache-2.0"
+let license = "MIT"
 
 let gitOwner = "fsprojects"
 let gitName = "FSharp.Core.Fluent"
@@ -91,7 +88,6 @@ Target.create "Test" (fun _ ->
     exec "dotnet" @"run --project .\tests\FSharp.Core.Fluent.Tests\FSharp.Core.Fluent.Tests.fsproj" "."
 )
 
-
 Target.create "GenerateDocs" (fun _ ->
    Shell.cleanDir ".fsdocs"
    DotNet.exec id "fsdocs" "build --clean" |> ignore
@@ -134,45 +130,6 @@ Target.create "Pack" (fun _ ->
     ) "FSharp.Core.Fluent.sln"
 )
 
-Target.create "ReleaseGitHub" (fun _ ->
-    let remote =
-        Git.CommandHelper.getGitResult "" "remote -v"
-        |> Seq.filter (fun (s: string) -> s.EndsWith("(push)"))
-        |> Seq.tryFind (fun (s: string) -> s.Contains(gitOwner + "/" + gitName))
-        |> function None -> gitHome + "/" + gitName | Some (s: string) -> s.Split().[0]
-
-    Git.Staging.stageAll ""
-    Git.Commit.exec "" (sprintf "Bump version to %s" nugetVersion)
-    Git.Branches.pushBranch "" remote (Git.Information.getBranchName "")
-
-
-    Git.Branches.tag "" nugetVersion
-    Git.Branches.pushTag "" remote nugetVersion
-
-    let client =
-        let user =
-            match getBuildParam "github-user" with
-            | s when not (isNullOrWhiteSpace s) -> s
-            | _ -> UserInput.getUserInput "Username: "
-        let pw =
-            match getBuildParam "github-pw" with
-            | s when not (isNullOrWhiteSpace s) -> s
-            | _ -> UserInput.getUserPassword "Password: "
-
-        // Git.createClient user pw
-        GitHub.createClient user pw
-    let files = !! (nugetDir </> "*.nupkg")
-
-    // release on github
-    let cl =
-        client
-        |> GitHub.draftNewRelease gitOwner gitName nugetVersion (latestEntry.SemVer.PreRelease <> None) [releaseNotes]
-    (cl,files)
-    ||> Seq.fold (fun acc e -> acc |> GitHub.uploadFile e)
-    |> GitHub.publishDraft
-    |> Async.RunSynchronously
-)
-
 Target.create "Push" (fun _ ->
     let key =
         match getBuildParam "nuget-key" with
@@ -209,7 +166,6 @@ Target.create "Release" DoNothing
 
 "Default"
   ==> "Pack"
-  ==> "ReleaseGitHub"
   ==> "Push"
   ==> "Release"
 

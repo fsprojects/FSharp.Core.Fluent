@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -6,6 +6,16 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Don Syme;Phillip Carter</Authors>
+    <Summary>Fluent extensions for FSharp.Core</Summary>
+    <Description>Fluent extensions for FSharp.Core</Description>
+    <Copyright>Copyright 2017-2021</Copyright>
+    <PackageLicenseUrl>https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>http://fsprojects.github.io/FSharp.Core.Fluent/</PackageProjectUrl>
+    <PackageIconUrl>https://fsprojects.github.io/FSharp.Core.Fluent/img/logo.png</PackageIconUrl>
+    <PackageTags>F#;fluent;fsharp</PackageTags>
+    <RepositoryUrl>https://github.com/fsprojects/FSharp.Core.Fluent</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -17,11 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\docs\img\logo.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="4.5.2" />
+    <PackageReference Update="FSharp.Core" Version="5.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 </Project>

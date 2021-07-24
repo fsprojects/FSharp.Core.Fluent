@@ -1,5 +1,9 @@
 # Release Notes
 
+## 3.0.0 - 24.07.2021
+
+* Update to FSharp.Core 5.0.0 as base dependency
+
 ## 2.0.1 - 17.12.2020
 
 * Add support for `transpose` to array, list, and a sequence
