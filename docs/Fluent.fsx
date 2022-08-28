@@ -171,7 +171,7 @@ module ArrayExamples =
 (**
 # List functions
 
-The fluent-style members for Array.* operations are shown below.
+The fluent-style members for List.* operations are shown below.
 
 *)
 
