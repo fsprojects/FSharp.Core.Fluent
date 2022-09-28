@@ -4,10 +4,10 @@ group Build
   group Build
     source https://api.nuget.org/v3/index.json
 
-    framework: netstandard2.0
+    framework: net6.0
     storage: none
 
-    nuget FSharp.Core 4.7.2
+    nuget FSharp.Core 6.0.6
 
     nuget Fake.Core.Target
     nuget Fake.Core.Process
