@@ -128,6 +128,14 @@ let tests =
                .filter(fun x -> x > 4)
                .toArray |> ignore
 
+            (list1.allPairs(list1) : list<int * int>) |> ignore
+            (list1.insertAt(1, 9) : list<int>) |> ignore
+            (list1.insertManyAt(1, [ 8; 9 ]) : list<int>) |> ignore
+            (list1.removeAt(1) : list<int>) |> ignore
+            (list1.removeManyAt(1, 2) : list<int>) |> ignore
+            (list1.splitAt(3) : list<int> * list<int>) |> ignore
+            (list1.tryExactlyOne() : option<int>) |> ignore
+            (list1.updateAt(1, 9) : list<int>) |> ignore
             (list1.countBy(id) : list<int * int>) |> ignore
             (list1.distinct() :  list<int>) |> ignore
             (list1.distinctBy(id) :  list<int>) |> ignore

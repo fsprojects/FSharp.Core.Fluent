@@ -1654,6 +1654,71 @@ type ArrayExtensionsConstrained =
 module ListExtensions =
 
     type List<'T> with
+        /// <summary>Returns a new list that contains all pairings of elements from two lists.</summary>
+        ///
+        /// <param name="list2">The second input list.</param>
+        ///
+        /// <returns>The resulting list of pairs.</returns>
+        member inline list.allPairs list2 = List.allPairs list list2
+
+        /// <summary>Return a new list with a new item inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the item should be inserted.</param>
+        /// <param name="value">The value to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.insertAt(index, value) = List.insertAt index value list
+
+        /// <summary>Return a new list with new items inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the items should be inserted.</param>
+        /// <param name="values">The values to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.insertManyAt(index, values) = List.insertManyAt index values list
+
+        /// <summary>Return a new list with the item at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.removeAt index = List.removeAt index list
+
+        /// <summary>Return a new list with the number of items starting at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <param name="count">The number of items to remove.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.removeManyAt(index, count) = List.removeManyAt index count list
+
+        /// <summary>Splits a list into two lists, at the given index.</summary>
+        ///
+        /// <param name="index">The index at which the list is split.</param>
+        /// <exception cref="System.InvalidOperationException">Thrown when split index exceeds the number of elements in the list.</exception>
+        ///
+        /// <returns>The two split lists.</returns>
+        member inline list.splitAt index = List.splitAt index list
+
+        /// <summary>Returns the only element of the list or <c>None</c> if it is empty or contains more than one element.</summary>
+        ///
+        /// <returns>The only element of the list or None.</returns>
+        member inline list.tryExactlyOne() = List.tryExactlyOne list
+
+        /// <summary>Return a new list with the item at a given index set to the new value.</summary>
+        ///
+        /// <param name="index">The index of the item to be replaced.</param>
+        /// <param name="value">The new value.</param>
+        ///
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.updateAt(index, value) = List.updateAt index value list
+
         /// <summary>Builds a new list that contains the elements of the first list followed by the elements of the second list.</summary>
         ///
         /// <param name="list2">The second input list.</param>
