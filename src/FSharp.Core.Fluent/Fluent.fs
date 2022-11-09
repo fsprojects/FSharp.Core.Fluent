@@ -23,6 +23,66 @@ module SeqExtensions =
 
     type System.Collections.Generic.IEnumerable<'T> with
 
+        /// <summary>Returns a new sequence that contains all pairings of elements from the first and second sequences.</summary>
+        ///
+        /// <param name="source2">The second input sequence.</param>
+        /// <exception cref="System.ArgumentException">Thrown when either of the input sequences is null.</exception>
+        ///
+        /// <returns>The resulting sequence of pairs.</returns>
+        member inline source.allPairs source2 = Seq.allPairs source source2
+
+        /// <summary>Return a new sequence with a new item inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the item should be inserted.</param>
+        /// <param name="value">The value to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.insertAt(index, value) = Seq.insertAt index value source
+
+        /// <summary>Return a new sequence with new items inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the items should be inserted.</param>
+        /// <param name="values">The values to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.insertManyAt(index, values) = Seq.insertManyAt index values source
+
+        /// <summary>Return a new sequence with the item at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.removeAt index = Seq.removeAt index source
+
+        /// <summary>Return a new sequence with the number of items starting at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <param name="count">The number of items to remove.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.removeManyAt(index, count) = Seq.removeManyAt index count source
+
+        /// <summary>Returns the only element of the sequence or <c>None</c> if it is empty or contains more than one element.</summary>
+        ///
+        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+        ///
+        /// <returns>The only element of the sequence or None.</returns>
+        member inline source.tryExactlyOne() = Seq.tryExactlyOne source
+
+        /// <summary>Return a new sequence with the item at a given index set to the new value.</summary>
+        ///
+        /// <param name="index">The index of the item to be replaced.</param>
+        /// <param name="value">The new value.</param>
+        ///
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.updateAt(index, value) = Seq.updateAt index value source
+
         /// <summary>Wraps the two given enumerations as a single concatenated
         /// enumeration.</summary>
         ///

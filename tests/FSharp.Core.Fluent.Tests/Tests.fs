@@ -258,6 +258,13 @@ let tests =
             let _ : int = seq1.sum()
             let _ : int = seq1.sumBy(fun x -> x + 1)
 
+            (seq1.allPairs(seq1) : seq<int * int>) |> ignore
+            (seq1.insertAt(1, 9) : seq<int>) |> ignore
+            (seq1.insertManyAt(1, seq { 8; 9 }) : seq<int>) |> ignore
+            (seq1.removeAt(1) : seq<int>) |> ignore
+            (seq1.removeManyAt(1, 2) : seq<int>) |> ignore
+            (seq1.tryExactlyOne() : option<int>) |> ignore
+            (seq1.updateAt(1, 9) : seq<int>) |> ignore
             (seq1.append(seq1) : seq<int>) |> ignore
             (seq1.averageBy(float) : float) |> ignore
             (seq1.cache() : seq<int>) |> ignore
