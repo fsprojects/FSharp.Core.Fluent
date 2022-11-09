@@ -971,6 +971,75 @@ module ArrayExtensions =
 
 
     type ``[]``<'T> with
+        /// <summary>Returns a new array that contains all pairings of elements from the first and second arrays.</summary>
+        ///
+        /// <param name="array2">The second input array.</param>
+        /// <exception cref="System.ArgumentException">Thrown when either of the input arrays is null.</exception>
+        ///
+        /// <returns>The resulting array of pairs.</returns>
+        member inline array.allPairs array2 = Array.allPairs array array2
+
+        /// <summary>Return a new array with a new item inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the item should be inserted.</param>
+        /// <param name="value">The value to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.insertAt(index, value) = Array.insertAt index value array
+
+        /// <summary>Return a new array with new items inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the items should be inserted.</param>
+        /// <param name="values">The values to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.insertManyAt(index, values) = Array.insertManyAt index values array
+
+        /// <summary>Return a new array with the item at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.removeAt index = Array.removeAt index array
+
+        /// <summary>Return a new array with the number of items starting at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <param name="count">The number of items to remove.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.removeManyAt(index, count) = Array.removeManyAt index count array
+
+        /// <summary>Splits an array into two arrays, at the given index.</summary>
+        ///
+        /// <param name="index">The index at which the array is split.</param>
+        /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
+        /// <exception cref="System.InvalidOperationException">Thrown when split index exceeds the number of elements in the array.</exception>
+        ///
+        /// <returns>The two split arrays.</returns>
+        member inline array.splitAt index = Array.splitAt index array
+
+        /// <summary>Returns the only element of the array or <c>None</c> if it is empty or contains more than one element.</summary>
+        ///
+        /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
+        ///
+        /// <returns>The only element of the array or None.</returns>
+        member inline array.tryExactlyOne() = Array.tryExactlyOne array
+
+        /// <summary>Return a new array with the item at a given index set to the new value.</summary>
+        ///
+        /// <param name="index">The index of the item to be replaced.</param>
+        /// <param name="value">The new value.</param>
+        ///
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.updateAt(index, value) = Array.updateAt index value array
+
         /// <summary>Builds a new array that contains the elements of the first array followed by the elements of the second array.</summary>
         ///
         /// <param name="array2">The second input array.</param>
@@ -1090,7 +1159,7 @@ module ArrayExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input array is empty.</exception>
         /// <exception cref="System.InvalidOperationException">Thrown when count exceeds the number of elements
-        /// in the list.</exception>
+        /// in the array.</exception>
         member inline array.take(count:int) = Array.take count array
 
         /// <summary>Returns an array that contains all elements of the original array while the

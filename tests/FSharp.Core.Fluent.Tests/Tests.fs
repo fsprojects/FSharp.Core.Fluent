@@ -24,6 +24,14 @@ let tests =
             let _ : int option = arr1.tryFind(fun x -> x % 2 = 0)
             let _ : int = arr1.find(fun x -> x % 2 = 0)
 
+            (arr1.allPairs(arr1) : array<int * int>) |> ignore
+            (arr1.insertAt(1, 9) : array<int>) |> ignore
+            (arr1.insertManyAt(1, [| 8; 9 |]) : array<int>) |> ignore
+            (arr1.removeAt(1) : array<int>) |> ignore
+            (arr1.removeManyAt(1, 2) : array<int>) |> ignore
+            (arr1.splitAt(3) : array<int> * array<int>) |> ignore
+            (arr1.tryExactlyOne() : option<int>) |> ignore
+            (arr1.updateAt(1, 9) : array<int>) |> ignore
             (arr1.countBy(id) : array<int * int>) |> ignore
             (arr1.distinct() :  array<int>) |> ignore
             (arr1.distinctBy(id) :  array<int>) |> ignore
