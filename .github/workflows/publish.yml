@@ -3,7 +3,7 @@ name: Build and Test and Publish (release)
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
       run: dotnet paket restore
     - name: Build and test
       run: dotnet fake build -t All
-    - name: Deploy documentation from master
+    - name: Deploy documentation from main
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
@@ -35,5 +35,5 @@ jobs:
       run: dotnet nuget push bin/FSharp.Core.Fluent.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_ORG_TOKEN_2021 }} --skip-duplicate
 
 # NUGET_ORG_TOKEN_2021 is listed in "Repository secrets" in https://github.com/fsprojects/FSharp.Core.Fluent/settings/secrets/actions
-# note, the nuget org token expires around 24 July 2022
+# note, the nuget org token expires around July 2023
 
