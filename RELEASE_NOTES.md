@@ -1,5 +1,10 @@
 # Release Notes
 
+## 3.0.2 - 10.11.2022
+
+* Update to FSharp.Core 6.
+* Added missing List, Array, and Seq functions.
+
 ## 3.0.1 - 24.07.2021
 
 * Fix parameter order for Observable and Event scan
