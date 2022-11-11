@@ -23,6 +23,66 @@ module SeqExtensions =
 
     type System.Collections.Generic.IEnumerable<'T> with
 
+        /// <summary>Returns a new sequence that contains all pairings of elements from the first and second sequences.</summary>
+        ///
+        /// <param name="source2">The second input sequence.</param>
+        /// <exception cref="System.ArgumentException">Thrown when either of the input sequences is null.</exception>
+        ///
+        /// <returns>The resulting sequence of pairs.</returns>
+        member inline source.allPairs source2 = Seq.allPairs source source2
+
+        /// <summary>Return a new sequence with a new item inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the item should be inserted.</param>
+        /// <param name="value">The value to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.insertAt(index, value) = Seq.insertAt index value source
+
+        /// <summary>Return a new sequence with new items inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the items should be inserted.</param>
+        /// <param name="values">The values to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.insertManyAt(index, values) = Seq.insertManyAt index values source
+
+        /// <summary>Return a new sequence with the item at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.removeAt index = Seq.removeAt index source
+
+        /// <summary>Return a new sequence with the number of items starting at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <param name="count">The number of items to remove.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.removeManyAt(index, count) = Seq.removeManyAt index count source
+
+        /// <summary>Returns the only element of the sequence or <c>None</c> if it is empty or contains more than one element.</summary>
+        ///
+        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+        ///
+        /// <returns>The only element of the sequence or None.</returns>
+        member inline source.tryExactlyOne() = Seq.tryExactlyOne source
+
+        /// <summary>Return a new sequence with the item at a given index set to the new value.</summary>
+        ///
+        /// <param name="index">The index of the item to be replaced.</param>
+        /// <param name="value">The new value.</param>
+        ///
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        member inline source.updateAt(index, value) = Seq.updateAt index value source
+
         /// <summary>Wraps the two given enumerations as a single concatenated
         /// enumeration.</summary>
         ///
@@ -792,6 +852,73 @@ module SeqExtensions =
     /// <summary>Fluent extension operations on sequences which require constrained types.</summary>
     type SeqExtensionsConstrained =
 
+        /// <summary>Returns a new sequence that contains all pairings of elements from the first and second sequences.</summary>
+        ///
+        /// <param name="source2">The second input sequence.</param>
+        /// <exception cref="System.ArgumentException">Thrown when either of the input sequences is null.</exception>
+        ///
+        /// <returns>The resulting sequence of pairs.</returns>
+        [<Extension>]
+        static member inline allPairs(source: seq<'T>, source2: seq<'U>) = Seq.allPairs source source2
+
+        /// <summary>Return a new sequence with a new item inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the item should be inserted.</param>
+        /// <param name="value">The value to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        [<Extension>]
+        static member inline insertAt(source: seq<'T>, index, value) = Seq.insertAt index value source
+
+        /// <summary>Return a new sequence with new items inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the items should be inserted.</param>
+        /// <param name="values">The values to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        [<Extension>]
+        static member inline insertManyAt(source: seq<'T>, index, values) = Seq.insertManyAt index values source
+
+        /// <summary>Return a new sequence with the item at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        [<Extension>]
+        static member inline removeAt(source: seq<'T>, index) = Seq.removeAt index source
+
+        /// <summary>Return a new sequence with the number of items starting at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <param name="count">The number of items to remove.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        [<Extension>]
+        static member inline removeManyAt(source: seq<'T>, index, count) = Seq.removeManyAt index count source
+
+        /// <summary>Returns the only element of the sequence or <c>None</c> if it is empty or contains more than one element.</summary>
+        ///
+        /// <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+        ///
+        /// <returns>The only element of the sequence or None.</returns>
+        [<Extension>]
+        static member inline tryExactlyOne(source: seq<'T>) = Seq.tryExactlyOne source
+
+        /// <summary>Return a new sequence with the item at a given index set to the new value.</summary>
+        ///
+        /// <param name="index">The index of the item to be replaced.</param>
+        /// <param name="value">The new value.</param>
+        ///
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result sequence.</returns>
+        [<Extension>]
+        static member inline updateAt(source: seq<'T>, index, value) = Seq.updateAt index value source
+
         /// <summary>Returns the average of the elements in the sequence.</summary>
         ///
         /// <remarks>The elements are averaged using the <c>+</c> operator, <c>DivideByInt</c> method and <c>Zero</c> property
@@ -971,6 +1098,75 @@ module ArrayExtensions =
 
 
     type ``[]``<'T> with
+        /// <summary>Returns a new array that contains all pairings of elements from the first and second arrays.</summary>
+        ///
+        /// <param name="array2">The second input array.</param>
+        /// <exception cref="System.ArgumentException">Thrown when either of the input arrays is null.</exception>
+        ///
+        /// <returns>The resulting array of pairs.</returns>
+        member inline array.allPairs array2 = Array.allPairs array array2
+
+        /// <summary>Return a new array with a new item inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the item should be inserted.</param>
+        /// <param name="value">The value to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.insertAt(index, value) = Array.insertAt index value array
+
+        /// <summary>Return a new array with new items inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the items should be inserted.</param>
+        /// <param name="values">The values to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.insertManyAt(index, values) = Array.insertManyAt index values array
+
+        /// <summary>Return a new array with the item at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.removeAt index = Array.removeAt index array
+
+        /// <summary>Return a new array with the number of items starting at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <param name="count">The number of items to remove.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.removeManyAt(index, count) = Array.removeManyAt index count array
+
+        /// <summary>Splits an array into two arrays, at the given index.</summary>
+        ///
+        /// <param name="index">The index at which the array is split.</param>
+        /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
+        /// <exception cref="System.InvalidOperationException">Thrown when split index exceeds the number of elements in the array.</exception>
+        ///
+        /// <returns>The two split arrays.</returns>
+        member inline array.splitAt index = Array.splitAt index array
+
+        /// <summary>Returns the only element of the array or <c>None</c> if it is empty or contains more than one element.</summary>
+        ///
+        /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
+        ///
+        /// <returns>The only element of the array or None.</returns>
+        member inline array.tryExactlyOne() = Array.tryExactlyOne array
+
+        /// <summary>Return a new array with the item at a given index set to the new value.</summary>
+        ///
+        /// <param name="index">The index of the item to be replaced.</param>
+        /// <param name="value">The new value.</param>
+        ///
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result array.</returns>
+        member inline array.updateAt(index, value) = Array.updateAt index value array
+
         /// <summary>Builds a new array that contains the elements of the first array followed by the elements of the second array.</summary>
         ///
         /// <param name="array2">The second input array.</param>
@@ -1090,7 +1286,7 @@ module ArrayExtensions =
         /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
         /// <exception cref="System.ArgumentException">Thrown when the input array is empty.</exception>
         /// <exception cref="System.InvalidOperationException">Thrown when count exceeds the number of elements
-        /// in the list.</exception>
+        /// in the array.</exception>
         member inline array.take(count:int) = Array.take count array
 
         /// <summary>Returns an array that contains all elements of the original array while the
@@ -1496,6 +1692,84 @@ module ArrayExtensions =
 /// <summary>Fluent extension operations on arrays which require constrained types.</summary>
 type ArrayExtensionsConstrained =
 
+
+    /// <summary>Returns a new array that contains all pairings of elements from the first and second arrays.</summary>
+    ///
+    /// <param name="array2">The second input array.</param>
+    /// <exception cref="System.ArgumentException">Thrown when either of the input arrays is null.</exception>
+    ///
+    /// <returns>The resulting array of pairs.</returns>
+    [<Extension>]
+    static member inline allPairs(array:'T[], array2:'U[]) = Array.allPairs array array2
+
+    /// <summary>Return a new array with a new item inserted before the given index.</summary>
+    ///
+    /// <param name="index">The index where the item should be inserted.</param>
+    /// <param name="value">The value to insert.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+    ///
+    /// <returns>The result array.</returns>
+    [<Extension>]
+    static member inline insertAt(array:'T[], index, value) = Array.insertAt index value array
+
+    /// <summary>Return a new array with new items inserted before the given index.</summary>
+    ///
+    /// <param name="index">The index where the items should be inserted.</param>
+    /// <param name="values">The values to insert.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+    ///
+    /// <returns>The result array.</returns>
+    [<Extension>]
+    static member inline insertManyAt(array:'T[], index, values) = Array.insertManyAt index values array
+
+    /// <summary>Return a new array with the item at a given index removed.</summary>
+    ///
+    /// <param name="index">The index of the item to be removed.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+    ///
+    /// <returns>The result array.</returns>
+    [<Extension>]
+    static member inline removeAt(array:'T[], index) = Array.removeAt index array
+
+    /// <summary>Return a new array with the number of items starting at a given index removed.</summary>
+    ///
+    /// <param name="index">The index of the item to be removed.</param>
+    /// <param name="count">The number of items to remove.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+    ///
+    /// <returns>The result array.</returns>
+    [<Extension>]
+    static member inline removeManyAt(array:'T[], index, count) = Array.removeManyAt index count array
+
+    /// <summary>Splits an array into two arrays, at the given index.</summary>
+    ///
+    /// <param name="index">The index at which the array is split.</param>
+    /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
+    /// <exception cref="System.InvalidOperationException">Thrown when split index exceeds the number of elements in the array.</exception>
+    ///
+    /// <returns>The two split arrays.</returns>
+    [<Extension>]
+    static member inline splitAt(array:'T[], index) = Array.splitAt index array
+
+    /// <summary>Returns the only element of the array or <c>None</c> if it is empty or contains more than one element.</summary>
+    ///
+    /// <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
+    ///
+    /// <returns>The only element of the array or None.</returns>
+    [<Extension>]
+    static member inline tryExactlyOne(array:'T[]) = Array.tryExactlyOne array
+
+    /// <summary>Return a new array with the item at a given index set to the new value.</summary>
+    ///
+    /// <param name="index">The index of the item to be replaced.</param>
+    /// <param name="value">The new value.</param>
+    ///
+    /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+    ///
+    /// <returns>The result array.</returns>
+    [<Extension>]
+    static member inline updateAt(array:'T[], index, value) = Array.updateAt index value array
+
     /// <summary>Returns the average of the elements in the array.</summary>
     /// <param name="array">The input array.</param>
     /// <exception cref="System.ArgumentException">Thrown when <c>array</c> is empty.</exception>
@@ -1654,6 +1928,71 @@ type ArrayExtensionsConstrained =
 module ListExtensions =
 
     type List<'T> with
+        /// <summary>Returns a new list that contains all pairings of elements from two lists.</summary>
+        ///
+        /// <param name="list2">The second input list.</param>
+        ///
+        /// <returns>The resulting list of pairs.</returns>
+        member inline list.allPairs list2 = List.allPairs list list2
+
+        /// <summary>Return a new list with a new item inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the item should be inserted.</param>
+        /// <param name="value">The value to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.insertAt(index, value) = List.insertAt index value list
+
+        /// <summary>Return a new list with new items inserted before the given index.</summary>
+        ///
+        /// <param name="index">The index where the items should be inserted.</param>
+        /// <param name="values">The values to insert.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.insertManyAt(index, values) = List.insertManyAt index values list
+
+        /// <summary>Return a new list with the item at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.removeAt index = List.removeAt index list
+
+        /// <summary>Return a new list with the number of items starting at a given index removed.</summary>
+        ///
+        /// <param name="index">The index of the item to be removed.</param>
+        /// <param name="count">The number of items to remove.</param>
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.removeManyAt(index, count) = List.removeManyAt index count list
+
+        /// <summary>Splits a list into two lists, at the given index.</summary>
+        ///
+        /// <param name="index">The index at which the list is split.</param>
+        /// <exception cref="System.InvalidOperationException">Thrown when split index exceeds the number of elements in the list.</exception>
+        ///
+        /// <returns>The two split lists.</returns>
+        member inline list.splitAt index = List.splitAt index list
+
+        /// <summary>Returns the only element of the list or <c>None</c> if it is empty or contains more than one element.</summary>
+        ///
+        /// <returns>The only element of the list or None.</returns>
+        member inline list.tryExactlyOne() = List.tryExactlyOne list
+
+        /// <summary>Return a new list with the item at a given index set to the new value.</summary>
+        ///
+        /// <param name="index">The index of the item to be replaced.</param>
+        /// <param name="value">The new value.</param>
+        ///
+        /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+        ///
+        /// <returns>The result list.</returns>
+        member inline list.updateAt(index, value) = List.updateAt index value list
+
         /// <summary>Builds a new list that contains the elements of the first list followed by the elements of the second list.</summary>
         ///
         /// <param name="list2">The second input list.</param>
@@ -2131,6 +2470,79 @@ module ListExtensions =
 [<Extension>]
 /// <summary>Fluent extension operations on lists which require constrained types.</summary>
 type ListExtensionsConstrained =
+
+    /// <summary>Returns a new list that contains all pairings of elements from two lists.</summary>
+    ///
+    /// <param name="list2">The second input list.</param>
+    ///
+    /// <returns>The resulting list of pairs.</returns>
+    [<Extension>]
+    static member inline allPairs(list:'T list, list2:'U list) = List.allPairs list list2
+
+    /// <summary>Return a new list with a new item inserted before the given index.</summary>
+    ///
+    /// <param name="index">The index where the item should be inserted.</param>
+    /// <param name="value">The value to insert.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+    ///
+    /// <returns>The result list.</returns>
+    [<Extension>]
+    static member inline insertAt(list:'T list, index, value) = List.insertAt index value list
+
+    /// <summary>Return a new list with new items inserted before the given index.</summary>
+    ///
+    /// <param name="index">The index where the items should be inserted.</param>
+    /// <param name="values">The values to insert.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is below 0 or greater than source.Length.</exception>
+    ///
+    /// <returns>The result list.</returns>
+    [<Extension>]
+    static member inline insertManyAt(list:'T list, index, values) = List.insertManyAt index values list
+
+    /// <summary>Return a new list with the item at a given index removed.</summary>
+    ///
+    /// <param name="index">The index of the item to be removed.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+    ///
+    /// <returns>The result list.</returns>
+    [<Extension>]
+    static member inline removeAt(list:'T list, index) = List.removeAt index list
+
+    /// <summary>Return a new list with the number of items starting at a given index removed.</summary>
+    ///
+    /// <param name="index">The index of the item to be removed.</param>
+    /// <param name="count">The number of items to remove.</param>
+    /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - count</exception>
+    ///
+    /// <returns>The result list.</returns>
+    [<Extension>]
+    static member inline removeManyAt(list:'T list, index, count) = List.removeManyAt index count list
+
+    /// <summary>Splits a list into two lists, at the given index.</summary>
+    ///
+    /// <param name="index">The index at which the list is split.</param>
+    /// <exception cref="System.InvalidOperationException">Thrown when split index exceeds the number of elements in the list.</exception>
+    ///
+    /// <returns>The two split lists.</returns>
+    [<Extension>]
+    static member inline splitAt(list:'T list, index) = List.splitAt index list
+
+    /// <summary>Returns the only element of the list or <c>None</c> if it is empty or contains more than one element.</summary>
+    ///
+    /// <returns>The only element of the list or None.</returns>
+    [<Extension>]
+    static member inline tryExactlyOne(list:'T list) = List.tryExactlyOne list
+
+    /// <summary>Return a new list with the item at a given index set to the new value.</summary>
+    ///
+    /// <param name="index">The index of the item to be replaced.</param>
+    /// <param name="value">The new value.</param>
+    ///
+    /// <exception cref="System.ArgumentException">Thrown when index is outside 0..source.Length - 1</exception>
+    ///
+    /// <returns>The result list.</returns>
+    [<Extension>]
+    static member inline updateAt(list:'T list, index, value) = List.updateAt index value list
 
     /// <summary>Returns the average of the elements in the list.</summary>
     ///

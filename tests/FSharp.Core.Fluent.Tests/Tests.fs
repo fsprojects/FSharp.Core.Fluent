@@ -24,6 +24,14 @@ let tests =
             let _ : int option = arr1.tryFind(fun x -> x % 2 = 0)
             let _ : int = arr1.find(fun x -> x % 2 = 0)
 
+            (arr1.allPairs(arr1) : array<int * int>) |> ignore
+            (arr1.insertAt(1, 9) : array<int>) |> ignore
+            (arr1.insertManyAt(1, [| 8; 9 |]) : array<int>) |> ignore
+            (arr1.removeAt(1) : array<int>) |> ignore
+            (arr1.removeManyAt(1, 2) : array<int>) |> ignore
+            (arr1.splitAt(3) : array<int> * array<int>) |> ignore
+            (arr1.tryExactlyOne() : option<int>) |> ignore
+            (arr1.updateAt(1, 9) : array<int>) |> ignore
             (arr1.countBy(id) : array<int * int>) |> ignore
             (arr1.distinct() :  array<int>) |> ignore
             (arr1.distinctBy(id) :  array<int>) |> ignore
@@ -128,6 +136,14 @@ let tests =
                .filter(fun x -> x > 4)
                .toArray |> ignore
 
+            (list1.allPairs(list1) : list<int * int>) |> ignore
+            (list1.insertAt(1, 9) : list<int>) |> ignore
+            (list1.insertManyAt(1, [ 8; 9 ]) : list<int>) |> ignore
+            (list1.removeAt(1) : list<int>) |> ignore
+            (list1.removeManyAt(1, 2) : list<int>) |> ignore
+            (list1.splitAt(3) : list<int> * list<int>) |> ignore
+            (list1.tryExactlyOne() : option<int>) |> ignore
+            (list1.updateAt(1, 9) : list<int>) |> ignore
             (list1.countBy(id) : list<int * int>) |> ignore
             (list1.distinct() :  list<int>) |> ignore
             (list1.distinctBy(id) :  list<int>) |> ignore
@@ -242,6 +258,13 @@ let tests =
             let _ : int = seq1.sum()
             let _ : int = seq1.sumBy(fun x -> x + 1)
 
+            (seq1.allPairs(seq1) : seq<int * int>) |> ignore
+            (seq1.insertAt(1, 9) : seq<int>) |> ignore
+            (seq1.insertManyAt(1, seq { 8; 9 }) : seq<int>) |> ignore
+            (seq1.removeAt(1) : seq<int>) |> ignore
+            (seq1.removeManyAt(1, 2) : seq<int>) |> ignore
+            (seq1.tryExactlyOne() : option<int>) |> ignore
+            (seq1.updateAt(1, 9) : seq<int>) |> ignore
             (seq1.append(seq1) : seq<int>) |> ignore
             (seq1.averageBy(float) : float) |> ignore
             (seq1.cache() : seq<int>) |> ignore
