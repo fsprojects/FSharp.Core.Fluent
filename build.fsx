@@ -1,27 +1,9 @@
-// --------------------------------------------------------------------------------------
-// FAKE build script
-// --------------------------------------------------------------------------------------
-#r "paket: groupref build //"
-#load ".fake/build.fsx/intellisense.fsx"
-
-open Fake.Core
-open Fake.DotNet
-open Fake.IO
-open Fake.Core.TargetOperators
-
-// --------------------------------------------------------------------------------------
-// Information about the project to be used at NuGet and in AssemblyInfo files
-// --------------------------------------------------------------------------------------
-
-let summary = "Fluent extensions for FSharp.Core"
-let authors = "Don Syme, Phillip Carter"
-let tags = "f#, fsharp"
+open System.IO
 
 let gitOwner = "fsprojects"
 let gitName = "FSharp.Core.Fluent"
 let gitHome = "https://github.com/" + gitOwner
 let gitUrl = gitHome + "/" + gitName
-let siteUrl = "https://fsprojects.github.io/FSharp.Core.Fluent/"
 
 // --------------------------------------------------------------------------------------
 // Build variables
@@ -30,73 +12,45 @@ let siteUrl = "https://fsprojects.github.io/FSharp.Core.Fluent/"
 let buildDir  = "./bin/"
 
 System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
+
+let runCommand cmd args =
+    printf "Running command: %s %s\n" cmd args
+    let proc = new System.Diagnostics.Process()
+    proc.StartInfo.FileName <- cmd
+    proc.StartInfo.Arguments <- args
+    proc.StartInfo.UseShellExecute <- false
+    proc.StartInfo.RedirectStandardOutput <- true
+    proc.StartInfo.RedirectStandardError <- true
+    proc.Start() |> ignore
+    let output = proc.StandardOutput.ReadToEnd()
+    let error = proc.StandardError.ReadToEnd()
+    proc.WaitForExit()
+    if not (System.String.IsNullOrEmpty error) then
+        failwithf "Error: %s" error
+    printfn $"{output}"
+
+let cleanDirectory dir =
+    if Directory.Exists dir then Directory.Delete(dir, true)
+    Directory.CreateDirectory dir |> ignore
+
+let getLatestVersionFromChangelog filename =
+    File.ReadAllLines filename
+    |> Seq.filter (fun line -> line.StartsWith "## ")
+    |> Seq.head
+    |> fun line -> (line.Split(' ')[1]).Trim() 
+
 let changelogFilename = "RELEASE_NOTES.md"
-let changelog = Changelog.load changelogFilename
-let latestEntry = changelog.LatestEntry
+let nugetVersion = getLatestVersionFromChangelog changelogFilename 
+let packageReleaseNotes = sprintf "%s/blob/%s/RELEASE_NOTES.md" gitUrl nugetVersion
 
-let nugetVersion = latestEntry.NuGetVersion
-let packageReleaseNotes = sprintf "%s/blob/%s/RELEASE_NOTES.md" gitUrl latestEntry.NuGetVersion
+printfn "Building version: %s" nugetVersion
 
-Target.create "Clean" (fun _ ->
-    Shell.cleanDirs [buildDir]
-)
+runCommand "dotnet" "clean"
+runCommand "dotnet" $"build FSharp.Core.Fluent.sln -c Release /p:Version={nugetVersion}"
+runCommand "dotnet" $"test FSharp.Core.Fluent.sln -c Release --no-build"
 
-Target.create "Build" (fun _ ->
-    DotNet.build (fun p ->
-        { p with
-            Configuration = DotNet.BuildConfiguration.Release
-            OutputPath = Some buildDir
-            MSBuildParams = { p.MSBuildParams with Properties = [("Version", nugetVersion); ("PackageReleaseNotes", packageReleaseNotes)]}
-        }
-    ) "FSharp.Core.Fluent.sln"
-)
+cleanDirectory ".fsdocs"
+runCommand "dotnet" "fsdocs build --clean --properties Configuration=Release --eval"
 
-Target.create "Test" (fun _ ->
-    DotNet.test (fun p ->
-        { p with
-            Configuration = DotNet.BuildConfiguration.Release
-            MSBuildParams = { p.MSBuildParams with Properties = [("Version", nugetVersion); ("PackageReleaseNotes", packageReleaseNotes)]}
-        }
-    ) "FSharp.Core.Fluent.sln"
-)
-
-Target.create "GenerateDocs" (fun _ ->
-   Shell.cleanDir ".fsdocs"
-   DotNet.exec id "fsdocs" "build --clean --properties Configuration=Release --eval" |> ignore
-)
-
-Target.create "NuGet" (fun _ ->
-    let properties = [
-        ("Version", nugetVersion)
-        ("Authors", authors)
-        ("PackageProjectUrl", siteUrl)
-        ("PackageTags", tags)
-        ("RepositoryType", "git")
-        ("RepositoryUrl", gitUrl)
-        ("PackageReleaseNotes", packageReleaseNotes)
-        ("PackageDescription", summary)
-    ]
-
-    DotNet.pack (fun p ->
-        { p with
-            Configuration = DotNet.BuildConfiguration.Release
-            OutputPath = Some buildDir
-            MSBuildParams = { p.MSBuildParams with Properties = properties}
-        }
-    ) "FSharp.Core.Fluent.sln"
-)
-
-Target.create "All" ignore
-
-"Clean"
-  ==> "Build"
-  ==> "Test"
-  ==> "NuGet"
-  ==> "All"
-
-"Clean"
-  ==> "Build"
-  ==> "GenerateDocs"
-  ==> "All"
-
-Target.runOrDefault "All"
+cleanDirectory buildDir
+runCommand "dotnet" $"pack --no-build -o {buildDir} /p:Version={nugetVersion} /p:PackageReleaseNotes={packageReleaseNotes}"   // Nuget properties set in project file

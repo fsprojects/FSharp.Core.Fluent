@@ -22,8 +22,7 @@ This is how you build the repo after cloning:
 
 ```console
 dotnet tool restore
-dotnet paket restore
-dotnet fake build
+dotnet fsi build.fsx
 ```
 
 Docs are generated and deployed to [the docs site](https://fsprojects.github.io/FSharp.Core.Fluent/) after every successful push to this repo.

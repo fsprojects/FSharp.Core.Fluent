@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
@@ -9,14 +9,15 @@
     <Authors>Don Syme;Phillip Carter</Authors>
     <Summary>Fluent extensions for FSharp.Core</Summary>
     <Description>Fluent extensions for FSharp.Core</Description>
-    <Copyright>Copyright 2017-2021</Copyright>
-    <PackageLicenseUrl>https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.md</PackageLicenseUrl>
+    <Copyright>Copyright 2017-2025</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://fsprojects.github.io/FSharp.Core.Fluent/</PackageProjectUrl>
     <PackageIconUrl>https://fsprojects.github.io/FSharp.Core.Fluent/img/logo.png</PackageIconUrl>
     <PackageTags>F#;fluent;fsharp</PackageTags>
     <RepositoryUrl>https://github.com/fsprojects/FSharp.Core.Fluent</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <EnableSourceLink>true</EnableSourceLink>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,10 +30,11 @@
 
   <ItemGroup>
     <None Include="..\..\docs\img\logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="6.0.6" />
+    <PackageReference Update="FSharp.Core" Version="6.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 </Project>
