@@ -1,5 +1,9 @@
 # Release Notes
 
+Future release:
+
+* Add generic pipe
+
 ## 3.0.2 - 10.11.2022
 
 * Update to FSharp.Core 6.
