@@ -1,8 +1,9 @@
 # Release Notes
 
-Future release:
+## 3.0.3 - 10.05.2025
 
 * Add generic pipe
+* Move back to only require netstandard 2.0 rather than net 6.0
 
 ## 3.0.2 - 10.11.2022
 

@@ -342,7 +342,7 @@ module StringExamples =
     string1.length
 
 (**
-# Genric pipe
+# Generic pipe
 
 A fluent generic method to simulate |>
 
