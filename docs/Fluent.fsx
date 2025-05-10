@@ -340,3 +340,15 @@ module StringExamples =
     string1.pairwise()
     string1.replicate(3)
     string1.length
+
+(**
+# Generic pipe
+
+A fluent generic method to simulate |>
+
+*)
+
+module PipeExamples =
+    (4.0).pipe(sqrt)
+    "abc".pipe(String.length)
+    let magnitude (vec:list<float>) = vec.sumBy(fun x -> x * x).pipe(sqrt)

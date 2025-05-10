@@ -421,4 +421,11 @@ let tests =
             let _ : char list = str0.toList()
 
             ()
+
+        testCase "Pipe test" <| fun _ ->
+            (4.0).pipe(sqrt) |> ignore
+            "abc".pipe(String.length) |> ignore
+            let magnitude (vec:list<float>) = vec.sumBy(fun x -> x * x).pipe(sqrt)
+            magnitude [1.0;2.0] |> ignore
+            ()
   ]
