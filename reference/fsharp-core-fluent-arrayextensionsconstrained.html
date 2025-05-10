@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="en" data-root="https://fsprojects.github.io/FSharp.Core.Fluent/">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Don Syme;Phillip Carter" name="author">
+    <!-- Opengraph properties (https://ogp.me/) -->
+    <meta property="og:site_name" content="FSharp.Core.Fluent">
+    <meta property="og:title" content="ArrayExtensionsConstrained (FSharp.Core.Fluent)" />
+    <meta property="og:url" content="https://fsprojects.github.io/FSharp.Core.Fluent/{{fsdocs-source-basename}}.html">
+    <meta property="og:type" content="website" />
+    <!-- Twitter cards (https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="https://fsprojects.github.io/FSharp.Core.Fluent/">
+    <meta name="twitter:title" content="ArrayExtensionsConstrained (FSharp.Core.Fluent)">
+    
+    <title>ArrayExtensionsConstrained (FSharp.Core.Fluent) | FSharp.Core.Fluent</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fsprojects.github.io/FSharp.Core.Fluent/img/favicon.ico" rel="icon" sizes="32x32" type="image/png"/>
+    <script type="application/javascript" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme-set-dark.js"></script>
+    <link href="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-default.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme.css" rel="stylesheet" type="text/css"/>
+    
+    
+</head>
+<body class="api-docs">
+<header>
+    <div class="start">
+        <div id="menu-toggle">
+            <iconify-icon class="icon closed" height="22" icon="eva:menu-fill" width="22"></iconify-icon>
+            <iconify-icon class="icon open" height="22" icon="mi:close" width="22"></iconify-icon>
+            <input type="checkbox" name="mobile-menu" />
+            <ul class="menu">
+                <li class="nav-header">Links</li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.md">License</a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/RELEASE_NOTES.md">Release
+                    Notes</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/">Source
+                    Repository</a></li>
+                <li class="nav-header">
+  Documentation
+</li>             
+<li class="nav-item ">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/Fluent.html">
+    Usage examples
+
+  </a>
+</li>
+                <li class="nav-header">
+  API Reference
+</li>             
+<li class="nav-item">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/reference/index.html">
+    All Namespaces
+  </a>
+</li>
+            </ul>
+        </div>
+        <a href="https://fsprojects.github.io/FSharp.Core.Fluent/">
+            <img alt="Header menu logo" src="https://fsprojects.github.io/FSharp.Core.Fluent/img/logo.png">
+            <strong>FSharp.Core.Fluent</strong>
+        </a>
+    </div>
+    <div class="end">
+        <a href="https://github.com/fsprojects/FSharp.Core.Fluent/" target="_blank">
+            <iconify-icon icon="uil:github" width="26" height="26"></iconify-icon>
+        </a>
+        <iconify-icon id="search-btn" icon="carbon:search" class="search" width="24" height="24"></iconify-icon>
+        <fsdocs-theme-toggle></fsdocs-theme-toggle>
+    </div>
+</header>
+<aside id="fsdocs-main-menu">
+    <ul class="menu">
+        <li class="nav-header">Links</li>
+        <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.md">License</a>
+        </li>
+        <li class="nav-item"><a class="nav-link"
+                                href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/RELEASE_NOTES.md">Release
+            Notes</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/">Source
+            Repository</a></li>
+        <li class="nav-header">
+  Documentation
+</li>             
+<li class="nav-item ">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/Fluent.html">
+    Usage examples
+
+  </a>
+</li>
+        <li class="nav-header">
+  API Reference
+</li>             
+<li class="nav-item">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/reference/index.html">
+    All Namespaces
+  </a>
+</li>
+    </ul>
+</aside>
+<main>
+    <div id="content">
+        <div>
+  <h2>
+    ArrayExtensionsConstrained Type
+  </h2>
+  <dl class="fsdocs-metadata">
+    <dt>
+      Namespace: 
+      <a href="https://fsprojects.github.io/FSharp.Core.Fluent/reference/fsharp-core-fluent.html">
+        FSharp.Core.Fluent
+      </a>
+    </dt>
+    <dt>
+      Assembly: FSharp.Core.Fluent.dll
+    </dt>
+    <dt>
+      Base Type: 
+      <code>obj</code>
+    </dt>
+  </dl>
+  <div class="fsdocs-xmldoc">
+    <div>
+      <p class="fsdocs-summary">
+        
+      </p>
+    </div>
+  </div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div>
+    <h3>
+      Static members
+    </h3>
+    <table class="table outer-list fsdocs-member-list">
+      <thead>
+        <tr>
+          <td class="fsdocs-member-list-header">
+            Static member
+          </td>
+          <td class="fsdocs-member-list-header">
+            Description
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '311', 311)" onmouseover="showTip(event, '311', 311)">
+                <p>
+                  <a id="allPairs">
+                    <a href="#allPairs">
+                      <code><span>ArrayExtensionsConstrained.allPairs&#32;<span><span>(<span>array,&#32;array2</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="311">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.allPairs&#32;<span><span>(<span>array,&#32;array2</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        array2
+                      </b>
+                      :
+                      <code><span>'U[]</span></code>
+                       - 
+                      The second input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span><span>(<span>'T&#32;*&#32;'U</span>)</span>[]</span></code>
+                  </span>
+                  The resulting array of pairs.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, &#39;U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.allPairs``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.allPairs``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1702-1702" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns a new array that contains all pairings of elements from the first and second arrays.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array2
+                  </span>
+                  :
+                  <code><span>'U[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The second input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span><span>(<span>'T&#32;*&#32;'U</span>)</span>[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The resulting array of pairs.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when either of the input arrays is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '312', 312)" onmouseover="showTip(event, '312', 312)">
+                <p>
+                  <a id="average">
+                    <a href="#average">
+                      <code><span>ArrayExtensionsConstrained.average&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="312">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.average&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>^T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^T</code>
+                  </span>
+                  The average of the elements in the array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  ^T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.average``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.average``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1777-1777" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the average of the elements in the array.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>^T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The average of the elements in the array.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when <code>array</code> is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '313', 313)" onmouseover="showTip(event, '313', 313)">
+                <p>
+                  <a id="averageBy">
+                    <a href="#averageBy">
+                      <code><span>ArrayExtensionsConstrained.averageBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="313">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.averageBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;^U</span></code>
+                       - 
+                      The function to transform the array elements before averaging.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^U</code>
+                  </span>
+                  The computed average.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, ^U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.averageBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.averageBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1788-1788" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the average of the elements generated by applying the function to each element of the array.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;^U</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The function to transform the array elements before averaging.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^U</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The computed average.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when <code>array</code> is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '314', 314)" onmouseover="showTip(event, '314', 314)">
+                <p>
+                  <a id="contains">
+                    <a href="#contains">
+                      <code><span>ArrayExtensionsConstrained.contains&#32;<span><span>(<span>array,&#32;value</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="314">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.contains&#32;<span><span>(<span>array,&#32;value</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        value
+                      </b>
+                      :
+                      <code>'T</code>
+                       - 
+                      The value to locate in the input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>bool</code>
+                  </span>
+                  True if the input array contains the specified element; false otherwise.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.contains``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.contains``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1799-1799" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Tests if the array contains the specified element.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    value
+                  </span>
+                  :
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The value to locate in the input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>bool</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    True if the input array contains the specified element; false otherwise.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '315', 315)" onmouseover="showTip(event, '315', 315)">
+                <p>
+                  <a id="distinct">
+                    <a href="#distinct">
+                      <code><span>ArrayExtensionsConstrained.distinct&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="315">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.distinct&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The result array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.distinct``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.distinct``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1811-1811" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns an array that contains no duplicate entries according to generic hash and
+ equality comparisons on the entries.
+ If an element occurs multiple times in the array then the later occurrences are discarded.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result array.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '316', 316)" onmouseover="showTip(event, '316', 316)">
+                <p>
+                  <a id="insertAt">
+                    <a href="#insertAt">
+                      <code><span>ArrayExtensionsConstrained.insertAt&#32;<span><span>(<span>array,&#32;index,&#32;value</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="316">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.insertAt&#32;<span><span>(<span>array,&#32;index,&#32;value</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index where the item should be inserted.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        value
+                      </b>
+                      :
+                      <code>'T</code>
+                       - 
+                      The value to insert.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The result array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.insertAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.insertAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1712-1712" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new array with a new item inserted before the given index.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index where the item should be inserted.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    value
+                  </span>
+                  :
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The value to insert.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result array.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is below 0 or greater than source.Length.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '317', 317)" onmouseover="showTip(event, '317', 317)">
+                <p>
+                  <a id="insertManyAt">
+                    <a href="#insertManyAt">
+                      <code><span>ArrayExtensionsConstrained.insertManyAt&#32;<span><span>(<span>array,&#32;index,&#32;values</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="317">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.insertManyAt&#32;<span><span>(<span>array,&#32;index,&#32;values</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index where the items should be inserted.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        values
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The values to insert.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The result array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.insertManyAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.insertManyAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1722-1722" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new array with new items inserted before the given index.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index where the items should be inserted.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    values
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The values to insert.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result array.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is below 0 or greater than source.Length.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '318', 318)" onmouseover="showTip(event, '318', 318)">
+                <p>
+                  <a id="max">
+                    <a href="#max">
+                      <code><span>ArrayExtensionsConstrained.max&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="318">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.max&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The maximum element.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.max``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.max``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1834-1834" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the greatest of all elements of the array, compared via Operators.max on the function result.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                Throws ArgumentException for empty arrays.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The maximum element.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '319', 319)" onmouseover="showTip(event, '319', 319)">
+                <p>
+                  <a id="maxBy">
+                    <a href="#maxBy">
+                      <code><span>ArrayExtensionsConstrained.maxBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="319">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.maxBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;'a</span></code>
+                       - 
+                      The function to transform the elements into a type supporting comparison.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The maximum element.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, &#39;a
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.maxBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.maxBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1847-1847" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the greatest of all elements of the array, compared via Operators.max on the function result.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                Throws ArgumentException for empty arrays.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;'a</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The function to transform the elements into a type supporting comparison.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The maximum element.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '320', 320)" onmouseover="showTip(event, '320', 320)">
+                <p>
+                  <a id="min">
+                    <a href="#min">
+                      <code><span>ArrayExtensionsConstrained.min&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="320">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.min&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The minimum element.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.min``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.min``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1859-1859" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the lowest of all elements of the array, compared via Operators.min.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                Throws ArgumentException for empty arrays
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The minimum element.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '321', 321)" onmouseover="showTip(event, '321', 321)">
+                <p>
+                  <a id="minBy">
+                    <a href="#minBy">
+                      <code><span>ArrayExtensionsConstrained.minBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="321">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.minBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;'a</span></code>
+                       - 
+                      The function to transform the elements into a type supporting comparison.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The minimum element.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, &#39;a
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.minBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.minBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1872-1872" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the lowest of all elements of the array, compared via Operators.min on the function result.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                Throws ArgumentException for empty arrays.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;'a</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The function to transform the elements into a type supporting comparison.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The minimum element.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '322', 322)" onmouseover="showTip(event, '322', 322)">
+                <p>
+                  <a id="removeAt">
+                    <a href="#removeAt">
+                      <code><span>ArrayExtensionsConstrained.removeAt&#32;<span><span>(<span>array,&#32;index</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="322">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.removeAt&#32;<span><span>(<span>array,&#32;index</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index of the item to be removed.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The result array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.removeAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.removeAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1731-1731" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new array with the item at a given index removed.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index of the item to be removed.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result array.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is outside 0..source.Length - 1
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '323', 323)" onmouseover="showTip(event, '323', 323)">
+                <p>
+                  <a id="removeManyAt">
+                    <a href="#removeManyAt">
+                      <code><span>ArrayExtensionsConstrained.removeManyAt&#32;<span><span>(<span>array,&#32;index,&#32;count</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="323">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.removeManyAt&#32;<span><span>(<span>array,&#32;index,&#32;count</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index of the item to be removed.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        count
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The number of items to remove.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The result array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.removeManyAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.removeManyAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1741-1741" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new array with the number of items starting at a given index removed.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index of the item to be removed.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    count
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The number of items to remove.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result array.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is outside 0..source.Length - count
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '324', 324)" onmouseover="showTip(event, '324', 324)">
+                <p>
+                  <a id="sort">
+                    <a href="#sort">
+                      <code><span>ArrayExtensionsConstrained.sort&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="324">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.sort&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The sorted array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sort``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sort``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1883-1883" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Sorts the elements of an array, returning a new array. Elements are compared using Operators.compare. 
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
+ For a stable sort, consider using Seq.sort.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The sorted array.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '325', 325)" onmouseover="showTip(event, '325', 325)">
+                <p>
+                  <a id="sortDescending">
+                    <a href="#sortDescending">
+                      <code><span>ArrayExtensionsConstrained.sortDescending&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="325">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.sortDescending&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The sorted array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sortDescending``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sortDescending``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1822-1822" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Sorts the elements of an array, in descending order, returning a new array. Elements are compared using Operators.compare. 
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                This is not a stable sort, i.e. the original order of equal elements is not necessarily preserved.
+ For a stable sort, consider using Seq.sort.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The sorted array.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '326', 326)" onmouseover="showTip(event, '326', 326)">
+                <p>
+                  <a id="sortInPlace">
+                    <a href="#sortInPlace">
+                      <code><span>ArrayExtensionsConstrained.sortInPlace&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="326">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.sortInPlace&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'a[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;a
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sortInPlace``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sortInPlace``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1890-1890" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Sorts the elements of an array by mutating the array in-place, using the given comparison function.
+ Elements are compared using Operators.compare.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'a[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '327', 327)" onmouseover="showTip(event, '327', 327)">
+                <p>
+                  <a id="splitAt">
+                    <a href="#splitAt">
+                      <code><span>ArrayExtensionsConstrained.splitAt&#32;<span><span>(<span>array,&#32;index</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="327">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.splitAt&#32;<span><span>(<span>array,&#32;index</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index at which the array is split.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span><span>'T[]</span>&#32;*&#32;<span>'T[]</span></span></code>
+                  </span>
+                  The two split arrays.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.splitAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.splitAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1751-1751" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Splits an array into two arrays, at the given index.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index at which the array is split.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span><span>'T[]</span>&#32;*&#32;<span>'T[]</span></span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The two split arrays.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is null.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">
+                      InvalidOperationException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when split index exceeds the number of elements in the array.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '328', 328)" onmouseover="showTip(event, '328', 328)">
+                <p>
+                  <a id="sum">
+                    <a href="#sum">
+                      <code><span>ArrayExtensionsConstrained.sum&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="328">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.sum&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>^T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^T</code>
+                  </span>
+                  The resulting sum.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  ^T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sum``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sum``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1898-1898" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the sum of the elements in the array.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>^T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The resulting sum.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '329', 329)" onmouseover="showTip(event, '329', 329)">
+                <p>
+                  <a id="sumBy">
+                    <a href="#sumBy">
+                      <code><span>ArrayExtensionsConstrained.sumBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="329">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.sumBy&#32;<span><span>(<span>array,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;^U</span></code>
+                       - 
+                      The function to transform the array elements into the type to be summed.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^U</code>
+                  </span>
+                  The resulting sum.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, ^U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sumBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.sumBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1907-1907" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the sum of the results generated by applying the function to each element of the array.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;^U</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The function to transform the array elements into the type to be summed.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^U</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The resulting sum.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '330', 330)" onmouseover="showTip(event, '330', 330)">
+                <p>
+                  <a id="tryExactlyOne">
+                    <a href="#tryExactlyOne">
+                      <code><span>ArrayExtensionsConstrained.tryExactlyOne&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="330">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.tryExactlyOne&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;option</span></code>
+                  </span>
+                  The only element of the array or None.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.tryExactlyOne``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.tryExactlyOne``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1759-1759" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the only element of the array or <code>None</code> if it is empty or contains more than one element.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;option</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The only element of the array or None.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input array is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '331', 331)" onmouseover="showTip(event, '331', 331)">
+                <p>
+                  <a id="unzip">
+                    <a href="#unzip">
+                      <code><span>ArrayExtensionsConstrained.unzip&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="331">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.unzip&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span><span>(<span>'a&#32;*&#32;'b</span>)</span>[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span><span>'a[]</span>&#32;*&#32;<span>'b[]</span></span></code>
+                  </span>
+                  The two arrays.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;a, &#39;b
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.unzip``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.unzip``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1915-1915" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Splits an array of pairs into two arrays.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span><span>(<span>'a&#32;*&#32;'b</span>)</span>[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span><span>'a[]</span>&#32;*&#32;<span>'b[]</span></span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The two arrays.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '332', 332)" onmouseover="showTip(event, '332', 332)">
+                <p>
+                  <a id="unzip3">
+                    <a href="#unzip3">
+                      <code><span>ArrayExtensionsConstrained.unzip3&#32;<span>array</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="332">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.unzip3&#32;<span>array</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span><span>(<span>'a&#32;*&#32;'b&#32;*&#32;'c</span>)</span>[]</span></code>
+                       - 
+                      The input array.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span><span>'a[]</span>&#32;*&#32;<span>'b[]</span>&#32;*&#32;<span>'c[]</span></span></code>
+                  </span>
+                  The tuple of three arrays.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;a, &#39;b, &#39;c
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.unzip3``3```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.unzip3``3\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1923-1923" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Splits an array of triples into three arrays.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span><span>(<span>'a&#32;*&#32;'b&#32;*&#32;'c</span>)</span>[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input array.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span><span>'a[]</span>&#32;*&#32;<span>'b[]</span>&#32;*&#32;<span>'c[]</span></span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The tuple of three arrays.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '333', 333)" onmouseover="showTip(event, '333', 333)">
+                <p>
+                  <a id="updateAt">
+                    <a href="#updateAt">
+                      <code><span>ArrayExtensionsConstrained.updateAt&#32;<span><span>(<span>array,&#32;index,&#32;value</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="333">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>ArrayExtensionsConstrained.updateAt&#32;<span><span>(<span>array,&#32;index,&#32;value</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        array
+                      </b>
+                      :
+                      <code><span>'T[]</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index of the item to be replaced.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        value
+                      </b>
+                      :
+                      <code>'T</code>
+                       - 
+                      The new value.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T[]</span></code>
+                  </span>
+                  The result array.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.ArrayExtensionsConstrained.updateAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.ArrayExtensionsConstrained.updateAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1770-1770" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new array with the item at a given index set to the new value.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    array
+                  </span>
+                  :
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index of the item to be replaced.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    value
+                  </span>
+                  :
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The new value.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T[]</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result array.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is outside 0..source.Length - 1
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+        
+    </div>
+</main>
+<aside id="fsdocs-page-menu">
+    <p id="on-this-page">On this page</p>
+    <div class="empty"></div>
+</aside>
+<dialog>
+    <input type="search" placeholder="Search docs" />
+    <div class="results">
+        <ul></ul>
+        <p class="empty">Type something to start searching.</p>
+    </div>
+</dialog>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-tips.js"></script>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme-toggle.js"></script>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme.js"></script>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html lang="en" data-root="https://fsprojects.github.io/FSharp.Core.Fluent/">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Don Syme;Phillip Carter" name="author">
+    <!-- Opengraph properties (https://ogp.me/) -->
+    <meta property="og:site_name" content="FSharp.Core.Fluent">
+    <meta property="og:title" content="SeqExtensionsConstrained (FSharp.Core.Fluent)" />
+    <meta property="og:url" content="https://fsprojects.github.io/FSharp.Core.Fluent/{{fsdocs-source-basename}}.html">
+    <meta property="og:type" content="website" />
+    <!-- Twitter cards (https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="https://fsprojects.github.io/FSharp.Core.Fluent/">
+    <meta name="twitter:title" content="SeqExtensionsConstrained (FSharp.Core.Fluent)">
+    
+    <title>SeqExtensionsConstrained (FSharp.Core.Fluent) | FSharp.Core.Fluent</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fsprojects.github.io/FSharp.Core.Fluent/img/favicon.ico" rel="icon" sizes="32x32" type="image/png"/>
+    <script type="application/javascript" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme-set-dark.js"></script>
+    <link href="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-default.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme.css" rel="stylesheet" type="text/css"/>
+    
+    
+</head>
+<body class="api-docs">
+<header>
+    <div class="start">
+        <div id="menu-toggle">
+            <iconify-icon class="icon closed" height="22" icon="eva:menu-fill" width="22"></iconify-icon>
+            <iconify-icon class="icon open" height="22" icon="mi:close" width="22"></iconify-icon>
+            <input type="checkbox" name="mobile-menu" />
+            <ul class="menu">
+                <li class="nav-header">Links</li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.md">License</a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/RELEASE_NOTES.md">Release
+                    Notes</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/">Source
+                    Repository</a></li>
+                <li class="nav-header">
+  Documentation
+</li>             
+<li class="nav-item ">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/Fluent.html">
+    Usage examples
+
+  </a>
+</li>
+                <li class="nav-header">
+  API Reference
+</li>             
+<li class="nav-item">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/reference/index.html">
+    All Namespaces
+  </a>
+</li>
+            </ul>
+        </div>
+        <a href="https://fsprojects.github.io/FSharp.Core.Fluent/">
+            <img alt="Header menu logo" src="https://fsprojects.github.io/FSharp.Core.Fluent/img/logo.png">
+            <strong>FSharp.Core.Fluent</strong>
+        </a>
+    </div>
+    <div class="end">
+        <a href="https://github.com/fsprojects/FSharp.Core.Fluent/" target="_blank">
+            <iconify-icon icon="uil:github" width="26" height="26"></iconify-icon>
+        </a>
+        <iconify-icon id="search-btn" icon="carbon:search" class="search" width="24" height="24"></iconify-icon>
+        <fsdocs-theme-toggle></fsdocs-theme-toggle>
+    </div>
+</header>
+<aside id="fsdocs-main-menu">
+    <ul class="menu">
+        <li class="nav-header">Links</li>
+        <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/LICENSE.md">License</a>
+        </li>
+        <li class="nav-item"><a class="nav-link"
+                                href="https://github.com/fsprojects/FSharp.Core.Fluent/blob/master/RELEASE_NOTES.md">Release
+            Notes</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://github.com/fsprojects/FSharp.Core.Fluent/">Source
+            Repository</a></li>
+        <li class="nav-header">
+  Documentation
+</li>             
+<li class="nav-item ">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/Fluent.html">
+    Usage examples
+
+  </a>
+</li>
+        <li class="nav-header">
+  API Reference
+</li>             
+<li class="nav-item">
+  <a class="nav-link" href="https://fsprojects.github.io/FSharp.Core.Fluent/reference/index.html">
+    All Namespaces
+  </a>
+</li>
+    </ul>
+</aside>
+<main>
+    <div id="content">
+        <div>
+  <h2>
+    SeqExtensionsConstrained Type
+  </h2>
+  <dl class="fsdocs-metadata">
+    <dt>
+      Namespace: 
+      <a href="https://fsprojects.github.io/FSharp.Core.Fluent/reference/fsharp-core-fluent.html">
+        FSharp.Core.Fluent
+      </a>
+    </dt>
+    <dt>
+      Assembly: FSharp.Core.Fluent.dll
+    </dt>
+    <dt>
+      Parent Module: 
+      <a href="https://fsprojects.github.io/FSharp.Core.Fluent/reference/fsharp-core-fluent-seqextensions.html">
+        SeqExtensions
+      </a>
+    </dt>
+    <dt>
+      Base Type: 
+      <code>obj</code>
+    </dt>
+  </dl>
+  <div class="fsdocs-xmldoc">
+    <div>
+      <p class="fsdocs-summary">
+        
+      </p>
+    </div>
+  </div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div>
+    <h3>
+      Static members
+    </h3>
+    <table class="table outer-list fsdocs-member-list">
+      <thead>
+        <tr>
+          <td class="fsdocs-member-list-header">
+            Static member
+          </td>
+          <td class="fsdocs-member-list-header">
+            Description
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '291', 291)" onmouseover="showTip(event, '291', 291)">
+                <p>
+                  <a id="allPairs">
+                    <a href="#allPairs">
+                      <code><span>SeqExtensionsConstrained.allPairs&#32;<span><span>(<span>source,&#32;source2</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="291">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.allPairs&#32;<span><span>(<span>source,&#32;source2</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        source2
+                      </b>
+                      :
+                      <code><span>'U&#32;seq</span></code>
+                       - 
+                      The second input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span><span>(<span>'T&#32;*&#32;'U</span>)</span>&#32;seq</span></code>
+                  </span>
+                  The resulting sequence of pairs.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, &#39;U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.allPairs``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.allPairs``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L861-861" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns a new sequence that contains all pairings of elements from the first and second sequences.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source2
+                  </span>
+                  :
+                  <code><span>'U&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The second input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span><span>(<span>'T&#32;*&#32;'U</span>)</span>&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The resulting sequence of pairs.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when either of the input sequences is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '292', 292)" onmouseover="showTip(event, '292', 292)">
+                <p>
+                  <a id="average">
+                    <a href="#average">
+                      <code><span>SeqExtensionsConstrained.average&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="292">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.average&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>^T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^T</code>
+                  </span>
+                  The average.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  ^T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.average``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.average``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L933-933" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the average of the elements in the sequence.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                The elements are averaged using the <code>+</code> operator, <code>DivideByInt</code> method and <code>Zero</code> property
+ associated with the element type.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>^T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The average.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence has zero elements.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '293', 293)" onmouseover="showTip(event, '293', 293)">
+                <p>
+                  <a id="averageBy">
+                    <a href="#averageBy">
+                      <code><span>SeqExtensionsConstrained.averageBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="293">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.averageBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;^U</span></code>
+                       - 
+                      A function applied to transform each element of the sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^U</code>
+                  </span>
+                  The average.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, ^U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.averageBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.averageBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L949-949" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the average of the results generated by applying the function to each element
+ of the sequence.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                The elements are averaged using the <code>+</code> operator, <code>DivideByInt</code> method and <code>Zero</code> property
+ associated with the generated type.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;^U</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    A function applied to transform each element of the sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^U</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The average.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence has zero elements.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '294', 294)" onmouseover="showTip(event, '294', 294)">
+                <p>
+                  <a id="contains">
+                    <a href="#contains">
+                      <code><span>SeqExtensionsConstrained.contains&#32;<span><span>(<span>source,&#32;value</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="294">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.contains&#32;<span><span>(<span>source,&#32;value</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        value
+                      </b>
+                      :
+                      <code>'T</code>
+                       - 
+                      The value to locate in the input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>bool</code>
+                  </span>
+                  True if the input sequence contains the specified element; false otherwise.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.contains``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.contains``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L960-960" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Tests if the sequence contains the specified element.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    value
+                  </span>
+                  :
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The value to locate in the input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>bool</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    True if the input sequence contains the specified element; false otherwise.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '295', 295)" onmouseover="showTip(event, '295', 295)">
+                <p>
+                  <a id="distinct">
+                    <a href="#distinct">
+                      <code><span>SeqExtensionsConstrained.distinct&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="295">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.distinct&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.distinct``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.distinct``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L972-972" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns a sequence that contains no duplicate entries according to generic hash and
+ equality comparisons on the entries.
+ If an element occurs multiple times in the sequence then the later occurrences are discarded.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '296', 296)" onmouseover="showTip(event, '296', 296)">
+                <p>
+                  <a id="except">
+                    <a href="#except">
+                      <code><span>SeqExtensionsConstrained.except&#32;<span><span>(<span>source,&#32;itemsToExclude</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="296">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.except&#32;<span><span>(<span>source,&#32;itemsToExclude</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      A sequence whose elements that are not also in first will be returned.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        itemsToExclude
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      A sequence whose elements that also occur in the second sequence will cause those elements to be
+ removed from the returned sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  A sequence that contains the set difference of the elements of two sequences.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.except``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.except``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L990-990" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns a new sequence with the distinct elements of the second sequence which do not apear in the first sequence,
+ using generic hash and equality comparisons to compare values.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                Note that this function returns a sequence that digests the whole of the first input sequence as soon as
+ the result sequence is iterated. As a result this function should not be used with
+ large or infinite sequences in the first parameter. The function makes no assumption on the ordering of the first input
+ sequence.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    A sequence whose elements that are not also in first will be returned.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    itemsToExclude
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    A sequence whose elements that also occur in the second sequence will cause those elements to be
+ removed from the returned sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    A sequence that contains the set difference of the elements of two sequences.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when either of the two input sequences is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '297', 297)" onmouseover="showTip(event, '297', 297)">
+                <p>
+                  <a id="insertAt">
+                    <a href="#insertAt">
+                      <code><span>SeqExtensionsConstrained.insertAt&#32;<span><span>(<span>source,&#32;index,&#32;value</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="297">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.insertAt&#32;<span><span>(<span>source,&#32;index,&#32;value</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index where the item should be inserted.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        value
+                      </b>
+                      :
+                      <code>'T</code>
+                       - 
+                      The value to insert.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.insertAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.insertAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L871-871" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new sequence with a new item inserted before the given index.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index where the item should be inserted.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    value
+                  </span>
+                  :
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The value to insert.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is below 0 or greater than source.Length.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '298', 298)" onmouseover="showTip(event, '298', 298)">
+                <p>
+                  <a id="insertManyAt">
+                    <a href="#insertManyAt">
+                      <code><span>SeqExtensionsConstrained.insertManyAt&#32;<span><span>(<span>source,&#32;index,&#32;values</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="298">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.insertManyAt&#32;<span><span>(<span>source,&#32;index,&#32;values</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index where the items should be inserted.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        values
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The values to insert.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.insertManyAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.insertManyAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L881-881" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new sequence with new items inserted before the given index.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index where the items should be inserted.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    values
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The values to insert.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is below 0 or greater than source.Length.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '299', 299)" onmouseover="showTip(event, '299', 299)">
+                <p>
+                  <a id="max">
+                    <a href="#max">
+                      <code><span>SeqExtensionsConstrained.max&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="299">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.max&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The largest element of the sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.max``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.max``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1001-1001" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the greatest of all elements of the sequence, compared via Operators.max
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The largest element of the sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '300', 300)" onmouseover="showTip(event, '300', 300)">
+                <p>
+                  <a id="maxBy">
+                    <a href="#maxBy">
+                      <code><span>SeqExtensionsConstrained.maxBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="300">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.maxBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;'U</span></code>
+                       - 
+                      A function to transform items from the input sequence into comparable keys.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The largest element of the sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, &#39;U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.maxBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.maxBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1013-1013" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the greatest of all elements of the sequence, compared via Operators.max on the function result.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;'U</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    A function to transform items from the input sequence into comparable keys.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The largest element of the sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '301', 301)" onmouseover="showTip(event, '301', 301)">
+                <p>
+                  <a id="min">
+                    <a href="#min">
+                      <code><span>SeqExtensionsConstrained.min&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="301">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.min&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The smallest element of the sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.min``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.min``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1024-1024" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the lowest of all elements of the sequence, compared via <code>Operators.min</code>.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The smallest element of the sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '302', 302)" onmouseover="showTip(event, '302', 302)">
+                <p>
+                  <a id="minBy">
+                    <a href="#minBy">
+                      <code><span>SeqExtensionsConstrained.minBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="302">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.minBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;'U</span></code>
+                       - 
+                      A function to transform items from the input sequence into comparable keys.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>'T</code>
+                  </span>
+                  The smallest element of the sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, &#39;U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.minBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.minBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1036-1036" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the lowest of all elements of the sequence, compared via Operators.min on the function result.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;'U</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    A function to transform items from the input sequence into comparable keys.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The smallest element of the sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is empty.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '303', 303)" onmouseover="showTip(event, '303', 303)">
+                <p>
+                  <a id="removeAt">
+                    <a href="#removeAt">
+                      <code><span>SeqExtensionsConstrained.removeAt&#32;<span><span>(<span>source,&#32;index</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="303">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.removeAt&#32;<span><span>(<span>source,&#32;index</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index of the item to be removed.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.removeAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.removeAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L890-890" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new sequence with the item at a given index removed.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index of the item to be removed.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is outside 0..source.Length - 1
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '304', 304)" onmouseover="showTip(event, '304', 304)">
+                <p>
+                  <a id="removeManyAt">
+                    <a href="#removeManyAt">
+                      <code><span>SeqExtensionsConstrained.removeManyAt&#32;<span><span>(<span>source,&#32;index,&#32;count</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="304">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.removeManyAt&#32;<span><span>(<span>source,&#32;index,&#32;count</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index of the item to be removed.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        count
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The number of items to remove.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.removeManyAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.removeManyAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L900-900" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new sequence with the number of items starting at a given index removed.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index of the item to be removed.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    count
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The number of items to remove.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is outside 0..source.Length - count
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '305', 305)" onmouseover="showTip(event, '305', 305)">
+                <p>
+                  <a id="sort">
+                    <a href="#sort">
+                      <code><span>SeqExtensionsConstrained.sort&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="305">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.sort&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sort``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sort``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1054-1054" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Yields a sequence ordered by keys.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                This function returns a sequence that digests the whole initial sequence as soon as
+ that sequence is iterated. As a result this function should not be used with
+ large or infinite sequences. The function makes no assumption on the ordering of the original
+ sequence.
+
+ This is a stable sort, that is the original order of equal elements is preserved.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '306', 306)" onmouseover="showTip(event, '306', 306)">
+                <p>
+                  <a id="sortDescending">
+                    <a href="#sortDescending">
+                      <code><span>SeqExtensionsConstrained.sortDescending&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="306">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.sortDescending&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sortDescending``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sortDescending``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1071-1071" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Yields a sequence ordered descending by keys.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                This function returns a sequence that digests the whole initial sequence as soon as
+ that sequence is iterated. As a result this function should not be used with
+ large or infinite sequences. The function makes no assumption on the ordering of the original
+ sequence.
+
+ This is a stable sort, that is the original order of equal elements is preserved.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '307', 307)" onmouseover="showTip(event, '307', 307)">
+                <p>
+                  <a id="sum">
+                    <a href="#sum">
+                      <code><span>SeqExtensionsConstrained.sum&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="307">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.sum&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>^T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^T</code>
+                  </span>
+                  The computed sum.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  ^T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sum``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sum``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1081-1081" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the sum of the elements in the sequence.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                The elements are summed using the <code>+</code> operator and <code>Zero</code> property associated with the generated type.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>^T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^T</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The computed sum.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '308', 308)" onmouseover="showTip(event, '308', 308)">
+                <p>
+                  <a id="sumBy">
+                    <a href="#sumBy">
+                      <code><span>SeqExtensionsConstrained.sumBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="308">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.sumBy&#32;<span><span>(<span>source,&#32;projection</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                       - 
+                      The input sequence.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        projection
+                      </b>
+                      :
+                      <code><span>'T&#32;->&#32;^U</span></code>
+                       - 
+                      A function to transform items from the input sequence into the type that will be summed.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code>^U</code>
+                  </span>
+                  The computed sum.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T, ^U
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sumBy``2```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.sumBy``2\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L1091-1091" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the sum of the results generated by applying the function to each element of the sequence.
+                  </p>
+                </div>
+              </summary>
+              <p class="fsdocs-remarks">
+                The generated elements are summed using the <code>+</code> operator and <code>Zero</code> property associated with the generated type.
+              </p>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The input sequence.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    projection
+                  </span>
+                  :
+                  <code><span>'T&#32;->&#32;^U</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    A function to transform items from the input sequence into the type that will be summed.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code>^U</code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The computed sum.
+                  </p>
+                </dd>
+              </dl>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '309', 309)" onmouseover="showTip(event, '309', 309)">
+                <p>
+                  <a id="tryExactlyOne">
+                    <a href="#tryExactlyOne">
+                      <code><span>SeqExtensionsConstrained.tryExactlyOne&#32;<span>source</span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="309">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.tryExactlyOne&#32;<span>source</span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;option</span></code>
+                  </span>
+                  The only element of the sequence or None.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.tryExactlyOne``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.tryExactlyOne``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L908-908" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Returns the only element of the sequence or <code>None</code> if it is empty or contains more than one element.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;option</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The only element of the sequence or None.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">
+                      ArgumentNullException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when the input sequence is null.
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td class="fsdocs-member-usage">
+            <div>
+              <code onmouseout="hideTip(event, '310', 310)" onmouseover="showTip(event, '310', 310)">
+                <p>
+                  <a id="updateAt">
+                    <a href="#updateAt">
+                      <code><span>SeqExtensionsConstrained.updateAt&#32;<span><span>(<span>source,&#32;index,&#32;value</span>)</span></span></span></code>
+                    </a>
+                  </a>
+                </p>
+              </code>
+              <div class="fsdocs-tip" id="310">
+                <div class="member-tooltip">
+                  Full Usage: 
+                  <code><span>SeqExtensionsConstrained.updateAt&#32;<span><span>(<span>source,&#32;index,&#32;value</span>)</span></span></span></code>
+                  <br/>
+                  <br/>
+                  Parameters: 
+                  <ul>
+                    <span>
+                      <b>
+                        source
+                      </b>
+                      :
+                      <code><span>'T&#32;seq</span></code>
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        index
+                      </b>
+                      :
+                      <code>int</code>
+                       - 
+                      The index of the item to be replaced.
+                    </span>
+                    <br/>
+                    <span>
+                      <b>
+                        value
+                      </b>
+                      :
+                      <code>'T</code>
+                       - 
+                      The new value.
+                    </span>
+                    <br/>
+                  </ul>
+                  <br/>
+                  <span>
+                    Returns: 
+                    <code><span>'T&#32;seq</span></code>
+                  </span>
+                  The result sequence.
+                  <br/>
+                  Modifiers: 
+                  inline
+                  <br/>
+                  Type parameters: 
+                  &#39;T
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="fsdocs-member-xmldoc">
+            <details>
+              <summary>
+                <div class="fsdocs-summary">
+                  <div class="fsdocs-source-link" title="Copy signature (Markdown)" onclick="Clipboard_CopyTo('```cref:M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.updateAt``1```')">
+                    <iconify-icon icon="bi:filetype-md" height="24" width="24"></iconify-icon>
+                  </div>
+                  <div class="fsdocs-source-link" title="Copy signature (XML)" onclick="Clipboard_CopyTo('<see cref=\'M:FSharp.Core.Fluent.SeqExtensions.SeqExtensionsConstrained.updateAt``1\'/>')">
+                    <iconify-icon icon="bi:filetype-xml" height="24" width="24"></iconify-icon>
+                  </div>
+                  <a href="https://github.com/fsprojects/FSharp.Core.Fluent/tree/master/src/FSharp.Core.Fluent/Fluent.fs#L919-919" class="fsdocs-source-link" title="Source on GitHub">
+                    <iconify-icon icon="ri:github-fill" height="24" width="24"></iconify-icon>
+                  </a>
+                  <p class="fsdocs-summary">
+                    Return a new sequence with the item at a given index set to the new value.
+                  </p>
+                </div>
+              </summary>
+              <dl class="fsdocs-params">
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    source
+                  </span>
+                  :
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-param-docs"></dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    index
+                  </span>
+                  :
+                  <code>int</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The index of the item to be replaced.
+                  </p>
+                </dd>
+                <dt class="fsdocs-param">
+                  <span class="fsdocs-param-name">
+                    value
+                  </span>
+                  :
+                  <code>'T</code>
+                </dt>
+                <dd class="fsdocs-param-docs">
+                  <p>
+                    The new value.
+                  </p>
+                </dd>
+              </dl>
+              <dl class="fsdocs-returns">
+                <dt>
+                  <span class="fsdocs-return-name">
+                    Returns: 
+                  </span>
+                  <code><span>'T&#32;seq</span></code>
+                </dt>
+                <dd class="fsdocs-return-docs">
+                  <p>
+                    The result sequence.
+                  </p>
+                </dd>
+              </dl>
+              <table class="fsdocs-exception-list">
+                <tr>
+                  <td>
+                    <a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">
+                      ArgumentException
+                    </a>
+                  </td>
+                  <td>
+                    Thrown when index is outside 0..source.Length - 1
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+        
+    </div>
+</main>
+<aside id="fsdocs-page-menu">
+    <p id="on-this-page">On this page</p>
+    <div class="empty"></div>
+</aside>
+<dialog>
+    <input type="search" placeholder="Search docs" />
+    <div class="results">
+        <ul></ul>
+        <p class="empty">Type something to start searching.</p>
+    </div>
+</dialog>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-tips.js"></script>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme-toggle.js"></script>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-theme.js"></script>
+<script type="module" src="https://fsprojects.github.io/FSharp.Core.Fluent/content/fsdocs-search.js"></script>
+
+</body>
+</html>
