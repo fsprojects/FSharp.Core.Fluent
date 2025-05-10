@@ -61,6 +61,14 @@ xs
 
 (**
 
+Or use the generic .pipe method to simulate |>
+
+*)
+
+(4.0).pipe(sqrt)
+
+(**
+
 You can't mix pipelining followed by fluent, and attempting to do so can give obscure errors:
 
 ```

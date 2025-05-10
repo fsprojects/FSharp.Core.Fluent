@@ -6,7 +6,6 @@
 namespace FSharp.Core.Fluent
 
 open System
-open System.IO
 open System.Runtime.CompilerServices
 open Microsoft.FSharp.NativeInterop
 
@@ -3266,3 +3265,8 @@ module NativePtrExtensions =
         ///
         /// <returns>The managed pointer.</returns>
         member inline ptr.toByRef() = NativePtr.toByRef ptr
+
+[<Extension>]
+type FluentExtensions =
+    [<Extension>]
+    static member inline pipe(x, [<InlineIfLambda>]f) = f x
